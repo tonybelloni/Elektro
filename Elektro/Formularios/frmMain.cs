@@ -48,6 +48,7 @@ namespace Elektro.Formularios
                 if (validade.Date >= DateTime.Now.Date)
                 {
                     toolStripStatusLabel1.Text = String.Format("Versão : {0} - Licença válida até: {1}", Application.ProductVersion, validade.ToShortDateString());
+                    this.Text += " - Versão : " + Application.ProductVersion;
                 }
                 else
                 {

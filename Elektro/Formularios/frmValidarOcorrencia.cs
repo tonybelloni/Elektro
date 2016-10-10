@@ -12,10 +12,18 @@ using CamadaDados;
 
 namespace Elektro.Formularios
 {
+    
     public partial class frmValidarOcorrencia : Form
     {
         private USUARIOS _usuario;
         private REGISTRO_OCORRENCIAS _registro;
+        private int _tipoOcorrencia;
+
+        public int TipoOcorrencia
+        {
+            get { return _tipoOcorrencia; }
+            set { _tipoOcorrencia = value;  }
+        }
 
         public USUARIOS Usuario
         {
@@ -36,10 +44,20 @@ namespace Elektro.Formularios
 
         private bool ValidarCampos()
         {
-            if ((!chkProcede.Checked && !chkNaoProcede.Checked && !chkAnaliseInadequada.Checked) || (cmbNaoConformidade.SelectedIndex == -1) || (txtObservacaoValidacao.Text == ""))
-                return false;
+            if (_tipoOcorrencia == 0)
+            {
+                if ((!chkProcede.Checked && !chkNaoProcede.Checked && !chkAnaliseInadequada.Checked) || (cmbNaoConformidade.SelectedIndex == -1) || (txtObservacaoValidacao.Text == ""))
+                    return false;
+                else
+                    return true;
+            }
             else
-                return true;
+            {
+                if ((!chkProcede.Checked && !chkNaoProcede.Checked && !chkAnaliseInadequada.Checked) || (txtObservacaoValidacao.Text == ""))
+                    return false;
+                else
+                    return true;
+            }
         }
 
         private void frmValidarOcorrencia_Load(object sender, EventArgs e)
@@ -56,7 +74,7 @@ namespace Elektro.Formularios
                 txtEquipe.Enabled = false;
                 txtEquipe.Text = _registro.SIGLA_EQUIPE;
                 txtCamera.Enabled = false;
-                txtCamera.Text = _registro.NUMERO_HD;
+                txtCamera.Text = _registro.EQUIPES.CODIGO_CAMERA;
                 txtVeiculo.Enabled = false;
                 txtVeiculo.Text = _registro.EQUIPES.PLACA_VEICULO;
                 txtDataInicial.Enabled = false;
@@ -64,14 +82,35 @@ namespace Elektro.Formularios
                 txtDataFinal.Enabled = false;
                 txtDataFinal.Text = _registro.DATA_FINAL.ToString();
                 txtUsuario.Enabled = false;
-                txtUsuario.Text = _registro.SORTEADOS.USUARIO_VISUALIZACAO;
+                if (_registro.SORTEADOS.USUARIO_VISUALIZACAO == null)
+                {
+                    txtUsuario.Text = "";
+                }
+                else
+                {
+                    txtUsuario.Text = _registro.SORTEADOS.USUARIO_VISUALIZACAO;
+                }
                 chkProcede.Checked = true;
                 chkNaoProcede.Checked = false;
                 chkAnaliseInadequada.Checked = false;
                 cmbNaoConformidade.Enabled = false;
-                cmbNaoConformidade.SelectedValue = _registro.CODIGO_TIPO_OCORRENCIA;
+                if ( _registro.CODIGO_TIPO_OCORRENCIA == null )
+                {
+                    cmbNaoConformidade.SelectedIndex = -1;
+                }
+                else
+                {
+                    cmbNaoConformidade.SelectedValue = _registro.CODIGO_TIPO_OCORRENCIA;
+                }
                 txtObservacao.Enabled = false;
-                txtObservacao.Text = _registro.OBSERVACAO;
+                if (_registro.OBSERVACAO == null)
+                {
+                    txtObservacao.Text = "";
+                }
+                else
+                {
+                    txtObservacao.Text = _registro.OBSERVACAO;
+                }
             }
             catch (Exception ex)
             {
@@ -110,7 +149,14 @@ namespace Elektro.Formularios
                 chkNaoProcede.Checked = false;
                 chkAnaliseInadequada.Checked = false;
                 cmbNaoConformidade.Enabled = false;
-                cmbNaoConformidade.SelectedValue = _registro.CODIGO_TIPO_OCORRENCIA;
+                if (_registro.CODIGO_TIPO_OCORRENCIA == null)
+                {
+                    cmbNaoConformidade.SelectedIndex = -1;
+                }
+                else
+                {
+                    cmbNaoConformidade.SelectedValue = _registro.CODIGO_TIPO_OCORRENCIA;
+                }
             }
         }
 
@@ -178,6 +224,13 @@ namespace Elektro.Formularios
                     e.DrawFocusRectangle();
                 }
             }
+        }
+
+        private void btiEquipe_Click(object sender, EventArgs e)
+        {
+            //frmVerEscalaCOD frm = new frmVerEscalaCOD();
+            //frm.ShowDialog();
+            MessageBox.Show("Nenhuma escala encontrada para essa equipe no horário da ocorrência", "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

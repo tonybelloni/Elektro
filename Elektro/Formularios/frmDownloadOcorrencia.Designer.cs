@@ -31,29 +31,26 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDownloadOcorrencia));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTempoTotal = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblQuantidadeVideos = new System.Windows.Forms.Label();
             this.lblSorteio = new System.Windows.Forms.Label();
             this.lblEquipe = new System.Windows.Forms.Label();
             this.btnDownload = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblPorcentagem = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lblTempoTotal);
+            this.groupBox1.Controls.Add(this.progressBar1);
             this.groupBox1.Controls.Add(this.lblQuantidadeVideos);
             this.groupBox1.Controls.Add(this.lblSorteio);
             this.groupBox1.Controls.Add(this.lblEquipe);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(308, 131);
+            this.groupBox1.Size = new System.Drawing.Size(308, 151);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -66,6 +63,13 @@
             this.lblTempoTotal.Size = new System.Drawing.Size(42, 16);
             this.lblTempoTotal.TabIndex = 3;
             this.lblTempoTotal.Text = "label1";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(6, 115);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(296, 23);
+            this.progressBar1.TabIndex = 0;
             // 
             // lblQuantidadeVideos
             // 
@@ -96,7 +100,7 @@
             // 
             // btnDownload
             // 
-            this.btnDownload.Location = new System.Drawing.Point(50, 149);
+            this.btnDownload.Location = new System.Drawing.Point(12, 169);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(75, 23);
             this.btnDownload.TabIndex = 1;
@@ -106,7 +110,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(209, 149);
+            this.btnCancelar.Location = new System.Drawing.Point(245, 169);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 2;
@@ -114,54 +118,18 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.lblPorcentagem);
-            this.panel1.Controls.Add(this.progressBar1);
-            this.panel1.Location = new System.Drawing.Point(13, 199);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(307, 45);
-            this.panel1.TabIndex = 3;
-            // 
-            // lblPorcentagem
-            // 
-            this.lblPorcentagem.AutoSize = true;
-            this.lblPorcentagem.Location = new System.Drawing.Point(258, 14);
-            this.lblPorcentagem.Name = "lblPorcentagem";
-            this.lblPorcentagem.Size = new System.Drawing.Size(42, 16);
-            this.lblPorcentagem.TabIndex = 4;
-            this.lblPorcentagem.Text = "label1";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(9, 10);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(248, 23);
-            this.progressBar1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 180);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Realizando download...";
-            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // frmDownloadOcorrencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 253);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(332, 199);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.groupBox1);
@@ -172,14 +140,10 @@
             this.Name = "frmDownloadOcorrencia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Informações da Ocorrência";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDownloadOcorrencia_FormClosed);
             this.Load += new System.EventHandler(this.frmDownloadOcorrencia_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -192,10 +156,7 @@
         private System.Windows.Forms.Label lblEquipe;
         private System.Windows.Forms.Button btnDownload;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblPorcentagem;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

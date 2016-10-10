@@ -93,26 +93,34 @@ namespace Elektro.Formularios
         {
             try
             {
-                BLLSorteio bllSorteio = new BLLSorteio();
-                SORTEIOS sorteio = new SORTEIOS();
-
-                sorteio.DATA_REGISTRO = DateTime.Now;
-                sorteio.USUARIO_REGISTRO = _usuario.prontuario_usuario;
-                bllSorteio.InsereSorteio(sorteio);
-
-                BLLSorteados bllSorteados = new BLLSorteados();
-                SORTEADOS sorteado = new SORTEADOS();
-
-                foreach (EQUIPES equipe in _preSorteadas)
+                if ( lstPreSorteio.Items.Count < 1 )
                 {
-                    sorteado.COD_SORTEIO = sorteio.COD_SORTEIO;
-                    sorteado.SIGLA_EQUIPE = equipe.SIGLA_EQUIPE;
-                    sorteado.VISUALIZADO = "N";
-                    bllSorteados.InsertSorteado(sorteado);
-                    sorteado = new SORTEADOS();
+                    MessageBox.Show("É obrigatório selecionar pelo menos uma equipe para o sorteio !", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
+                else
+                {
+                    BLLSorteio bllSorteio = new BLLSorteio();
+                    SORTEIOS sorteio = new SORTEIOS();
 
-                MessageBox.Show("Sorteio realizado com sucesso", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    sorteio.DATA_REGISTRO = DateTime.Now;
+                    sorteio.USUARIO_REGISTRO = _usuario.prontuario_usuario;
+                    bllSorteio.InsereSorteio(sorteio);
+
+                    BLLSorteados bllSorteados = new BLLSorteados();
+                    SORTEADOS sorteado = new SORTEADOS();
+
+                    foreach (EQUIPES equipe in _preSorteadas)
+                    {
+                        sorteado.COD_SORTEIO = sorteio.COD_SORTEIO;
+                        sorteado.SIGLA_EQUIPE = equipe.SIGLA_EQUIPE;
+                        sorteado.VISUALIZADO = "N";
+                        bllSorteados.InsertSorteado(sorteado);
+                        sorteado = new SORTEADOS();
+                    }
+
+                    MessageBox.Show("Sorteio realizado com sucesso", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {

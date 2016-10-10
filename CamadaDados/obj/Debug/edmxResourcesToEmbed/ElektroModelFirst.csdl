@@ -40,16 +40,6 @@
       <End Role="USUARIOS" EntitySet="USUARIOS" />
     </AssociationSet>
     <EntitySet Name="EMPRESAS" EntityType="elektroModel.EMPRESAS" />
-    <EntitySet Name="CAMERAS" EntityType="elektroModel.CAMERAS" />
-    <EntitySet Name="HISTORICOS_CAMERAS" EntityType="elektroModel.HISTORICOS_CAMERAS" />
-    <AssociationSet Name="FK_CAMERAS_EMPRESAS" Association="elektroModel.FK_CAMERAS_EMPRESAS">
-      <End Role="EMPRESAS" EntitySet="EMPRESAS" />
-      <End Role="CAMERAS" EntitySet="CAMERAS" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HISTORICOS_CAMERAS_CAMERAS" Association="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS">
-      <End Role="CAMERAS" EntitySet="CAMERAS" />
-      <End Role="HISTORICOS_CAMERAS" EntitySet="HISTORICOS_CAMERAS" />
-    </AssociationSet>
     <EntitySet Name="HISTORICO_VEICULO" EntityType="elektroModel.HISTORICO_VEICULO" />
     <EntitySet Name="TIPOS_VEICULOS" EntityType="elektroModel.TIPOS_VEICULOS" />
     <EntitySet Name="VEICULOS" EntityType="elektroModel.VEICULOS" />
@@ -97,10 +87,6 @@
       <End Role="EQUIPES" EntitySet="EQUIPES" />
       <End Role="HISTORICO_VEICULO" EntitySet="HISTORICO_VEICULO" />
     </AssociationSet>
-    <AssociationSet Name="FK_HISTORICOS_CAMERAS_EQUIPES" Association="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES">
-      <End Role="EQUIPES" EntitySet="EQUIPES" />
-      <End Role="HISTORICOS_CAMERAS" EntitySet="HISTORICOS_CAMERAS" />
-    </AssociationSet>
     <AssociationSet Name="FK_MOVIMENTACAO_CAMERA_CAMERAS" Association="elektroModel.FK_MOVIMENTACAO_CAMERA_CAMERAS">
       <End Role="EQUIPES" EntitySet="EQUIPES" />
       <End Role="MOVIMENTACAO_CAMERA" EntitySet="MOVIMENTACAO_CAMERA" />
@@ -141,6 +127,20 @@
     <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS" Association="elektroModel.FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS">
       <End Role="FALHAS_EVENTOS_PROCESSOS" EntitySet="FALHAS_EVENTOS_PROCESSOS" />
       <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+    </AssociationSet>
+    <EntitySet Name="CAMERAS" EntityType="elektroModel.CAMERAS" />
+    <AssociationSet Name="FK_CAMERAS_EMPRESAS" Association="elektroModel.FK_CAMERAS_EMPRESAS">
+      <End Role="EMPRESAS" EntitySet="EMPRESAS" />
+      <End Role="CAMERAS" EntitySet="CAMERAS" />
+    </AssociationSet>
+    <EntitySet Name="HISTORICOS_CAMERAS" EntityType="elektroModel.HISTORICOS_CAMERAS" />
+    <AssociationSet Name="FK_HISTORICOS_CAMERAS_CAMERAS" Association="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS">
+      <End Role="CAMERAS" EntitySet="CAMERAS" />
+      <End Role="HISTORICOS_CAMERAS" EntitySet="HISTORICOS_CAMERAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HISTORICOS_CAMERAS_EQUIPES" Association="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES">
+      <End Role="EQUIPES" EntitySet="EQUIPES" />
+      <End Role="HISTORICOS_CAMERAS" EntitySet="HISTORICOS_CAMERAS" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ATIVIDADES">
@@ -416,68 +416,6 @@
     <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CAMERAS" Relationship="elektroModel.FK_CAMERAS_EMPRESAS" FromRole="EMPRESAS" ToRole="CAMERAS" />
   </EntityType>
-  <EntityType Name="CAMERAS">
-    <Key>
-      <PropertyRef Name="codigo_camera" />
-    </Key>
-    <Property Name="codigo_camera" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="bpm_camera" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="codigo_barra_camera" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ativo" Type="Int32" Nullable="false" />
-    <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DATA_BAIXA" Type="DateTime" Precision="3" />
-    <Property Name="MOTIVO_BAIXA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="USUARIO_BAIXA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DATA_AQUISICAO" Type="DateTime" Precision="3" />
-    <Property Name="CODIGO_EMPRESA" Type="Int32" />
-    <NavigationProperty Name="EMPRESAS" Relationship="elektroModel.FK_CAMERAS_EMPRESAS" FromRole="CAMERAS" ToRole="EMPRESAS" />
-    <NavigationProperty Name="HISTORICOS_CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS" FromRole="CAMERAS" ToRole="HISTORICOS_CAMERAS" />
-  </EntityType>
-  <EntityType Name="HISTORICOS_CAMERAS">
-    <Key>
-      <PropertyRef Name="COD_HISTORICO" />
-    </Key>
-    <Property Name="COD_HISTORICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SIGLA_EQUIPE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="CODIGO_CAMERA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="TIPO" Type="Int32" Nullable="false" />
-    <Property Name="EMPRESA_MANUTENCAO" Type="Int32" />
-    <Property Name="OBSERVACAO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DATA_REGISTRO" Type="DateTime" Precision="3" />
-    <Property Name="DATA_ALOCACAO" Type="DateTime" Precision="3" />
-    <Property Name="DATA_DESALOCAO" Type="DateTime" Precision="3" />
-    <Property Name="DATA_ENVIO" Type="DateTime" Precision="3" />
-    <Property Name="DATA_RECEBIMENTO" Type="DateTime" Precision="3" />
-    <Property Name="DATA_BAIXA" Type="DateTime" Precision="3" />
-    <Property Name="NUMERO_RASTREIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS" FromRole="HISTORICOS_CAMERAS" ToRole="CAMERAS" />
-    <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES" FromRole="HISTORICOS_CAMERAS" ToRole="EQUIPES" />
-  </EntityType>
-  <Association Name="FK_CAMERAS_EMPRESAS">
-    <End Type="elektroModel.EMPRESAS" Role="EMPRESAS" Multiplicity="0..1" />
-    <End Type="elektroModel.CAMERAS" Role="CAMERAS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="EMPRESAS">
-        <PropertyRef Name="CODIGO_EMPRESA" />
-      </Principal>
-      <Dependent Role="CAMERAS">
-        <PropertyRef Name="CODIGO_EMPRESA" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_HISTORICOS_CAMERAS_CAMERAS">
-    <End Type="elektroModel.CAMERAS" Role="CAMERAS" Multiplicity="1" />
-    <End Type="elektroModel.HISTORICOS_CAMERAS" Role="HISTORICOS_CAMERAS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CAMERAS">
-        <PropertyRef Name="codigo_camera" />
-      </Principal>
-      <Dependent Role="HISTORICOS_CAMERAS">
-        <PropertyRef Name="CODIGO_CAMERA" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="HISTORICO_VEICULO">
     <Key>
       <PropertyRef Name="NUMERO_HISTORICO" />
@@ -623,9 +561,9 @@
     <NavigationProperty Name="REGIAO1" Relationship="elektroModel.FK_EQUIPES_REGIAO" FromRole="EQUIPES" ToRole="REGIAO" />
     <NavigationProperty Name="SUPERVISAO1" Relationship="elektroModel.FK_EQUIPES_SUPERVISAO" FromRole="EQUIPES" ToRole="SUPERVISAO" />
     <NavigationProperty Name="HISTORICO_VEICULO" Relationship="elektroModel.FK_HISTORICO_VEICULO_EQUIPES" FromRole="EQUIPES" ToRole="HISTORICO_VEICULO" />
-    <NavigationProperty Name="HISTORICOS_CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES" FromRole="EQUIPES" ToRole="HISTORICOS_CAMERAS" />
     <NavigationProperty Name="MOVIMENTACAO_CAMERA" Relationship="elektroModel.FK_MOVIMENTACAO_CAMERA_CAMERAS" FromRole="EQUIPES" ToRole="MOVIMENTACAO_CAMERA" />
     <NavigationProperty Name="REGISTRO_OCORRENCIAS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_EQUIPES" FromRole="EQUIPES" ToRole="REGISTRO_OCORRENCIAS" />
+    <NavigationProperty Name="HISTORICOS_CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES" FromRole="EQUIPES" ToRole="HISTORICOS_CAMERAS" />
   </EntityType>
   <Association Name="EQUIPES_FK01">
     <End Type="elektroModel.TIPOS_TRABALHOS" Role="TIPOS_TRABALHOS" Multiplicity="1" />
@@ -695,18 +633,6 @@
         <PropertyRef Name="SIGLA_EQUIPE" />
       </Principal>
       <Dependent Role="HISTORICO_VEICULO">
-        <PropertyRef Name="SIGLA_EQUIPE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_HISTORICOS_CAMERAS_EQUIPES">
-    <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="0..1" />
-    <End Type="elektroModel.HISTORICOS_CAMERAS" Role="HISTORICOS_CAMERAS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="EQUIPES">
-        <PropertyRef Name="SIGLA_EQUIPE" />
-      </Principal>
-      <Dependent Role="HISTORICOS_CAMERAS">
         <PropertyRef Name="SIGLA_EQUIPE" />
       </Dependent>
     </ReferentialConstraint>
@@ -884,6 +810,82 @@
       </Principal>
       <Dependent Role="REGISTRO_OCORRENCIAS">
         <PropertyRef Name="COD_FALHA_EVENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CAMERAS">
+    <Key>
+      <PropertyRef Name="codigo_camera" />
+    </Key>
+    <Property Name="codigo_camera" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bpm_camera" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="codigo_barra_camera" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ativo" Type="Int32" Nullable="false" />
+    <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DATA_BAIXA" Type="DateTime" Precision="3" />
+    <Property Name="MOTIVO_BAIXA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIO_BAIXA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DATA_AQUISICAO" Type="DateTime" Precision="3" />
+    <Property Name="CODIGO_EMPRESA" Type="Int32" />
+    <Property Name="PRONTUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EMPRESAS" Relationship="elektroModel.FK_CAMERAS_EMPRESAS" FromRole="CAMERAS" ToRole="EMPRESAS" />
+    <NavigationProperty Name="HISTORICOS_CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS" FromRole="CAMERAS" ToRole="HISTORICOS_CAMERAS" />
+  </EntityType>
+  <Association Name="FK_CAMERAS_EMPRESAS">
+    <End Type="elektroModel.EMPRESAS" Role="EMPRESAS" Multiplicity="0..1" />
+    <End Type="elektroModel.CAMERAS" Role="CAMERAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESAS">
+        <PropertyRef Name="CODIGO_EMPRESA" />
+      </Principal>
+      <Dependent Role="CAMERAS">
+        <PropertyRef Name="CODIGO_EMPRESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HISTORICOS_CAMERAS">
+    <Key>
+      <PropertyRef Name="COD_HISTORICO" />
+    </Key>
+    <Property Name="COD_HISTORICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SIGLA_EQUIPE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CODIGO_CAMERA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TIPO" Type="Int32" Nullable="false" />
+    <Property Name="EMPRESA_MANUTENCAO" Type="Int32" />
+    <Property Name="OBSERVACAO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DATA_REGISTRO" Type="DateTime" Precision="3" />
+    <Property Name="DATA_ALOCACAO" Type="DateTime" Precision="3" />
+    <Property Name="DATA_DESALOCAO" Type="DateTime" Precision="3" />
+    <Property Name="DATA_ENVIO" Type="DateTime" Precision="3" />
+    <Property Name="DATA_RECEBIMENTO" Type="DateTime" Precision="3" />
+    <Property Name="DATA_BAIXA" Type="DateTime" Precision="3" />
+    <Property Name="NUMERO_RASTREIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PRONTUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS" FromRole="HISTORICOS_CAMERAS" ToRole="CAMERAS" />
+    <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES" FromRole="HISTORICOS_CAMERAS" ToRole="EQUIPES" />
+  </EntityType>
+  <Association Name="FK_HISTORICOS_CAMERAS_CAMERAS">
+    <End Type="elektroModel.CAMERAS" Role="CAMERAS" Multiplicity="1" />
+    <End Type="elektroModel.HISTORICOS_CAMERAS" Role="HISTORICOS_CAMERAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAMERAS">
+        <PropertyRef Name="codigo_camera" />
+      </Principal>
+      <Dependent Role="HISTORICOS_CAMERAS">
+        <PropertyRef Name="CODIGO_CAMERA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HISTORICOS_CAMERAS_EQUIPES">
+    <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="0..1" />
+    <End Type="elektroModel.HISTORICOS_CAMERAS" Role="HISTORICOS_CAMERAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPES">
+        <PropertyRef Name="SIGLA_EQUIPE" />
+      </Principal>
+      <Dependent Role="HISTORICOS_CAMERAS">
+        <PropertyRef Name="SIGLA_EQUIPE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

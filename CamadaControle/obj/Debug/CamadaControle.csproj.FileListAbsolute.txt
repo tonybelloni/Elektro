@@ -122,3 +122,9 @@ D:\Rioservice\ElektroV2\CamadaControle\bin\Debug\EntityFramework.xml
 D:\Rioservice\ElektroV2\CamadaControle\obj\Debug\CamadaControle.csprojResolveAssemblyReference.cache
 D:\Rioservice\ElektroV2\CamadaControle\obj\Debug\CamadaControle.dll
 D:\Rioservice\ElektroV2\CamadaControle\obj\Debug\CamadaControle.pdb
+E:\Projetos\Elektro\CamadaControle\bin\Debug\CamadaControle.dll.config
+E:\Projetos\Elektro\CamadaControle\bin\Debug\Microsoft.ReportViewer.Common.dll
+E:\Projetos\Elektro\CamadaControle\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+E:\Projetos\Elektro\CamadaControle\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+E:\Projetos\Elektro\CamadaControle\bin\Debug\EntityFramework.dll
+E:\Projetos\Elektro\CamadaControle\bin\Debug\EntityFramework.xml

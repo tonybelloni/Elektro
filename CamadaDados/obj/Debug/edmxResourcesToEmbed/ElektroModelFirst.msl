@@ -201,42 +201,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CAMERAS">
-      <EntityTypeMapping TypeName="elektroModel.CAMERAS">
-        <MappingFragment StoreEntitySet="CAMERAS">
-          <ScalarProperty Name="CODIGO_EMPRESA" ColumnName="CODIGO_EMPRESA" />
-          <ScalarProperty Name="DATA_AQUISICAO" ColumnName="DATA_AQUISICAO" />
-          <ScalarProperty Name="USUARIO_BAIXA" ColumnName="USUARIO_BAIXA" />
-          <ScalarProperty Name="MOTIVO_BAIXA" ColumnName="MOTIVO_BAIXA" />
-          <ScalarProperty Name="DATA_BAIXA" ColumnName="DATA_BAIXA" />
-          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-          <ScalarProperty Name="ativo" ColumnName="ativo" />
-          <ScalarProperty Name="codigo_barra_camera" ColumnName="codigo_barra_camera" />
-          <ScalarProperty Name="bpm_camera" ColumnName="bpm_camera" />
-          <ScalarProperty Name="codigo_camera" ColumnName="codigo_camera" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HISTORICOS_CAMERAS">
-      <EntityTypeMapping TypeName="elektroModel.HISTORICOS_CAMERAS">
-        <MappingFragment StoreEntitySet="HISTORICOS_CAMERAS">
-          <ScalarProperty Name="NUMERO_RASTREIO" ColumnName="NUMERO_RASTREIO" />
-          <ScalarProperty Name="DATA_BAIXA" ColumnName="DATA_BAIXA" />
-          <ScalarProperty Name="DATA_RECEBIMENTO" ColumnName="DATA_RECEBIMENTO" />
-          <ScalarProperty Name="DATA_ENVIO" ColumnName="DATA_ENVIO" />
-          <ScalarProperty Name="DATA_DESALOCAO" ColumnName="DATA_DESALOCAO" />
-          <ScalarProperty Name="DATA_ALOCACAO" ColumnName="DATA_ALOCACAO" />
-          <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
-          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
-          <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
-          <ScalarProperty Name="EMPRESA_MANUTENCAO" ColumnName="EMPRESA_MANUTENCAO" />
-          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-          <ScalarProperty Name="CODIGO_CAMERA" ColumnName="CODIGO_CAMERA" />
-          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
-          <ScalarProperty Name="COD_HISTORICO" ColumnName="COD_HISTORICO" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="HISTORICO_VEICULO">
       <EntityTypeMapping TypeName="elektroModel.HISTORICO_VEICULO">
         <MappingFragment StoreEntitySet="HISTORICO_VEICULO">
@@ -385,6 +349,44 @@
         <MappingFragment StoreEntitySet="LISTA_VIDEOS">
           <ScalarProperty Name="TEMPO_TOTAL_VIDEOS" ColumnName="TEMPO_TOTAL_VIDEOS" />
           <ScalarProperty Name="CODIGO_LISTA_VIDEOS" ColumnName="CODIGO_LISTA_VIDEOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAMERAS">
+      <EntityTypeMapping TypeName="elektroModel.CAMERAS">
+        <MappingFragment StoreEntitySet="CAMERAS">
+          <ScalarProperty Name="PRONTUARIO" ColumnName="PRONTUARIO" />
+          <ScalarProperty Name="CODIGO_EMPRESA" ColumnName="CODIGO_EMPRESA" />
+          <ScalarProperty Name="DATA_AQUISICAO" ColumnName="DATA_AQUISICAO" />
+          <ScalarProperty Name="USUARIO_BAIXA" ColumnName="USUARIO_BAIXA" />
+          <ScalarProperty Name="MOTIVO_BAIXA" ColumnName="MOTIVO_BAIXA" />
+          <ScalarProperty Name="DATA_BAIXA" ColumnName="DATA_BAIXA" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="codigo_barra_camera" ColumnName="codigo_barra_camera" />
+          <ScalarProperty Name="bpm_camera" ColumnName="bpm_camera" />
+          <ScalarProperty Name="codigo_camera" ColumnName="codigo_camera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HISTORICOS_CAMERAS">
+      <EntityTypeMapping TypeName="elektroModel.HISTORICOS_CAMERAS">
+        <MappingFragment StoreEntitySet="HISTORICOS_CAMERAS">
+          <ScalarProperty Name="PRONTUARIO" ColumnName="PRONTUARIO" />
+          <ScalarProperty Name="NUMERO_RASTREIO" ColumnName="NUMERO_RASTREIO" />
+          <ScalarProperty Name="DATA_BAIXA" ColumnName="DATA_BAIXA" />
+          <ScalarProperty Name="DATA_RECEBIMENTO" ColumnName="DATA_RECEBIMENTO" />
+          <ScalarProperty Name="DATA_ENVIO" ColumnName="DATA_ENVIO" />
+          <ScalarProperty Name="DATA_DESALOCAO" ColumnName="DATA_DESALOCAO" />
+          <ScalarProperty Name="DATA_ALOCACAO" ColumnName="DATA_ALOCACAO" />
+          <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
+          <ScalarProperty Name="EMPRESA_MANUTENCAO" ColumnName="EMPRESA_MANUTENCAO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="CODIGO_CAMERA" ColumnName="CODIGO_CAMERA" />
+          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+          <ScalarProperty Name="COD_HISTORICO" ColumnName="COD_HISTORICO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

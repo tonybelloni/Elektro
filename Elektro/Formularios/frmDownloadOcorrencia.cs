@@ -55,10 +55,7 @@ namespace Elektro.Formularios
 
         private void frmDownloadOcorrencia_Load(object sender, EventArgs e)
         {
-            label1.Visible = false;
-            panel1.Visible = false;
-            this.Height = 218;
-
+            
             groupBox1.Text = "Ocorrência N° " + _registro.CODIGO_REGISTRO_OCORRENCIA;
             lblEquipe.Text = "Equipe: " + _registro.SIGLA_EQUIPE;
             lblSorteio.Text = "Sorteio: " + _registro.SORTEADOS.COD_SORTEIO;
@@ -77,11 +74,7 @@ namespace Elektro.Formularios
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            label1.Visible = true;
-            panel1.Visible = true;
-            this.Height = 292;
-            lblPorcentagem.Text = "0%";
-
+            
             string pathUser = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string pathDownload = System.IO.Path.Combine(pathUser, "Downloads");
             string path = pathDownload + "\\OcorrenciasVideos";
@@ -109,16 +102,15 @@ namespace Elektro.Formularios
             }
 
             backgroundWorker1.ReportProgress(100);
-            this.Close();
+            //this.Close();
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            lblPorcentagem.Text = e.ProgressPercentage.ToString() + "%";
         }
 
-        private void frmDownloadOcorrencia_FormClosed(object sender, FormClosedEventArgs e)
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             string pathUser = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string pathDownload = System.IO.Path.Combine(pathUser, "Downloads");

@@ -32,6 +32,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtDataFinal = new System.Windows.Forms.TextBox();
             this.chkAnaliseInadequada = new System.Windows.Forms.CheckBox();
             this.chkNaoProcede = new System.Windows.Forms.CheckBox();
             this.chkProcede = new System.Windows.Forms.CheckBox();
@@ -53,8 +55,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDataFinal = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btiEquipe = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +63,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.btiEquipe});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(577, 25);
@@ -109,6 +111,22 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados da Ocorrência";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(253, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 16);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Data Final";
+            // 
+            // txtDataFinal
+            // 
+            this.txtDataFinal.Location = new System.Drawing.Point(379, 51);
+            this.txtDataFinal.Name = "txtDataFinal";
+            this.txtDataFinal.Size = new System.Drawing.Size(157, 23);
+            this.txtDataFinal.TabIndex = 23;
             // 
             // chkAnaliseInadequada
             // 
@@ -293,21 +311,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Sigla Equipe";
             // 
-            // txtDataFinal
+            // btiEquipe
             // 
-            this.txtDataFinal.Location = new System.Drawing.Point(379, 51);
-            this.txtDataFinal.Name = "txtDataFinal";
-            this.txtDataFinal.Size = new System.Drawing.Size(157, 23);
-            this.txtDataFinal.TabIndex = 23;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(253, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 16);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "Data Final";
+            this.btiEquipe.Image = global::Elektro.Properties.Resources.cliente;
+            this.btiEquipe.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btiEquipe.Name = "btiEquipe";
+            this.btiEquipe.Size = new System.Drawing.Size(59, 22);
+            this.btiEquipe.Text = "Equipe";
+            this.btiEquipe.Click += new System.EventHandler(this.btiEquipe_Click);
             // 
             // frmValidarOcorrencia
             // 
@@ -361,5 +372,6 @@
         private System.Windows.Forms.CheckBox chkAnaliseInadequada;
         private System.Windows.Forms.TextBox txtDataFinal;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolStripButton btiEquipe;
     }
 }

@@ -120,3 +120,11 @@ D:\Rioservice\ElektroV2\CamadaDados\bin\Debug\EntityFramework.SqlServer.xml
 D:\Rioservice\ElektroV2\CamadaDados\obj\Debug\CamadaDados.csprojResolveAssemblyReference.cache
 D:\Rioservice\ElektroV2\CamadaDados\obj\Debug\CamadaDados.dll
 D:\Rioservice\ElektroV2\CamadaDados\obj\Debug\CamadaDados.pdb
+E:\Projetos\Elektro\CamadaDados\bin\Debug\CamadaDados.dll.config
+E:\Projetos\Elektro\CamadaDados\bin\Debug\EntityFramework.dll
+E:\Projetos\Elektro\CamadaDados\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projetos\Elektro\CamadaDados\bin\Debug\Microsoft.ReportViewer.Common.dll
+E:\Projetos\Elektro\CamadaDados\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+E:\Projetos\Elektro\CamadaDados\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+E:\Projetos\Elektro\CamadaDados\bin\Debug\EntityFramework.xml
+E:\Projetos\Elektro\CamadaDados\bin\Debug\EntityFramework.SqlServer.xml

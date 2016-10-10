@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfirmarSorteio));
             this.lstPreSorteio = new System.Windows.Forms.ListBox();
-            this.btnInserirPreSorteio = new System.Windows.Forms.Button();
-            this.btnRetirarPreSorteio = new System.Windows.Forms.Button();
             this.lstDisponiveis = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnConfirmar = new System.Windows.Forms.Button();
+            this.btnInserirPreSorteio = new System.Windows.Forms.Button();
+            this.btnRetirarPreSorteio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstPreSorteio
@@ -43,37 +43,17 @@
             this.lstPreSorteio.DisplayMember = "SIGLA_EQUIPE";
             this.lstPreSorteio.FormattingEnabled = true;
             this.lstPreSorteio.ItemHeight = 16;
-            this.lstPreSorteio.Location = new System.Drawing.Point(24, 47);
+            this.lstPreSorteio.Location = new System.Drawing.Point(15, 28);
             this.lstPreSorteio.Name = "lstPreSorteio";
             this.lstPreSorteio.Size = new System.Drawing.Size(179, 372);
             this.lstPreSorteio.TabIndex = 0;
-            // 
-            // btnInserirPreSorteio
-            // 
-            this.btnInserirPreSorteio.Image = global::Elektro.Properties.Resources.seta_esquerda;
-            this.btnInserirPreSorteio.Location = new System.Drawing.Point(234, 235);
-            this.btnInserirPreSorteio.Name = "btnInserirPreSorteio";
-            this.btnInserirPreSorteio.Size = new System.Drawing.Size(68, 64);
-            this.btnInserirPreSorteio.TabIndex = 2;
-            this.btnInserirPreSorteio.UseVisualStyleBackColor = true;
-            this.btnInserirPreSorteio.Click += new System.EventHandler(this.btnInserirPreSorteio_Click);
-            // 
-            // btnRetirarPreSorteio
-            // 
-            this.btnRetirarPreSorteio.Image = global::Elektro.Properties.Resources.seta_direita;
-            this.btnRetirarPreSorteio.Location = new System.Drawing.Point(234, 145);
-            this.btnRetirarPreSorteio.Name = "btnRetirarPreSorteio";
-            this.btnRetirarPreSorteio.Size = new System.Drawing.Size(68, 64);
-            this.btnRetirarPreSorteio.TabIndex = 1;
-            this.btnRetirarPreSorteio.UseVisualStyleBackColor = true;
-            this.btnRetirarPreSorteio.Click += new System.EventHandler(this.btnRetirarPreSorteio_Click);
             // 
             // lstDisponiveis
             // 
             this.lstDisponiveis.DisplayMember = "SIGLA_EQUIPE";
             this.lstDisponiveis.FormattingEnabled = true;
             this.lstDisponiveis.ItemHeight = 16;
-            this.lstDisponiveis.Location = new System.Drawing.Point(330, 47);
+            this.lstDisponiveis.Location = new System.Drawing.Point(246, 28);
             this.lstDisponiveis.Name = "lstDisponiveis";
             this.lstDisponiveis.Size = new System.Drawing.Size(179, 372);
             this.lstDisponiveis.TabIndex = 3;
@@ -81,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 19);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 16);
             this.label1.TabIndex = 4;
@@ -90,7 +70,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(360, 19);
+            this.label2.Location = new System.Drawing.Point(243, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 16);
             this.label2.TabIndex = 5;
@@ -98,7 +78,7 @@
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(404, 435);
+            this.btnConfirmar.Location = new System.Drawing.Point(350, 406);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
             this.btnConfirmar.TabIndex = 6;
@@ -106,11 +86,31 @@
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
+            // btnInserirPreSorteio
+            // 
+            this.btnInserirPreSorteio.Image = global::Elektro.Properties.Resources.rr;
+            this.btnInserirPreSorteio.Location = new System.Drawing.Point(200, 202);
+            this.btnInserirPreSorteio.Name = "btnInserirPreSorteio";
+            this.btnInserirPreSorteio.Size = new System.Drawing.Size(40, 41);
+            this.btnInserirPreSorteio.TabIndex = 2;
+            this.btnInserirPreSorteio.UseVisualStyleBackColor = true;
+            this.btnInserirPreSorteio.Click += new System.EventHandler(this.btnInserirPreSorteio_Click);
+            // 
+            // btnRetirarPreSorteio
+            // 
+            this.btnRetirarPreSorteio.Image = global::Elektro.Properties.Resources.ff;
+            this.btnRetirarPreSorteio.Location = new System.Drawing.Point(200, 155);
+            this.btnRetirarPreSorteio.Name = "btnRetirarPreSorteio";
+            this.btnRetirarPreSorteio.Size = new System.Drawing.Size(40, 41);
+            this.btnRetirarPreSorteio.TabIndex = 1;
+            this.btnRetirarPreSorteio.UseVisualStyleBackColor = true;
+            this.btnRetirarPreSorteio.Click += new System.EventHandler(this.btnRetirarPreSorteio_Click);
+            // 
             // frmConfirmarSorteio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 472);
+            this.ClientSize = new System.Drawing.Size(443, 435);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

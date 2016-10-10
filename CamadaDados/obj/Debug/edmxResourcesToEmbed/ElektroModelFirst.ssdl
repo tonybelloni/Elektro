@@ -37,6 +37,7 @@ warning 6002: The table/view 'elektro.dbo.ARQUIVOS' does not have a primary key 
     <Property Name="USUARIO_BAIXA" Type="nvarchar" MaxLength="50" />
     <Property Name="DATA_AQUISICAO" Type="datetime" />
     <Property Name="CODIGO_EMPRESA" Type="int" />
+    <Property Name="PRONTUARIO" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="DESCARGAS">
     <Key>
@@ -152,6 +153,7 @@ warning 6002: The table/view 'elektro.dbo.ARQUIVOS' does not have a primary key 
     <Property Name="DATA_RECEBIMENTO" Type="datetime" />
     <Property Name="DATA_BAIXA" Type="datetime" />
     <Property Name="NUMERO_RASTREIO" Type="nvarchar" MaxLength="50" />
+    <Property Name="PRONTUARIO" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="LISTA_VIDEOS">
     <Key>

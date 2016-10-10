@@ -533,6 +533,12 @@
     <Compile Include="Formularios\frmVeiculos.Designer.cs">
       <DependentUpon>frmVeiculos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmVerEscalaCOD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmVerEscalaCOD.Designer.cs">
+      <DependentUpon>frmVerEscalaCOD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Relatorios\frmBuscarHDReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -813,6 +819,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmVeiculos.resx">
       <DependentUpon>frmVeiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmVerEscalaCOD.resx">
+      <DependentUpon>frmVerEscalaCOD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Relatorios\frmBuscarHDReport.resx">
       <DependentUpon>frmBuscarHDReport.cs</DependentUpon>
@@ -1275,6 +1284,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

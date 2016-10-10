@@ -102,25 +102,41 @@ namespace Elektro.Formularios
 
                     if (e.Button == MouseButtons.Right)
                     {
-                        if (registro.DATA_VALIDACAO.HasValue)
-                        {
-                            ContextMenu m = new ContextMenu();
-                            m.MenuItems.Add(new MenuItem("Visualizar Ocorrência"));
-                            m.MenuItems[0].Click += new EventHandler(DownloadVideo);
-                            m.Show(dataGridView1, new Point(e.X, e.Y));
-                        }
-                        else
-                        {
-                            ContextMenu m = new ContextMenu();
-                            m.MenuItems.Add(new MenuItem("Visualizar Ocorrência"));
-                            m.MenuItems.Add(new MenuItem("Validar"));
-                            m.MenuItems[0].Click += new EventHandler(DownloadVideo);
-                            m.MenuItems[1].Click += new EventHandler(Validar);
-                            m.Show(dataGridView1, new Point(e.X, e.Y));
-                        }
+                        ContextMenu m = new ContextMenu();
+                        m.MenuItems.Add(new MenuItem("Visualizar Ocorrência"));
+                        m.MenuItems.Add(new MenuItem("Validar"));
+                        m.MenuItems.Add(new MenuItem("Ver Equipe"));
+                        m.MenuItems[0].Click += new EventHandler(DownloadVideo);
+                        m.MenuItems[1].Click += new EventHandler(Validar);
+                        m.MenuItems[2].Click += new EventHandler(VerEquipe);
+                        m.Show(dataGridView1, new Point(e.X, e.Y));
+                    }
+                }
+                else
+                {
+                    int codigo = Convert.ToInt32(dataGridView1.Rows[currentMouseOverRow].Cells[1].Value.ToString());
+                    BLLRegistroOcorrencia bllRegistroOcorrencia = new BLLRegistroOcorrencia();
+                    REGISTRO_OCORRENCIAS registro = bllRegistroOcorrencia.GetRegistroOcorrencia(codigo);
+
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        ContextMenu m = new ContextMenu();
+                        m.MenuItems.Add(new MenuItem("Validar"));
+                        m.MenuItems.Add(new MenuItem("Ver Equipe"));
+                        m.MenuItems[0].Click += new EventHandler(Validar);
+                        m.MenuItems[1].Click += new EventHandler(VerEquipe);
+                        m.Show(dataGridView1, new Point(e.X, e.Y));
                     }
                 }
             }
+        }
+
+
+        private void VerEquipe(object sender, EventArgs e)
+        {
+            //frmVerEscalaCOD frm = new frmVerEscalaCOD();
+            //frm.ShowDialog();
+            MessageBox.Show("Nenhuma escala encontrada para essa equipe no horário da ocorrência", "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void Validar(object sender, EventArgs e)
@@ -132,9 +148,18 @@ namespace Elektro.Formularios
                 REGISTRO_OCORRENCIAS registro = bllRegistroOcorrencia.GetRegistroOcorrencia(codigo);
 
                 frmValidarOcorrencia frm = new frmValidarOcorrencia(registro);
+
+                if (dataGridView1.Rows[currentMouseOverRow].Cells[13].Value.ToString() == "Operacional")
+                {
+                    frm.TipoOcorrencia = 0;
+                }
+                else
+                {
+                    frm.TipoOcorrencia = 1;
+                }
+
                 frm.Usuario = _usuario;
                 frm.ShowDialog();
-                Pesquisar();
             }
             catch (Exception ex)
             {
@@ -172,6 +197,7 @@ namespace Elektro.Formularios
 
                 frmDownloadOcorrencia frmDownload = new frmDownloadOcorrencia(registro);
                 frmDownload.Usuario = _usuario;
+
                 frmDownload.ShowDialog();
             }
             catch (Exception ex)

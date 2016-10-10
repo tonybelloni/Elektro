@@ -33,7 +33,6 @@ namespace Elektro.Formularios
             frmImportarEscalaCOD frm = new frmImportarEscalaCOD();
             frm.Usuario = _usuario;
             frm.ShowDialog();
-            Pesquisar();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
