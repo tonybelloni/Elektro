@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9ac9abbb56fc4001a5bfcda84cf56052" Name="Diagram1">
+        <EntityTypeShape EntityType="elektroModel.ATIVIDADES" Width="1.5" PointX="15" PointY="9.25" />
+        <EntityTypeShape EntityType="elektroModel.DESCARGAS" Width="1.5" PointX="9.75" PointY="22.375" />
+        <EntityTypeShape EntityType="elektroModel.FUNCIONARIOS" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="elektroModel.GERENCIA" Width="1.5" PointX="3" PointY="14.625" />
+        <EntityTypeShape EntityType="elektroModel.HD" Width="1.5" PointX="7.5" PointY="17.75" />
+        <EntityTypeShape EntityType="elektroModel.LOCALIDADE" Width="1.5" PointX="7.5" PointY="14.5" />
+        <EntityTypeShape EntityType="elektroModel.MOVIMENTACAO_CAMERA" Width="1.5" PointX="12" PointY="21" />
+        <EntityTypeShape EntityType="elektroModel.NAO_CONFORMIDADES" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="elektroModel.PERMISSOES_USUARIO" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="elektroModel.RECONHECIMENTOS_POSITIVOS" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="elektroModel.REGIAO" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="elektroModel.SUPERVISAO" Width="1.5" PointX="5.25" PointY="14.625" />
+        <EntityTypeShape EntityType="elektroModel.TIPOS_OCORRENCIAS" Width="1.5" PointX="15" PointY="16.625" />
+        <EntityTypeShape EntityType="elektroModel.TIPOS_TRABALHOS" Width="1.5" PointX="7.5" PointY="11.5" />
+        <EntityTypeShape EntityType="elektroModel.ARQUIVOS" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="elektroModel.OCORRENCIAS" Width="1.5" PointX="4.75" PointY="9.75" />
+        <AssociationConnector Association="elektroModel.FK_GERENCIA_REGIAO" />
+        <AssociationConnector Association="elektroModel.FK_SUPERVISAO_GERENCIA" />
+        <AssociationConnector Association="elektroModel.FK_LOCALIDADE_SUPERVISAO" />
+        <EntityTypeShape EntityType="elektroModel.TIPOS_USUARIOS" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="elektroModel.USUARIOS" Width="1.5" PointX="3" PointY="1.25" />
+        <AssociationConnector Association="elektroModel.FK_USUARIOS_FUNCIONARIOS" />
+        <AssociationConnector Association="elektroModel.FK_USUARIOS_TIPOS_USUARIOS" />
+        <EntityTypeShape EntityType="elektroModel.EMPRESAS" Width="1.5" PointX="14.375" PointY="1.75" />
+        <EntityTypeShape EntityType="elektroModel.HISTORICO_VEICULO" Width="1.5" PointX="12.375" PointY="16.875" />
+        <EntityTypeShape EntityType="elektroModel.TIPOS_VEICULOS" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="elektroModel.VEICULOS" Width="1.5" PointX="3" PointY="5.875" />
+        <AssociationConnector Association="elektroModel.FK_VEICULOS_TIPOS_VEICULOS" />
+        <EntityTypeShape EntityType="elektroModel.ESCALA_COD" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="elektroModel.MOVIMENTACAO_HD" Width="1.5" PointX="9.75" PointY="16.875" />
+        <AssociationConnector Association="elektroModel.FK_MOVIMENTACAO_HD_HD" />
+        <AssociationConnector Association="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO" />
+        <AssociationConnector Association="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM" />
+        <EntityTypeShape EntityType="elektroModel.FALHAS_EVENTOS_PROCESSOS" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="elektroModel.EQUIPES" Width="1.5" PointX="9.75" PointY="11.125" />
+        <AssociationConnector Association="elektroModel.EQUIPES_FK01" />
+        <AssociationConnector Association="elektroModel.FK_EQUIPES_GERENCIA" />
+        <AssociationConnector Association="elektroModel.FK_EQUIPES_LOCALIDADE" />
+        <AssociationConnector Association="elektroModel.FK_EQUIPES_REGIAO" />
+        <AssociationConnector Association="elektroModel.FK_EQUIPES_SUPERVISAO" />
+        <AssociationConnector Association="elektroModel.FK_HISTORICO_VEICULO_EQUIPES" />
+        <AssociationConnector Association="elektroModel.FK_MOVIMENTACAO_CAMERA_CAMERAS" />
+        <EntityTypeShape EntityType="elektroModel.SORTEIOS" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="elektroModel.VIDEOS" Width="1.5" PointX="18.625" PointY="0.875" />
+        <EntityTypeShape EntityType="elektroModel.REGISTRO_OCORRENCIAS" Width="1.5" PointX="20.625" PointY="7.5" />
+        <EntityTypeShape EntityType="elektroModel.SORTEADOS" Width="1.5" PointX="18.375" PointY="11.375" />
+        <AssociationConnector Association="elektroModel.FK_REGISTRO_OCORRENCIAS_ATIVIDADES" />
+        <AssociationConnector Association="elektroModel.FK_REGISTRO_OCORRENCIAS_EQUIPES" />
+        <AssociationConnector Association="elektroModel.FK_REGISTRO_OCORRENCIAS_SORTEADOS" />
+        <AssociationConnector Association="elektroModel.FK_REGISTRO_OCORRENCIAS_TIPOS_OCORRENCIAS" />
+        <AssociationConnector Association="elektroModel.FK_SORTEADOS_SORTEIOS" />
+        <EntityTypeShape EntityType="elektroModel.LISTA_VIDEOS" Width="1.5" PointX="13.375" PointY="5.375" />
+        <AssociationConnector Association="elektroModel.FK_REGISTRO_OCORRENCIAS_LISTA_VIDEOS" />
+        <AssociationConnector Association="elektroModel.FK_VIDEOS_LISTA_VIDEOS" />
+        <AssociationConnector Association="elektroModel.FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS" />
+        <EntityTypeShape EntityType="elektroModel.CAMERAS" Width="1.5" PointX="16.625" PointY="19.75" />
+        <AssociationConnector Association="elektroModel.FK_CAMERAS_EMPRESAS" />
+        <EntityTypeShape EntityType="elektroModel.HISTORICOS_CAMERAS" Width="1.5" PointX="18.875" PointY="15" />
+        <AssociationConnector Association="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS" />
+        <AssociationConnector Association="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

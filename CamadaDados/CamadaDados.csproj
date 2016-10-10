@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{336CD272-6253-4868-B267-56B37F412459}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CamadaDados</RootNamespace>
+    <AssemblyName>CamadaDados</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.WMPLib">
+      <HintPath>..\Elektro\bin\Debug\Interop.WMPLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ARQUIVOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ATIVIDADES.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CAMERAS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DALAtividades.cs" />
+    <Compile Include="DALDescargas.cs" />
+    <Compile Include="DALEmpresaManutencao.cs" />
+    <Compile Include="DALEscalaCOD.cs" />
+    <Compile Include="DALFalhasEventosProcessos.cs" />
+    <Compile Include="DALGerencia.cs" />
+    <Compile Include="DALHD.cs" />
+    <Compile Include="DALHistoricosCameras.cs" />
+    <Compile Include="DALHistoricoVeiculo.cs" />
+    <Compile Include="DALListaVideos.cs" />
+    <Compile Include="DALLocalidade.cs" />
+    <Compile Include="DALMovimentacaoCamera.cs" />
+    <Compile Include="DALMovimentacaoHD.cs" />
+    <Compile Include="DALOcorrencias.cs" />
+    <Compile Include="DALArquivos.cs" />
+    <Compile Include="DALNaoConformidade.cs" />
+    <Compile Include="DALPermissoesUsuario.cs" />
+    <Compile Include="DALRecPositivo.cs" />
+    <Compile Include="DALFuncionarios.cs" />
+    <Compile Include="DALEquipes.cs" />
+    <Compile Include="DALRegiao.cs" />
+    <Compile Include="DALRegistroOcorrencia.cs" />
+    <Compile Include="DALSorteados.cs" />
+    <Compile Include="DALTiposOcorrencia.cs" />
+    <Compile Include="DALSorteio.cs" />
+    <Compile Include="DALSupervisao.cs" />
+    <Compile Include="DALTiposTrabalhos.cs" />
+    <Compile Include="DALTiposVeiculos.cs" />
+    <Compile Include="DALVeiculos.cs" />
+    <Compile Include="DALCameras.cs" />
+    <Compile Include="DALTiposUsuarios.cs" />
+    <Compile Include="DALUsuarios.cs" />
+    <Compile Include="DALVideo.cs" />
+    <Compile Include="DESCARGAS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ElektroModelFirst.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElektroModelFirst.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ElektroModelFirst.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ElektroModelFirst.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElektroModelFirst.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EMPRESAS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EQUIPES.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESCALA_COD.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FALHAS_EVENTOS_PROCESSOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCIONARIOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GERENCIA.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HD.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HISTORICOS_CAMERAS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HISTORICO_VEICULO.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LISTA_VIDEOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCALIDADE.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MOVIMENTACAO_CAMERA.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MOVIMENTACAO_HD.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NAO_CONFORMIDADES.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OCORRENCIAS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERMISSOES_USUARIO.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RECONHECIMENTOS_POSITIVOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGIAO.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REGISTRO_OCORRENCIAS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SORTEADOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SORTEIOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUPERVISAO.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPOS_OCORRENCIAS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPOS_TRABALHOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPOS_USUARIOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPOS_VEICULOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USUARIOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VEICULOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIDEOS.cs">
+      <DependentUpon>ElektroModelFirst.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{361a9d9b-3741-4422-8943-c1825cd8ffc4}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitarios\Utilitarios.csproj">
+      <Project>{ce2ac18a-deb8-45f4-a2b0-6a61ae07bacb}</Project>
+      <Name>Utilitarios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ElektroModelFirst.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ElektroModelFirst.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ElektroModelFirst.edmx.diagram">
+      <DependentUpon>ElektroModelFirst.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ElektroModelFirst.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ElektroModelFirst.edmx</DependentUpon>
+      <LastGenOutput>ElektroModelFirst.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ElektroModelFirst.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ElektroModelFirst.edmx</DependentUpon>
+      <LastGenOutput>ElektroModelFirst.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

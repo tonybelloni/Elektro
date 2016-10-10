@@ -1,0 +1,1287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EB2431CB-B550-47B6-ABE4-40327EC9F930}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elektro</RootNamespace>
+    <AssemblyName>Elektro</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dialogs\dlgHelpEscalaCOD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dlgHelpEscalaCOD.Designer.cs">
+      <DependentUpon>dlgHelpEscalaCOD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dlgHelpFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dlgHelpFuncionarios.Designer.cs">
+      <DependentUpon>dlgHelpFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="elektroDSReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>elektroDSReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarCamerasFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarCamerasFuncionario.Designer.cs">
+      <DependentUpon>frmBuscarCamerasFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAnalisarOcorrencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAnalisarOcorrencias.Designer.cs">
+      <DependentUpon>frmAnalisarOcorrencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAnalisarVideos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAnalisarVideos.Designer.cs">
+      <DependentUpon>frmAnalisarVideos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarAlocacoesCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarAlocacoesCamera.Designer.cs">
+      <DependentUpon>frmBuscarAlocacoesCamera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarAlocacoesVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarAlocacoesVeiculo.Designer.cs">
+      <DependentUpon>frmBuscarAlocacoesVeiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarManutencoesCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarManutencoesCamera.Designer.cs">
+      <DependentUpon>frmBuscarManutencoesCamera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarMovimentacaoHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarMovimentacaoHD.Designer.cs">
+      <DependentUpon>frmBuscarMovimentacaoHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarOcorrencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarOcorrencias.Designer.cs">
+      <DependentUpon>frmBuscarOcorrencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarSorteios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarSorteios.Designer.cs">
+      <DependentUpon>frmBuscarSorteios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroBaixaCameras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroBaixaCameras.Designer.cs">
+      <DependentUpon>frmCadastroBaixaCameras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroEmpresaManutencao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroEmpresaManutencao.Designer.cs">
+      <DependentUpon>frmCadastroEmpresaManutencao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastrarOcorrencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastrarOcorrencias.Designer.cs">
+      <DependentUpon>frmCadastrarOcorrencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroEquipes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroEquipes.Designer.cs">
+      <DependentUpon>frmCadastroEquipes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroFalhaEventoProcesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroFalhaEventoProcesso.Designer.cs">
+      <DependentUpon>frmCadastroFalhaEventoProcesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroFuncionarios.Designer.cs">
+      <DependentUpon>frmCadastroFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroGerencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroGerencias.Designer.cs">
+      <DependentUpon>frmCadastroGerencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroHD.designer.cs">
+      <DependentUpon>frmCadastroHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroHistoricoVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroHistoricoVeiculo.Designer.cs">
+      <DependentUpon>frmCadastroHistoricoVeiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroLocalidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroLocalidades.Designer.cs">
+      <DependentUpon>frmCadastroLocalidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroManualFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroManualFuncionario.Designer.cs">
+      <DependentUpon>frmCadastroManualFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroManutencaoCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroManutencaoCamera.Designer.cs">
+      <DependentUpon>frmCadastroManutencaoCamera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroAlocacaoCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroAlocacaoCamera.Designer.cs">
+      <DependentUpon>frmCadastroAlocacaoCamera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroMovimentacaoHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroMovimentacaoHD.Designer.cs">
+      <DependentUpon>frmCadastroMovimentacaoHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroNaoConformidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroNaoConformidade.Designer.cs">
+      <DependentUpon>frmCadastroNaoConformidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroRecPositivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroRecPositivo.Designer.cs">
+      <DependentUpon>frmCadastroRecPositivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroRegioes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroRegioes.Designer.cs">
+      <DependentUpon>frmCadastroRegioes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroSupervisao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroSupervisao.Designer.cs">
+      <DependentUpon>frmCadastroSupervisao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroTiposTrabalhos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroTiposTrabalhos.Designer.cs">
+      <DependentUpon>frmCadastroTiposTrabalhos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroTipoVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroTipoVeiculo.Designer.cs">
+      <DependentUpon>frmCadastroTipoVeiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCamerasFuncionarioManutencao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCamerasFuncionarioManutencao.Designer.cs">
+      <DependentUpon>frmCamerasFuncionarioManutencao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmConfirmarSorteio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConfirmarSorteio.Designer.cs">
+      <DependentUpon>frmConfirmarSorteio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmFalhasEventosProcessos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmFalhasEventosProcessos.Designer.cs">
+      <DependentUpon>frmFalhasEventosProcessos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmHistoricoVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmHistoricoVeiculo.Designer.cs">
+      <DependentUpon>frmHistoricoVeiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmImportarEscalaCOD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmImportarEscalaCOD.Designer.cs">
+      <DependentUpon>frmImportarEscalaCOD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmMovimentacoesHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmMovimentacoesHD.Designer.cs">
+      <DependentUpon>frmMovimentacoesHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTiposVeiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTiposVeiculos.Designer.cs">
+      <DependentUpon>frmTiposVeiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroVeiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroVeiculos.Designer.cs">
+      <DependentUpon>frmCadastroVeiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroCameras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroCameras.Designer.cs">
+      <DependentUpon>frmCadastroCameras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroTiposUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroTiposUsuarios.Designer.cs">
+      <DependentUpon>frmCadastroTiposUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCadastroUsuarios.Designer.cs">
+      <DependentUpon>frmCadastroUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCameras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCameras.Designer.cs">
+      <DependentUpon>frmCameras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCopiarImagensCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCopiarImagensCamera.Designer.cs">
+      <DependentUpon>frmCopiarImagensCamera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmDashboard.Designer.cs">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmDownloadArquivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmDownloadArquivos.Designer.cs">
+      <DependentUpon>frmDownloadArquivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmDownloadOcorrencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmDownloadOcorrencia.Designer.cs">
+      <DependentUpon>frmDownloadOcorrencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEditarPermissoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEditarPermissoes.Designer.cs">
+      <DependentUpon>frmEditarPermissoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEmpresaManutencao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEmpresaManutencao.Designer.cs">
+      <DependentUpon>frmEmpresaManutencao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEquipes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEquipes.Designer.cs">
+      <DependentUpon>frmEquipes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEscalasCOD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEscalasCOD.Designer.cs">
+      <DependentUpon>frmEscalasCOD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmFuncionarios.Designer.cs">
+      <DependentUpon>frmFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGerencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGerencias.Designer.cs">
+      <DependentUpon>frmGerencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoAlocacaoCameras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoAlocacaoCameras.Designer.cs">
+      <DependentUpon>frmGestaoAlocacaoCameras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoCameras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoCameras.Designer.cs">
+      <DependentUpon>frmGestaoCameras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoHD.designer.cs">
+      <DependentUpon>frmGestaoHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoManutencaoCameras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoManutencaoCameras.Designer.cs">
+      <DependentUpon>frmGestaoManutencaoCameras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoEquipes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGestaoEquipes.Designer.cs">
+      <DependentUpon>frmGestaoEquipes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmHD.designer.cs">
+      <DependentUpon>frmHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmHistoricoCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmHistoricoCamera.Designer.cs">
+      <DependentUpon>frmHistoricoCamera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmListarVideosSorteados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListarVideosSorteados.Designer.cs">
+      <DependentUpon>frmListarVideosSorteados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLocalidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLocalidades.Designer.cs">
+      <DependentUpon>frmLocalidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmNaoConformidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmNaoConformidade.Designer.cs">
+      <DependentUpon>frmNaoConformidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmPlayer.Designer.cs">
+      <DependentUpon>frmPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRecPositivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRecPositivo.Designer.cs">
+      <DependentUpon>frmRecPositivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRegioes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRegioes.Designer.cs">
+      <DependentUpon>frmRegioes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmSorteios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmSorteios.Designer.cs">
+      <DependentUpon>frmSorteios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmSupervisao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmSupervisao.Designer.cs">
+      <DependentUpon>frmSupervisao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTiposTrabalhos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTiposTrabalhos.Designer.cs">
+      <DependentUpon>frmTiposTrabalhos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTiposUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTiposUsuarios.Designer.cs">
+      <DependentUpon>frmTiposUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTrocarSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTrocarSenha.Designer.cs">
+      <DependentUpon>frmTrocarSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmUploadArquivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUploadArquivos.Designer.cs">
+      <DependentUpon>frmUploadArquivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmValidarOcorrencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmValidarOcorrencia.Designer.cs">
+      <DependentUpon>frmValidarOcorrencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmVeiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmVeiculos.Designer.cs">
+      <DependentUpon>frmVeiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmBuscarHDReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmBuscarHDReport.Designer.cs">
+      <DependentUpon>frmBuscarHDReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmBuscarNaoConformidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmBuscarNaoConformidades.Designer.cs">
+      <DependentUpon>frmBuscarNaoConformidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmBuscarVideosAnalisados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmBuscarVideosAnalisados.Designer.cs">
+      <DependentUpon>frmBuscarVideosAnalisados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmBuscarVideosFilmados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmBuscarVideosFilmados.Designer.cs">
+      <DependentUpon>frmBuscarVideosFilmados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmHDReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmHDReport.Designer.cs">
+      <DependentUpon>frmHDReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmNaoConformidadesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmNaoConformidadesReport.Designer.cs">
+      <DependentUpon>frmNaoConformidadesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmVideosAnalisadosReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmVideosAnalisadosReport.Designer.cs">
+      <DependentUpon>frmVideosAnalisadosReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmVideosFilmadosReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Relatorios\frmVideosFilmadosReport.Designer.cs">
+      <DependentUpon>frmVideosFilmadosReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialogs\dlgHelpEscalaCOD.resx">
+      <DependentUpon>dlgHelpEscalaCOD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\dlgHelpFuncionarios.resx">
+      <DependentUpon>dlgHelpFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscarCamerasFuncionario.resx">
+      <DependentUpon>frmBuscarCamerasFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAnalisarOcorrencias.resx">
+      <DependentUpon>frmAnalisarOcorrencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAnalisarVideos.resx">
+      <DependentUpon>frmAnalisarVideos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscarAlocacoesCamera.resx">
+      <DependentUpon>frmBuscarAlocacoesCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscarAlocacoesVeiculo.resx">
+      <DependentUpon>frmBuscarAlocacoesVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscarManutencoesCamera.resx">
+      <DependentUpon>frmBuscarManutencoesCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscarMovimentacaoHD.resx">
+      <DependentUpon>frmBuscarMovimentacaoHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscarOcorrencias.resx">
+      <DependentUpon>frmBuscarOcorrencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscarSorteios.resx">
+      <DependentUpon>frmBuscarSorteios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroBaixaCameras.resx">
+      <DependentUpon>frmCadastroBaixaCameras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastrarOcorrencias.resx">
+      <DependentUpon>frmCadastrarOcorrencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroEmpresaManutencao.resx">
+      <DependentUpon>frmCadastroEmpresaManutencao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroEquipes.resx">
+      <DependentUpon>frmCadastroEquipes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroFalhaEventoProcesso.resx">
+      <DependentUpon>frmCadastroFalhaEventoProcesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroFuncionarios.resx">
+      <DependentUpon>frmCadastroFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroGerencias.resx">
+      <DependentUpon>frmCadastroGerencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroHD.resx">
+      <DependentUpon>frmCadastroHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroHistoricoVeiculo.resx">
+      <DependentUpon>frmCadastroHistoricoVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroLocalidades.resx">
+      <DependentUpon>frmCadastroLocalidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroManualFuncionario.resx">
+      <DependentUpon>frmCadastroManualFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroManutencaoCamera.resx">
+      <DependentUpon>frmCadastroManutencaoCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroAlocacaoCamera.resx">
+      <DependentUpon>frmCadastroAlocacaoCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroMovimentacaoHD.resx">
+      <DependentUpon>frmCadastroMovimentacaoHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroNaoConformidade.resx">
+      <DependentUpon>frmCadastroNaoConformidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroRecPositivo.resx">
+      <DependentUpon>frmCadastroRecPositivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroRegioes.resx">
+      <DependentUpon>frmCadastroRegioes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroSupervisao.resx">
+      <DependentUpon>frmCadastroSupervisao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroTiposTrabalhos.resx">
+      <DependentUpon>frmCadastroTiposTrabalhos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroTipoVeiculo.resx">
+      <DependentUpon>frmCadastroTipoVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCamerasFuncionarioManutencao.resx">
+      <DependentUpon>frmCamerasFuncionarioManutencao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmConfirmarSorteio.resx">
+      <DependentUpon>frmConfirmarSorteio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmFalhasEventosProcessos.resx">
+      <DependentUpon>frmFalhasEventosProcessos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmHistoricoVeiculo.resx">
+      <DependentUpon>frmHistoricoVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmImportarEscalaCOD.resx">
+      <DependentUpon>frmImportarEscalaCOD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmMovimentacoesHD.resx">
+      <DependentUpon>frmMovimentacoesHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTiposVeiculos.resx">
+      <DependentUpon>frmTiposVeiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroVeiculos.resx">
+      <DependentUpon>frmCadastroVeiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroCameras.resx">
+      <DependentUpon>frmCadastroCameras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroTiposUsuarios.resx">
+      <DependentUpon>frmCadastroTiposUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCadastroUsuarios.resx">
+      <DependentUpon>frmCadastroUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCameras.resx">
+      <DependentUpon>frmCameras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCopiarImagensCamera.resx">
+      <DependentUpon>frmCopiarImagensCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmDashboard.resx">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmDownloadArquivos.resx">
+      <DependentUpon>frmDownloadArquivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmDownloadOcorrencia.resx">
+      <DependentUpon>frmDownloadOcorrencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEditarPermissoes.resx">
+      <DependentUpon>frmEditarPermissoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEmpresaManutencao.resx">
+      <DependentUpon>frmEmpresaManutencao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEquipes.resx">
+      <DependentUpon>frmEquipes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEscalasCOD.resx">
+      <DependentUpon>frmEscalasCOD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmFuncionarios.resx">
+      <DependentUpon>frmFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGerencias.resx">
+      <DependentUpon>frmGerencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGestaoAlocacaoCameras.resx">
+      <DependentUpon>frmGestaoAlocacaoCameras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGestaoCameras.resx">
+      <DependentUpon>frmGestaoCameras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGestaoHD.resx">
+      <DependentUpon>frmGestaoHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGestaoManutencaoCameras.resx">
+      <DependentUpon>frmGestaoManutencaoCameras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGestaoEquipes.resx">
+      <DependentUpon>frmGestaoEquipes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmHD.resx">
+      <DependentUpon>frmHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmHistoricoCamera.resx">
+      <DependentUpon>frmHistoricoCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmListarVideosSorteados.resx">
+      <DependentUpon>frmListarVideosSorteados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLocalidades.resx">
+      <DependentUpon>frmLocalidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmNaoConformidade.resx">
+      <DependentUpon>frmNaoConformidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmPlayer.resx">
+      <DependentUpon>frmPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRecPositivo.resx">
+      <DependentUpon>frmRecPositivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRegioes.resx">
+      <DependentUpon>frmRegioes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmSorteios.resx">
+      <DependentUpon>frmSorteios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmSupervisao.resx">
+      <DependentUpon>frmSupervisao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTiposTrabalhos.resx">
+      <DependentUpon>frmTiposTrabalhos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTiposUsuarios.resx">
+      <DependentUpon>frmTiposUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTrocarSenha.resx">
+      <DependentUpon>frmTrocarSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmUploadArquivos.resx">
+      <DependentUpon>frmUploadArquivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmValidarOcorrencia.resx">
+      <DependentUpon>frmValidarOcorrencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmVeiculos.resx">
+      <DependentUpon>frmVeiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Relatorios\frmBuscarHDReport.resx">
+      <DependentUpon>frmBuscarHDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Relatorios\frmBuscarNaoConformidades.resx">
+      <DependentUpon>frmBuscarNaoConformidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Relatorios\frmBuscarVideosAnalisados.resx">
+      <DependentUpon>frmBuscarVideosAnalisados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Relatorios\frmBuscarVideosFilmados.resx">
+      <DependentUpon>frmBuscarVideosFilmados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Relatorios\frmHDReport.resx">
+      <DependentUpon>frmHDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Relatorios\frmNaoConformidadesReport.resx">
+      <DependentUpon>frmNaoConformidadesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Relatorios\frmVideosAnalisadosReport.resx">
+      <DependentUpon>frmVideosAnalisadosReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Relatorios\frmVideosFilmadosReport.resx">
+      <DependentUpon>frmVideosFilmadosReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reports\rptHD.rdlc" />
+    <EmbeddedResource Include="Formularios\Reports\rptNaoConformidades.rdlc" />
+    <EmbeddedResource Include="Formularios\Reports\rptVideosAnalisados.rdlc" />
+    <EmbeddedResource Include="Formularios\Reports\rptVideosFilmados.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="elektroDSReport.xsc">
+      <DependentUpon>elektroDSReport.xsd</DependentUpon>
+    </None>
+    <None Include="elektroDSReport.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>elektroDSReport.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="elektroDSReport.xss">
+      <DependentUpon>elektroDSReport.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group-Modify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Video-Camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Video-Camera-black01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data-Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data-Add-black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search-Find-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search-Find-24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User-Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CamadaControle\CamadaControle.csproj">
+      <Project>{4da6d7a5-a41a-44af-81ac-fe4d0ce76855}</Project>
+      <Name>CamadaControle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CamadaDados\CamadaDados.csproj">
+      <Project>{336cd272-6253-4868-b267-56b37f412459}</Project>
+      <Name>CamadaDados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{361a9d9b-3741-4422-8943-c1825cd8ffc4}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitarios\Utilitarios.csproj">
+      <Project>{ce2ac18a-deb8-45f4-a2b0-6a61ae07bacb}</Project>
+      <Name>Utilitarios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\abrir_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apagar_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apagartodos_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asoociar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auditadas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avança.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\busu.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BusVision.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carregar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\classificacao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disquete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estrela_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exclamacao_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grafico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grafico_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grafico_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grafico_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grafico_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imprimir_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\incluir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jal_black.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\limpar_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\localizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_acari.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo_BusVision.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lupa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lupa_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\novo_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ocorrencias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onibus_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\operador_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\operador_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\operation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\operator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\para_movie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\parar3_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playlist_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\raio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ranking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RIO SERVICE TECNOLOGIA trans.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sair1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salvar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salvar_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servidor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tipo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upload_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\velocidade_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ver.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\visualizadas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\visualizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo_Elektro_Horizontal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hard_disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hard_disk_upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hard_disk_upload1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\office-building.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\regiao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gerencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supervisao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\localidades.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\positivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\negativo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verifyHD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\video_file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckList.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\veiculo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sair2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sair3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\parametros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\historico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sorteio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\analisar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tempo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seta_direita.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seta_esquerda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

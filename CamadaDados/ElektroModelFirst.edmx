@@ -1,0 +1,2177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="elektroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elektro.dbo.ARQUIVOS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ARQUIVOS">
+          <Key>
+            <PropertyRef Name="data_carga" />
+            <PropertyRef Name="codigo_camera" />
+            <PropertyRef Name="numero_veiculo" />
+            <PropertyRef Name="arquivo" />
+            <PropertyRef Name="sigla_equipe" />
+          </Key>
+          <Property Name="data_carga" Type="date" Nullable="false" />
+          <Property Name="codigo_camera" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="numero_veiculo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="arquivo" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="sigla_equipe" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ATIVIDADES">
+          <Key>
+            <PropertyRef Name="CODIGO_ATIVIDADE" />
+          </Key>
+          <Property Name="CODIGO_ATIVIDADE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAMERAS">
+          <Key>
+            <PropertyRef Name="codigo_camera" />
+          </Key>
+          <Property Name="codigo_camera" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bpm_camera" Type="nvarchar" MaxLength="50" />
+          <Property Name="codigo_barra_camera" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ativo" Type="int" Nullable="false" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_BAIXA" Type="datetime" />
+          <Property Name="MOTIVO_BAIXA" Type="varchar" MaxLength="100" />
+          <Property Name="USUARIO_BAIXA" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_AQUISICAO" Type="datetime" />
+          <Property Name="CODIGO_EMPRESA" Type="int" />
+          <Property Name="PRONTUARIO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DESCARGAS">
+          <Key>
+            <PropertyRef Name="CODIGO_DESCARGA" />
+          </Key>
+          <Property Name="CODIGO_DESCARGA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATA_DESCARGA" Type="datetime" Nullable="false" />
+          <Property Name="USUARIO_REGISTRO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NUMERO_HD" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPRESAS">
+          <Key>
+            <PropertyRef Name="CODIGO_EMPRESA" />
+          </Key>
+          <Property Name="CODIGO_EMPRESA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EQUIPES">
+          <Key>
+            <PropertyRef Name="SIGLA_EQUIPE" />
+          </Key>
+          <Property Name="SIGLA_EQUIPE" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="NOME_EQUIPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LOCALIDADE" Type="int" />
+          <Property Name="SUPERVISAO" Type="int" />
+          <Property Name="GERENCIA" Type="int" />
+          <Property Name="REGIAO" Type="int" />
+          <Property Name="ID_TIPO_TRABALHO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_CAMERA" Type="nvarchar" MaxLength="50" />
+          <Property Name="PLACA_VEICULO" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ESCALA_COD">
+          <Key>
+            <PropertyRef Name="PRONTUARIO" />
+            <PropertyRef Name="DATA_INICIO" />
+            <PropertyRef Name="DATA_FIM" />
+          </Key>
+          <Property Name="SIGLA_EQUIPE" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PRONTUARIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATA_INICIO" Type="datetime" Nullable="false" />
+          <Property Name="DATA_FIM" Type="datetime" Nullable="false" />
+          <Property Name="USUARIO_REGISTRO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_REGISTRO" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FALHAS_EVENTOS_PROCESSOS">
+          <Key>
+            <PropertyRef Name="COD_FALHA_EVENTO" />
+          </Key>
+          <Property Name="COD_FALHA_EVENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FUNCIONARIOS">
+          <Key>
+            <PropertyRef Name="prontuario" />
+          </Key>
+          <Property Name="prontuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nome_funcionario" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="funcao" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="localidade" Type="int" />
+          <Property Name="supervisao" Type="int" />
+          <Property Name="gerencia" Type="int" />
+          <Property Name="regiao" Type="int" />
+          <Property Name="prontuario_gestor" Type="nvarchar" MaxLength="50" />
+          <Property Name="nome_gestor" Type="nvarchar" MaxLength="200" />
+          <Property Name="periodo" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GERENCIA">
+          <Key>
+            <PropertyRef Name="CODIGO_GERENCIA" />
+          </Key>
+          <Property Name="CODIGO_GERENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CODIGO_REGIAO" Type="int" />
+        </EntityType>
+        <EntityType Name="HD">
+          <Key>
+            <PropertyRef Name="NUMERO_HD" />
+          </Key>
+          <Property Name="NUMERO_HD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NUMERO_SERIE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="25" />
+          <Property Name="LOCAL" Type="int" />
+        </EntityType>
+        <EntityType Name="HISTORICO_VEICULO">
+          <Key>
+            <PropertyRef Name="NUMERO_HISTORICO" />
+          </Key>
+          <Property Name="NUMERO_HISTORICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLACA_VEICULO" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SIGLA_EQUIPE" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="OBSERVACAO_VINCULAR" Type="nvarchar" MaxLength="100" />
+          <Property Name="OBSERVACAO_DESVINCULAR" Type="nvarchar" MaxLength="100" />
+          <Property Name="USUARIO_VINCULAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="USUARIO_DESVINCULAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_VINCULAR" Type="datetime" />
+          <Property Name="DATA_DESVINCULAR" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HISTORICOS_CAMERAS">
+          <Key>
+            <PropertyRef Name="COD_HISTORICO" />
+          </Key>
+          <Property Name="COD_HISTORICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIGLA_EQUIPE" Type="nchar" MaxLength="10" />
+          <Property Name="CODIGO_CAMERA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TIPO" Type="int" Nullable="false" />
+          <Property Name="EMPRESA_MANUTENCAO" Type="int" />
+          <Property Name="OBSERVACAO" Type="nvarchar" MaxLength="150" />
+          <Property Name="USUARIO_REGISTRO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_REGISTRO" Type="datetime" />
+          <Property Name="DATA_ALOCACAO" Type="datetime" />
+          <Property Name="DATA_DESALOCAO" Type="datetime" />
+          <Property Name="DATA_ENVIO" Type="datetime" />
+          <Property Name="DATA_RECEBIMENTO" Type="datetime" />
+          <Property Name="DATA_BAIXA" Type="datetime" />
+          <Property Name="NUMERO_RASTREIO" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRONTUARIO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LISTA_VIDEOS">
+          <Key>
+            <PropertyRef Name="CODIGO_LISTA_VIDEOS" />
+          </Key>
+          <Property Name="CODIGO_LISTA_VIDEOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEMPO_TOTAL_VIDEOS" Type="float" />
+        </EntityType>
+        <EntityType Name="LOCALIDADE">
+          <Key>
+            <PropertyRef Name="CODIGO_LOCALIDADE" />
+          </Key>
+          <Property Name="CODIGO_LOCALIDADE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CODIGO_SUPERVISAO" Type="int" />
+        </EntityType>
+        <EntityType Name="MOVIMENTACAO_CAMERA">
+          <Key>
+            <PropertyRef Name="NUMERO_MOVIMENTACAO" />
+          </Key>
+          <Property Name="NUMERO_MOVIMENTACAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIGLA_EQUIPE" Type="nchar" MaxLength="10" />
+          <Property Name="CODIGO_CAMERA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TIPO" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="EMPRESA_MANUTENCAO" Type="int" />
+          <Property Name="OBSERVACAO" Type="nvarchar" MaxLength="150" />
+          <Property Name="USUARIO_REGISTRO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_REGISTRO" Type="datetime" />
+          <Property Name="DATA_INICIO" Type="datetime" />
+          <Property Name="DATA_FIM" Type="datetime" />
+          <Property Name="NUMERO_RASTREIO" Type="nvarchar" MaxLength="50" />
+          <Property Name="OBSERVACAO_DESVINCULAR" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MOVIMENTACAO_HD">
+          <Key>
+            <PropertyRef Name="NUMERO_MOVIMENTACAO" />
+          </Key>
+          <Property Name="NUMERO_MOVIMENTACAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMERO_HD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATA_CHEGADA" Type="datetime" />
+          <Property Name="RESPONSAVEL" Type="nvarchar" MaxLength="50" />
+          <Property Name="LOCAL_REGISTRO" Type="int" />
+          <Property Name="LOCAL_DESTINO" Type="int" />
+          <Property Name="OBSERVACAO" Type="nvarchar" MaxLength="150" />
+          <Property Name="NUMERO_PROTOCOLO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_REGISTRO" Type="datetime" />
+          <Property Name="TIPO" Type="nvarchar" MaxLength="50" />
+          <Property Name="MONITORIA" Type="nvarchar" MaxLength="50" />
+          <Property Name="USUARIO_REGISTRO" Type="nvarchar" MaxLength="50" />
+          <Property Name="USUARIO_REGISTRO_RECEBIMENTO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_ENVIO" Type="datetime" />
+          <Property Name="DATA_PROVAVEL_RECEBIMENTO" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NAO_CONFORMIDADES">
+          <Key>
+            <PropertyRef Name="id_nao_conformidade" />
+          </Key>
+          <Property Name="id_nao_conformidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="atividade" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nome" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="descricao" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="severidade" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elektro.dbo.OCORRENCIAS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OCORRENCIAS">
+          <Key>
+            <PropertyRef Name="data" />
+            <PropertyRef Name="sigla_equipe" />
+            <PropertyRef Name="codigo_camera" />
+            <PropertyRef Name="numero_veiculo" />
+            <PropertyRef Name="arquivo" />
+            <PropertyRef Name="data_inclusao" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="data" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sigla_equipe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigo_camera" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="numero_veiculo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="arquivo" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="data_inclusao" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_nao_conformidade" Type="int" />
+        </EntityType>
+        <EntityType Name="PERMISSOES_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_PERMISSAO" />
+          </Key>
+          <Property Name="ID_PERMISSAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_TIPO_USUARIO" Type="int" Nullable="false" />
+          <Property Name="ID_MENU" Type="int" Nullable="false" />
+          <Property Name="ID_SUBMENU" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECONHECIMENTOS_POSITIVOS">
+          <Key>
+            <PropertyRef Name="id_rec_positivo" />
+          </Key>
+          <Property Name="id_rec_positivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="atividade" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descricao_rec_positivo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REGIAO">
+          <Key>
+            <PropertyRef Name="CODIGO_REGIAO" />
+          </Key>
+          <Property Name="CODIGO_REGIAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REGISTRO_OCORRENCIAS">
+          <Key>
+            <PropertyRef Name="CODIGO_REGISTRO_OCORRENCIA" />
+          </Key>
+          <Property Name="CODIGO_REGISTRO_OCORRENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO_TIPO_OCORRENCIA" Type="int" />
+          <Property Name="CODIGO_ATIVIDADE" Type="int" />
+          <Property Name="OBSERVACAO" Type="nvarchar" MaxLength="150" />
+          <Property Name="CODIGO_VALIDACAO" Type="int" />
+          <Property Name="USUARIO_VALIDACAO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_VALIDACAO" Type="datetime" />
+          <Property Name="OBSERVACAO_VALIDACAO" Type="nvarchar" MaxLength="150" />
+          <Property Name="CODIGO_SEVERIDADE" Type="int" />
+          <Property Name="DATA_INICIAL" Type="datetime" />
+          <Property Name="NUMERO_HD" Type="nvarchar" MaxLength="50" />
+          <Property Name="COD_SORTEADOS" Type="int" />
+          <Property Name="COD_LISTA_VIDEOS" Type="int" />
+          <Property Name="SIGLA_EQUIPE" Type="nchar" MaxLength="10" />
+          <Property Name="DATA_FINAL" Type="datetime" />
+          <Property Name="tipo_ocorrencia" Type="nvarchar" MaxLength="20" />
+          <Property Name="COD_FALHA_EVENTO" Type="int" />
+        </EntityType>
+        <EntityType Name="SORTEADOS">
+          <Key>
+            <PropertyRef Name="COD_SORTEADOS" />
+          </Key>
+          <Property Name="COD_SORTEADOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIGLA_EQUIPE" Type="nchar" MaxLength="10" />
+          <Property Name="VISUALIZADO" Type="varchar" MaxLength="1" />
+          <Property Name="NUMERO_HD" Type="nvarchar" MaxLength="50" />
+          <Property Name="USUARIO_VISUALIZACAO" Type="nvarchar" MaxLength="50" />
+          <Property Name="COD_SORTEIO" Type="int" />
+        </EntityType>
+        <EntityType Name="SORTEIOS">
+          <Key>
+            <PropertyRef Name="COD_SORTEIO" />
+          </Key>
+          <Property Name="COD_SORTEIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATA_REGISTRO" Type="datetime" Nullable="false" />
+          <Property Name="USUARIO_REGISTRO" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SUPERVISAO">
+          <Key>
+            <PropertyRef Name="CODIGO_SUPERVISAO" />
+          </Key>
+          <Property Name="CODIGO_SUPERVISAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CODIGO_GERENCIA" Type="int" />
+        </EntityType>
+        <EntityType Name="TIPOS_OCORRENCIAS">
+          <Key>
+            <PropertyRef Name="ID_TIPO" />
+          </Key>
+          <Property Name="ID_TIPO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="GRAVIDADE" Type="int" />
+        </EntityType>
+        <EntityType Name="TIPOS_TRABALHOS">
+          <Key>
+            <PropertyRef Name="ID_TIPO_TRABALHO" />
+          </Key>
+          <Property Name="ID_TIPO_TRABALHO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO_TIPO_TRABALHO" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPOS_USUARIOS">
+          <Key>
+            <PropertyRef Name="id_tipo_usuario" />
+          </Key>
+          <Property Name="id_tipo_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao_tipo_usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPOS_VEICULOS">
+          <Key>
+            <PropertyRef Name="COD_TIPO_VEICULO" />
+          </Key>
+          <Property Name="COD_TIPO_VEICULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="prontuario_usuario" />
+          </Key>
+          <Property Name="prontuario_usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nome_usuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="senha_usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email_usuario" Type="nvarchar" MaxLength="200" />
+          <Property Name="id_tipo_usuario" Type="int" Nullable="false" />
+          <Property Name="ativo" Type="int" Nullable="false" />
+          <Property Name="PRONTUARIO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VEICULOS">
+          <Key>
+            <PropertyRef Name="PLACA" />
+          </Key>
+          <Property Name="PLACA" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NUMERO" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="COD_TIPO" Type="int" Nullable="false" />
+          <Property Name="ativo" Type="int" Nullable="false" />
+          <Property Name="SIGLA_EQUIPE" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="VIDEOS">
+          <Key>
+            <PropertyRef Name="ID_VIDEO" />
+          </Key>
+          <Property Name="ID_VIDEO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VIDEO" Type="varbinary(max)" Nullable="false" />
+          <Property Name="CODIGO_LISTA_VIDEOS" Type="int" />
+        </EntityType>
+        <Association Name="EQUIPES_FK01">
+          <End Role="TIPOS_TRABALHOS" Type="Self.TIPOS_TRABALHOS" Multiplicity="1" />
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_TRABALHOS">
+              <PropertyRef Name="ID_TIPO_TRABALHO" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="ID_TIPO_TRABALHO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAMERAS_EMPRESAS">
+          <End Role="EMPRESAS" Type="Self.EMPRESAS" Multiplicity="0..1" />
+          <End Role="CAMERAS" Type="Self.CAMERAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESAS">
+              <PropertyRef Name="CODIGO_EMPRESA" />
+            </Principal>
+            <Dependent Role="CAMERAS">
+              <PropertyRef Name="CODIGO_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPES_GERENCIA">
+          <End Role="GERENCIA" Type="Self.GERENCIA" Multiplicity="0..1" />
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GERENCIA">
+              <PropertyRef Name="CODIGO_GERENCIA" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="GERENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPES_LOCALIDADE">
+          <End Role="LOCALIDADE" Type="Self.LOCALIDADE" Multiplicity="0..1" />
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCALIDADE">
+              <PropertyRef Name="CODIGO_LOCALIDADE" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="LOCALIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPES_REGIAO">
+          <End Role="REGIAO" Type="Self.REGIAO" Multiplicity="0..1" />
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGIAO">
+              <PropertyRef Name="CODIGO_REGIAO" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="REGIAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPES_SUPERVISAO">
+          <End Role="SUPERVISAO" Type="Self.SUPERVISAO" Multiplicity="0..1" />
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPERVISAO">
+              <PropertyRef Name="CODIGO_SUPERVISAO" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="SUPERVISAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GERENCIA_REGIAO">
+          <End Role="REGIAO" Type="Self.REGIAO" Multiplicity="0..1" />
+          <End Role="GERENCIA" Type="Self.GERENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGIAO">
+              <PropertyRef Name="CODIGO_REGIAO" />
+            </Principal>
+            <Dependent Role="GERENCIA">
+              <PropertyRef Name="CODIGO_REGIAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORICO_VEICULO_EQUIPES">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="1" />
+          <End Role="HISTORICO_VEICULO" Type="Self.HISTORICO_VEICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Principal>
+            <Dependent Role="HISTORICO_VEICULO">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORICOS_CAMERAS_CAMERAS">
+          <End Role="CAMERAS" Type="Self.CAMERAS" Multiplicity="1" />
+          <End Role="HISTORICOS_CAMERAS" Type="Self.HISTORICOS_CAMERAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMERAS">
+              <PropertyRef Name="codigo_camera" />
+            </Principal>
+            <Dependent Role="HISTORICOS_CAMERAS">
+              <PropertyRef Name="CODIGO_CAMERA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORICOS_CAMERAS_EQUIPES">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="0..1" />
+          <End Role="HISTORICOS_CAMERAS" Type="Self.HISTORICOS_CAMERAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Principal>
+            <Dependent Role="HISTORICOS_CAMERAS">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCALIDADE_SUPERVISAO">
+          <End Role="SUPERVISAO" Type="Self.SUPERVISAO" Multiplicity="0..1" />
+          <End Role="LOCALIDADE" Type="Self.LOCALIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPERVISAO">
+              <PropertyRef Name="CODIGO_SUPERVISAO" />
+            </Principal>
+            <Dependent Role="LOCALIDADE">
+              <PropertyRef Name="CODIGO_SUPERVISAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMENTACAO_CAMERA_CAMERAS">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="0..1" />
+          <End Role="MOVIMENTACAO_CAMERA" Type="Self.MOVIMENTACAO_CAMERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Principal>
+            <Dependent Role="MOVIMENTACAO_CAMERA">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMENTACAO_HD_HD">
+          <End Role="HD" Type="Self.HD" Multiplicity="1" />
+          <End Role="MOVIMENTACAO_HD" Type="Self.MOVIMENTACAO_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HD">
+              <PropertyRef Name="NUMERO_HD" />
+            </Principal>
+            <Dependent Role="MOVIMENTACAO_HD">
+              <PropertyRef Name="NUMERO_HD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO">
+          <End Role="LOCALIDADE" Type="Self.LOCALIDADE" Multiplicity="0..1" />
+          <End Role="MOVIMENTACAO_HD" Type="Self.MOVIMENTACAO_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCALIDADE">
+              <PropertyRef Name="CODIGO_LOCALIDADE" />
+            </Principal>
+            <Dependent Role="MOVIMENTACAO_HD">
+              <PropertyRef Name="LOCAL_DESTINO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM">
+          <End Role="LOCALIDADE" Type="Self.LOCALIDADE" Multiplicity="0..1" />
+          <End Role="MOVIMENTACAO_HD" Type="Self.MOVIMENTACAO_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCALIDADE">
+              <PropertyRef Name="CODIGO_LOCALIDADE" />
+            </Principal>
+            <Dependent Role="MOVIMENTACAO_HD">
+              <PropertyRef Name="LOCAL_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_ATIVIDADES">
+          <End Role="ATIVIDADES" Type="Self.ATIVIDADES" Multiplicity="0..1" />
+          <End Role="REGISTRO_OCORRENCIAS" Type="Self.REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATIVIDADES">
+              <PropertyRef Name="CODIGO_ATIVIDADE" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="CODIGO_ATIVIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_EQUIPES">
+          <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="0..1" />
+          <End Role="REGISTRO_OCORRENCIAS" Type="Self.REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS">
+          <End Role="FALHAS_EVENTOS_PROCESSOS" Type="Self.FALHAS_EVENTOS_PROCESSOS" Multiplicity="0..1" />
+          <End Role="REGISTRO_OCORRENCIAS" Type="Self.REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FALHAS_EVENTOS_PROCESSOS">
+              <PropertyRef Name="COD_FALHA_EVENTO" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="COD_FALHA_EVENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_LISTA_VIDEOS">
+          <End Role="LISTA_VIDEOS" Type="Self.LISTA_VIDEOS" Multiplicity="0..1" />
+          <End Role="REGISTRO_OCORRENCIAS" Type="Self.REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LISTA_VIDEOS">
+              <PropertyRef Name="CODIGO_LISTA_VIDEOS" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="COD_LISTA_VIDEOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_SORTEADOS">
+          <End Role="SORTEADOS" Type="Self.SORTEADOS" Multiplicity="0..1" />
+          <End Role="REGISTRO_OCORRENCIAS" Type="Self.REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SORTEADOS">
+              <PropertyRef Name="COD_SORTEADOS" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="COD_SORTEADOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_TIPOS_OCORRENCIAS">
+          <End Role="TIPOS_OCORRENCIAS" Type="Self.TIPOS_OCORRENCIAS" Multiplicity="0..1" />
+          <End Role="REGISTRO_OCORRENCIAS" Type="Self.REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_OCORRENCIAS">
+              <PropertyRef Name="ID_TIPO" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="CODIGO_TIPO_OCORRENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SORTEADOS_SORTEIOS">
+          <End Role="SORTEIOS" Type="Self.SORTEIOS" Multiplicity="0..1" />
+          <End Role="SORTEADOS" Type="Self.SORTEADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SORTEIOS">
+              <PropertyRef Name="COD_SORTEIO" />
+            </Principal>
+            <Dependent Role="SORTEADOS">
+              <PropertyRef Name="COD_SORTEIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUPERVISAO_GERENCIA">
+          <End Role="GERENCIA" Type="Self.GERENCIA" Multiplicity="0..1" />
+          <End Role="SUPERVISAO" Type="Self.SUPERVISAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GERENCIA">
+              <PropertyRef Name="CODIGO_GERENCIA" />
+            </Principal>
+            <Dependent Role="SUPERVISAO">
+              <PropertyRef Name="CODIGO_GERENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_FUNCIONARIOS">
+          <End Role="FUNCIONARIOS" Type="Self.FUNCIONARIOS" Multiplicity="0..1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUNCIONARIOS">
+              <PropertyRef Name="prontuario" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="PRONTUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_TIPOS_USUARIOS">
+          <End Role="TIPOS_USUARIOS" Type="Self.TIPOS_USUARIOS" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_USUARIOS">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEICULOS_TIPOS_VEICULOS">
+          <End Role="TIPOS_VEICULOS" Type="Self.TIPOS_VEICULOS" Multiplicity="1" />
+          <End Role="VEICULOS" Type="Self.VEICULOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_VEICULOS">
+              <PropertyRef Name="COD_TIPO_VEICULO" />
+            </Principal>
+            <Dependent Role="VEICULOS">
+              <PropertyRef Name="COD_TIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VIDEOS_LISTA_VIDEOS">
+          <End Role="LISTA_VIDEOS" Type="Self.LISTA_VIDEOS" Multiplicity="0..1" />
+          <End Role="VIDEOS" Type="Self.VIDEOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LISTA_VIDEOS">
+              <PropertyRef Name="CODIGO_LISTA_VIDEOS" />
+            </Principal>
+            <Dependent Role="VIDEOS">
+              <PropertyRef Name="CODIGO_LISTA_VIDEOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="elektroModelStoreContainer">
+          <EntitySet Name="ATIVIDADES" EntityType="Self.ATIVIDADES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAMERAS" EntityType="Self.CAMERAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DESCARGAS" EntityType="Self.DESCARGAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPRESAS" EntityType="Self.EMPRESAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EQUIPES" EntityType="Self.EQUIPES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESCALA_COD" EntityType="Self.ESCALA_COD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FALHAS_EVENTOS_PROCESSOS" EntityType="Self.FALHAS_EVENTOS_PROCESSOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FUNCIONARIOS" EntityType="Self.FUNCIONARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GERENCIA" EntityType="Self.GERENCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HD" EntityType="Self.HD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HISTORICO_VEICULO" EntityType="Self.HISTORICO_VEICULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HISTORICOS_CAMERAS" EntityType="Self.HISTORICOS_CAMERAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LISTA_VIDEOS" EntityType="Self.LISTA_VIDEOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCALIDADE" EntityType="Self.LOCALIDADE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MOVIMENTACAO_CAMERA" EntityType="Self.MOVIMENTACAO_CAMERA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MOVIMENTACAO_HD" EntityType="Self.MOVIMENTACAO_HD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NAO_CONFORMIDADES" EntityType="Self.NAO_CONFORMIDADES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERMISSOES_USUARIO" EntityType="Self.PERMISSOES_USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECONHECIMENTOS_POSITIVOS" EntityType="Self.RECONHECIMENTOS_POSITIVOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REGIAO" EntityType="Self.REGIAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REGISTRO_OCORRENCIAS" EntityType="Self.REGISTRO_OCORRENCIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SORTEADOS" EntityType="Self.SORTEADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SORTEIOS" EntityType="Self.SORTEIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUPERVISAO" EntityType="Self.SUPERVISAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOS_OCORRENCIAS" EntityType="Self.TIPOS_OCORRENCIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOS_TRABALHOS" EntityType="Self.TIPOS_TRABALHOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOS_USUARIOS" EntityType="Self.TIPOS_USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOS_VEICULOS" EntityType="Self.TIPOS_VEICULOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VEICULOS" EntityType="Self.VEICULOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VIDEOS" EntityType="Self.VIDEOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARQUIVOS" EntityType="Self.ARQUIVOS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ARQUIVOS].[data_carga] AS [data_carga], 
+    [ARQUIVOS].[codigo_camera] AS [codigo_camera], 
+    [ARQUIVOS].[numero_veiculo] AS [numero_veiculo], 
+    [ARQUIVOS].[arquivo] AS [arquivo], 
+    [ARQUIVOS].[sigla_equipe] AS [sigla_equipe]
+    FROM [dbo].[ARQUIVOS] AS [ARQUIVOS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OCORRENCIAS" EntityType="Self.OCORRENCIAS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OCORRENCIAS].[data] AS [data], 
+    [OCORRENCIAS].[sigla_equipe] AS [sigla_equipe], 
+    [OCORRENCIAS].[codigo_camera] AS [codigo_camera], 
+    [OCORRENCIAS].[numero_veiculo] AS [numero_veiculo], 
+    [OCORRENCIAS].[arquivo] AS [arquivo], 
+    [OCORRENCIAS].[data_inclusao] AS [data_inclusao], 
+    [OCORRENCIAS].[usuario] AS [usuario], 
+    [OCORRENCIAS].[id_nao_conformidade] AS [id_nao_conformidade]
+    FROM [dbo].[OCORRENCIAS] AS [OCORRENCIAS]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="EQUIPES_FK01" Association="Self.EQUIPES_FK01">
+            <End Role="TIPOS_TRABALHOS" EntitySet="TIPOS_TRABALHOS" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAMERAS_EMPRESAS" Association="Self.FK_CAMERAS_EMPRESAS">
+            <End Role="EMPRESAS" EntitySet="EMPRESAS" />
+            <End Role="CAMERAS" EntitySet="CAMERAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPES_GERENCIA" Association="Self.FK_EQUIPES_GERENCIA">
+            <End Role="GERENCIA" EntitySet="GERENCIA" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPES_LOCALIDADE" Association="Self.FK_EQUIPES_LOCALIDADE">
+            <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPES_REGIAO" Association="Self.FK_EQUIPES_REGIAO">
+            <End Role="REGIAO" EntitySet="REGIAO" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPES_SUPERVISAO" Association="Self.FK_EQUIPES_SUPERVISAO">
+            <End Role="SUPERVISAO" EntitySet="SUPERVISAO" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GERENCIA_REGIAO" Association="Self.FK_GERENCIA_REGIAO">
+            <End Role="REGIAO" EntitySet="REGIAO" />
+            <End Role="GERENCIA" EntitySet="GERENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORICO_VEICULO_EQUIPES" Association="Self.FK_HISTORICO_VEICULO_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="HISTORICO_VEICULO" EntitySet="HISTORICO_VEICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORICOS_CAMERAS_CAMERAS" Association="Self.FK_HISTORICOS_CAMERAS_CAMERAS">
+            <End Role="CAMERAS" EntitySet="CAMERAS" />
+            <End Role="HISTORICOS_CAMERAS" EntitySet="HISTORICOS_CAMERAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORICOS_CAMERAS_EQUIPES" Association="Self.FK_HISTORICOS_CAMERAS_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="HISTORICOS_CAMERAS" EntitySet="HISTORICOS_CAMERAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCALIDADE_SUPERVISAO" Association="Self.FK_LOCALIDADE_SUPERVISAO">
+            <End Role="SUPERVISAO" EntitySet="SUPERVISAO" />
+            <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMENTACAO_CAMERA_CAMERAS" Association="Self.FK_MOVIMENTACAO_CAMERA_CAMERAS">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="MOVIMENTACAO_CAMERA" EntitySet="MOVIMENTACAO_CAMERA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMENTACAO_HD_HD" Association="Self.FK_MOVIMENTACAO_HD_HD">
+            <End Role="HD" EntitySet="HD" />
+            <End Role="MOVIMENTACAO_HD" EntitySet="MOVIMENTACAO_HD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO" Association="Self.FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO">
+            <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+            <End Role="MOVIMENTACAO_HD" EntitySet="MOVIMENTACAO_HD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM" Association="Self.FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM">
+            <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+            <End Role="MOVIMENTACAO_HD" EntitySet="MOVIMENTACAO_HD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_ATIVIDADES" Association="Self.FK_REGISTRO_OCORRENCIAS_ATIVIDADES">
+            <End Role="ATIVIDADES" EntitySet="ATIVIDADES" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_EQUIPES" Association="Self.FK_REGISTRO_OCORRENCIAS_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS" Association="Self.FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS">
+            <End Role="FALHAS_EVENTOS_PROCESSOS" EntitySet="FALHAS_EVENTOS_PROCESSOS" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_LISTA_VIDEOS" Association="Self.FK_REGISTRO_OCORRENCIAS_LISTA_VIDEOS">
+            <End Role="LISTA_VIDEOS" EntitySet="LISTA_VIDEOS" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_SORTEADOS" Association="Self.FK_REGISTRO_OCORRENCIAS_SORTEADOS">
+            <End Role="SORTEADOS" EntitySet="SORTEADOS" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_TIPOS_OCORRENCIAS" Association="Self.FK_REGISTRO_OCORRENCIAS_TIPOS_OCORRENCIAS">
+            <End Role="TIPOS_OCORRENCIAS" EntitySet="TIPOS_OCORRENCIAS" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SORTEADOS_SORTEIOS" Association="Self.FK_SORTEADOS_SORTEIOS">
+            <End Role="SORTEIOS" EntitySet="SORTEIOS" />
+            <End Role="SORTEADOS" EntitySet="SORTEADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUPERVISAO_GERENCIA" Association="Self.FK_SUPERVISAO_GERENCIA">
+            <End Role="GERENCIA" EntitySet="GERENCIA" />
+            <End Role="SUPERVISAO" EntitySet="SUPERVISAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_FUNCIONARIOS" Association="Self.FK_USUARIOS_FUNCIONARIOS">
+            <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_TIPOS_USUARIOS" Association="Self.FK_USUARIOS_TIPOS_USUARIOS">
+            <End Role="TIPOS_USUARIOS" EntitySet="TIPOS_USUARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEICULOS_TIPOS_VEICULOS" Association="Self.FK_VEICULOS_TIPOS_VEICULOS">
+            <End Role="TIPOS_VEICULOS" EntitySet="TIPOS_VEICULOS" />
+            <End Role="VEICULOS" EntitySet="VEICULOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VIDEOS_LISTA_VIDEOS" Association="Self.FK_VIDEOS_LISTA_VIDEOS">
+            <End Role="LISTA_VIDEOS" EntitySet="LISTA_VIDEOS" />
+            <End Role="VIDEOS" EntitySet="VIDEOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="elektroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="elektroEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ATIVIDADES" EntityType="elektroModel.ATIVIDADES" />
+          <EntitySet Name="DESCARGAS" EntityType="elektroModel.DESCARGAS" />
+          <EntitySet Name="FUNCIONARIOS" EntityType="elektroModel.FUNCIONARIOS" />
+          <EntitySet Name="GERENCIA" EntityType="elektroModel.GERENCIA" />
+          <EntitySet Name="HD" EntityType="elektroModel.HD" />
+          <EntitySet Name="LOCALIDADE" EntityType="elektroModel.LOCALIDADE" />
+          <EntitySet Name="MOVIMENTACAO_CAMERA" EntityType="elektroModel.MOVIMENTACAO_CAMERA" />
+          <EntitySet Name="NAO_CONFORMIDADES" EntityType="elektroModel.NAO_CONFORMIDADES" />
+          <EntitySet Name="PERMISSOES_USUARIO" EntityType="elektroModel.PERMISSOES_USUARIO" />
+          <EntitySet Name="RECONHECIMENTOS_POSITIVOS" EntityType="elektroModel.RECONHECIMENTOS_POSITIVOS" />
+          <EntitySet Name="REGIAO" EntityType="elektroModel.REGIAO" />
+          <EntitySet Name="SUPERVISAO" EntityType="elektroModel.SUPERVISAO" />
+          <EntitySet Name="TIPOS_OCORRENCIAS" EntityType="elektroModel.TIPOS_OCORRENCIAS" />
+          <EntitySet Name="TIPOS_TRABALHOS" EntityType="elektroModel.TIPOS_TRABALHOS" />
+          <EntitySet Name="ARQUIVOS" EntityType="elektroModel.ARQUIVOS" />
+          <EntitySet Name="OCORRENCIAS" EntityType="elektroModel.OCORRENCIAS" />
+          <AssociationSet Name="FK_GERENCIA_REGIAO" Association="elektroModel.FK_GERENCIA_REGIAO">
+            <End Role="REGIAO" EntitySet="REGIAO" />
+            <End Role="GERENCIA" EntitySet="GERENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUPERVISAO_GERENCIA" Association="elektroModel.FK_SUPERVISAO_GERENCIA">
+            <End Role="GERENCIA" EntitySet="GERENCIA" />
+            <End Role="SUPERVISAO" EntitySet="SUPERVISAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCALIDADE_SUPERVISAO" Association="elektroModel.FK_LOCALIDADE_SUPERVISAO">
+            <End Role="SUPERVISAO" EntitySet="SUPERVISAO" />
+            <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+          </AssociationSet>
+          <EntitySet Name="TIPOS_USUARIOS" EntityType="elektroModel.TIPOS_USUARIOS" />
+          <EntitySet Name="USUARIOS" EntityType="elektroModel.USUARIOS" />
+          <AssociationSet Name="FK_USUARIOS_FUNCIONARIOS" Association="elektroModel.FK_USUARIOS_FUNCIONARIOS">
+            <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_TIPOS_USUARIOS" Association="elektroModel.FK_USUARIOS_TIPOS_USUARIOS">
+            <End Role="TIPOS_USUARIOS" EntitySet="TIPOS_USUARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <EntitySet Name="EMPRESAS" EntityType="elektroModel.EMPRESAS" />
+          <EntitySet Name="HISTORICO_VEICULO" EntityType="elektroModel.HISTORICO_VEICULO" />
+          <EntitySet Name="TIPOS_VEICULOS" EntityType="elektroModel.TIPOS_VEICULOS" />
+          <EntitySet Name="VEICULOS" EntityType="elektroModel.VEICULOS" />
+          <AssociationSet Name="FK_VEICULOS_TIPOS_VEICULOS" Association="elektroModel.FK_VEICULOS_TIPOS_VEICULOS">
+            <End Role="TIPOS_VEICULOS" EntitySet="TIPOS_VEICULOS" />
+            <End Role="VEICULOS" EntitySet="VEICULOS" />
+          </AssociationSet>
+          <EntitySet Name="ESCALA_COD" EntityType="elektroModel.ESCALA_COD" />
+          <EntitySet Name="MOVIMENTACAO_HD" EntityType="elektroModel.MOVIMENTACAO_HD" />
+          <AssociationSet Name="FK_MOVIMENTACAO_HD_HD" Association="elektroModel.FK_MOVIMENTACAO_HD_HD">
+            <End Role="HD" EntitySet="HD" />
+            <End Role="MOVIMENTACAO_HD" EntitySet="MOVIMENTACAO_HD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO" Association="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO">
+            <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+            <End Role="MOVIMENTACAO_HD" EntitySet="MOVIMENTACAO_HD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM" Association="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM">
+            <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+            <End Role="MOVIMENTACAO_HD" EntitySet="MOVIMENTACAO_HD" />
+          </AssociationSet>
+          <EntitySet Name="FALHAS_EVENTOS_PROCESSOS" EntityType="elektroModel.FALHAS_EVENTOS_PROCESSOS" />
+          <EntitySet Name="EQUIPES" EntityType="elektroModel.EQUIPES" />
+          <AssociationSet Name="EQUIPES_FK01" Association="elektroModel.EQUIPES_FK01">
+            <End Role="TIPOS_TRABALHOS" EntitySet="TIPOS_TRABALHOS" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPES_GERENCIA" Association="elektroModel.FK_EQUIPES_GERENCIA">
+            <End Role="GERENCIA" EntitySet="GERENCIA" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPES_LOCALIDADE" Association="elektroModel.FK_EQUIPES_LOCALIDADE">
+            <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPES_REGIAO" Association="elektroModel.FK_EQUIPES_REGIAO">
+            <End Role="REGIAO" EntitySet="REGIAO" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPES_SUPERVISAO" Association="elektroModel.FK_EQUIPES_SUPERVISAO">
+            <End Role="SUPERVISAO" EntitySet="SUPERVISAO" />
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORICO_VEICULO_EQUIPES" Association="elektroModel.FK_HISTORICO_VEICULO_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="HISTORICO_VEICULO" EntitySet="HISTORICO_VEICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMENTACAO_CAMERA_CAMERAS" Association="elektroModel.FK_MOVIMENTACAO_CAMERA_CAMERAS">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="MOVIMENTACAO_CAMERA" EntitySet="MOVIMENTACAO_CAMERA" />
+          </AssociationSet>
+          <EntitySet Name="SORTEIOS" EntityType="elektroModel.SORTEIOS" />
+          <EntitySet Name="VIDEOS" EntityType="elektroModel.VIDEOS" />
+          <EntitySet Name="REGISTRO_OCORRENCIAS" EntityType="elektroModel.REGISTRO_OCORRENCIAS" />
+          <EntitySet Name="SORTEADOS" EntityType="elektroModel.SORTEADOS" />
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_ATIVIDADES" Association="elektroModel.FK_REGISTRO_OCORRENCIAS_ATIVIDADES">
+            <End Role="ATIVIDADES" EntitySet="ATIVIDADES" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_EQUIPES" Association="elektroModel.FK_REGISTRO_OCORRENCIAS_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_SORTEADOS" Association="elektroModel.FK_REGISTRO_OCORRENCIAS_SORTEADOS">
+            <End Role="SORTEADOS" EntitySet="SORTEADOS" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_TIPOS_OCORRENCIAS" Association="elektroModel.FK_REGISTRO_OCORRENCIAS_TIPOS_OCORRENCIAS">
+            <End Role="TIPOS_OCORRENCIAS" EntitySet="TIPOS_OCORRENCIAS" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SORTEADOS_SORTEIOS" Association="elektroModel.FK_SORTEADOS_SORTEIOS">
+            <End Role="SORTEIOS" EntitySet="SORTEIOS" />
+            <End Role="SORTEADOS" EntitySet="SORTEADOS" />
+          </AssociationSet>
+          <EntitySet Name="LISTA_VIDEOS" EntityType="elektroModel.LISTA_VIDEOS" />
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_LISTA_VIDEOS" Association="elektroModel.FK_REGISTRO_OCORRENCIAS_LISTA_VIDEOS">
+            <End Role="LISTA_VIDEOS" EntitySet="LISTA_VIDEOS" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VIDEOS_LISTA_VIDEOS" Association="elektroModel.FK_VIDEOS_LISTA_VIDEOS">
+            <End Role="LISTA_VIDEOS" EntitySet="LISTA_VIDEOS" />
+            <End Role="VIDEOS" EntitySet="VIDEOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS" Association="elektroModel.FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS">
+            <End Role="FALHAS_EVENTOS_PROCESSOS" EntitySet="FALHAS_EVENTOS_PROCESSOS" />
+            <End Role="REGISTRO_OCORRENCIAS" EntitySet="REGISTRO_OCORRENCIAS" />
+          </AssociationSet>
+          <EntitySet Name="CAMERAS" EntityType="elektroModel.CAMERAS" />
+          <AssociationSet Name="FK_CAMERAS_EMPRESAS" Association="elektroModel.FK_CAMERAS_EMPRESAS">
+            <End Role="EMPRESAS" EntitySet="EMPRESAS" />
+            <End Role="CAMERAS" EntitySet="CAMERAS" />
+          </AssociationSet>
+          <EntitySet Name="HISTORICOS_CAMERAS" EntityType="elektroModel.HISTORICOS_CAMERAS" />
+          <AssociationSet Name="FK_HISTORICOS_CAMERAS_CAMERAS" Association="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS">
+            <End Role="CAMERAS" EntitySet="CAMERAS" />
+            <End Role="HISTORICOS_CAMERAS" EntitySet="HISTORICOS_CAMERAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORICOS_CAMERAS_EQUIPES" Association="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES">
+            <End Role="EQUIPES" EntitySet="EQUIPES" />
+            <End Role="HISTORICOS_CAMERAS" EntitySet="HISTORICOS_CAMERAS" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ATIVIDADES">
+          <Key>
+            <PropertyRef Name="CODIGO_ATIVIDADE" />
+          </Key>
+          <Property Name="CODIGO_ATIVIDADE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="REGISTRO_OCORRENCIAS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_ATIVIDADES" FromRole="ATIVIDADES" ToRole="REGISTRO_OCORRENCIAS" />
+        </EntityType>
+        <EntityType Name="DESCARGAS">
+          <Key>
+            <PropertyRef Name="CODIGO_DESCARGA" />
+          </Key>
+          <Property Name="CODIGO_DESCARGA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATA_DESCARGA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="USUARIO_REGISTRO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERO_HD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FUNCIONARIOS">
+          <Key>
+            <PropertyRef Name="prontuario" />
+          </Key>
+          <Property Name="prontuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nome_funcionario" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="funcao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="localidade" Type="Int32" />
+          <Property Name="supervisao" Type="Int32" />
+          <Property Name="gerencia" Type="Int32" />
+          <Property Name="regiao" Type="Int32" />
+          <Property Name="prontuario_gestor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nome_gestor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="periodo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="USUARIOS" Relationship="elektroModel.FK_USUARIOS_FUNCIONARIOS" FromRole="FUNCIONARIOS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="GERENCIA">
+          <Key>
+            <PropertyRef Name="CODIGO_GERENCIA" />
+          </Key>
+          <Property Name="CODIGO_GERENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CODIGO_REGIAO" Type="Int32" />
+          <NavigationProperty Name="REGIAO" Relationship="elektroModel.FK_GERENCIA_REGIAO" FromRole="GERENCIA" ToRole="REGIAO" />
+          <NavigationProperty Name="SUPERVISAO" Relationship="elektroModel.FK_SUPERVISAO_GERENCIA" FromRole="GERENCIA" ToRole="SUPERVISAO" />
+          <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_EQUIPES_GERENCIA" FromRole="GERENCIA" ToRole="EQUIPES" />
+        </EntityType>
+        <EntityType Name="HD">
+          <Key>
+            <PropertyRef Name="NUMERO_HD" />
+          </Key>
+          <Property Name="NUMERO_HD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERO_SERIE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="LOCAL" Type="Int32" />
+          <NavigationProperty Name="MOVIMENTACAO_HD" Relationship="elektroModel.FK_MOVIMENTACAO_HD_HD" FromRole="HD" ToRole="MOVIMENTACAO_HD" />
+        </EntityType>
+        <EntityType Name="LOCALIDADE">
+          <Key>
+            <PropertyRef Name="CODIGO_LOCALIDADE" />
+          </Key>
+          <Property Name="CODIGO_LOCALIDADE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CODIGO_SUPERVISAO" Type="Int32" />
+          <NavigationProperty Name="SUPERVISAO" Relationship="elektroModel.FK_LOCALIDADE_SUPERVISAO" FromRole="LOCALIDADE" ToRole="SUPERVISAO" />
+          <NavigationProperty Name="MOVIMENTACAO_HD" Relationship="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO" FromRole="LOCALIDADE" ToRole="MOVIMENTACAO_HD" />
+          <NavigationProperty Name="MOVIMENTACAO_HD1" Relationship="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM" FromRole="LOCALIDADE" ToRole="MOVIMENTACAO_HD" />
+          <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_EQUIPES_LOCALIDADE" FromRole="LOCALIDADE" ToRole="EQUIPES" />
+        </EntityType>
+        <EntityType Name="MOVIMENTACAO_CAMERA">
+          <Key>
+            <PropertyRef Name="NUMERO_MOVIMENTACAO" />
+          </Key>
+          <Property Name="NUMERO_MOVIMENTACAO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIGLA_EQUIPE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CODIGO_CAMERA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TIPO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EMPRESA_MANUTENCAO" Type="Int32" />
+          <Property Name="OBSERVACAO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_INICIO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_FIM" Type="DateTime" Precision="3" />
+          <Property Name="NUMERO_RASTREIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OBSERVACAO_DESVINCULAR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_MOVIMENTACAO_CAMERA_CAMERAS" FromRole="MOVIMENTACAO_CAMERA" ToRole="EQUIPES" />
+        </EntityType>
+        <EntityType Name="NAO_CONFORMIDADES">
+          <Key>
+            <PropertyRef Name="id_nao_conformidade" />
+          </Key>
+          <Property Name="id_nao_conformidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="atividade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="severidade" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERMISSOES_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_PERMISSAO" />
+          </Key>
+          <Property Name="ID_PERMISSAO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_TIPO_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_MENU" Type="Int32" Nullable="false" />
+          <Property Name="ID_SUBMENU" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECONHECIMENTOS_POSITIVOS">
+          <Key>
+            <PropertyRef Name="id_rec_positivo" />
+          </Key>
+          <Property Name="id_rec_positivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="atividade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descricao_rec_positivo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="REGIAO">
+          <Key>
+            <PropertyRef Name="CODIGO_REGIAO" />
+          </Key>
+          <Property Name="CODIGO_REGIAO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GERENCIA" Relationship="elektroModel.FK_GERENCIA_REGIAO" FromRole="REGIAO" ToRole="GERENCIA" />
+          <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_EQUIPES_REGIAO" FromRole="REGIAO" ToRole="EQUIPES" />
+        </EntityType>
+        <EntityType Name="SUPERVISAO">
+          <Key>
+            <PropertyRef Name="CODIGO_SUPERVISAO" />
+          </Key>
+          <Property Name="CODIGO_SUPERVISAO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CODIGO_GERENCIA" Type="Int32" />
+          <NavigationProperty Name="GERENCIA" Relationship="elektroModel.FK_SUPERVISAO_GERENCIA" FromRole="SUPERVISAO" ToRole="GERENCIA" />
+          <NavigationProperty Name="LOCALIDADE" Relationship="elektroModel.FK_LOCALIDADE_SUPERVISAO" FromRole="SUPERVISAO" ToRole="LOCALIDADE" />
+          <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_EQUIPES_SUPERVISAO" FromRole="SUPERVISAO" ToRole="EQUIPES" />
+        </EntityType>
+        <EntityType Name="TIPOS_OCORRENCIAS">
+          <Key>
+            <PropertyRef Name="ID_TIPO" />
+          </Key>
+          <Property Name="ID_TIPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GRAVIDADE" Type="Int32" />
+          <NavigationProperty Name="REGISTRO_OCORRENCIAS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_TIPOS_OCORRENCIAS" FromRole="TIPOS_OCORRENCIAS" ToRole="REGISTRO_OCORRENCIAS" />
+        </EntityType>
+        <EntityType Name="TIPOS_TRABALHOS">
+          <Key>
+            <PropertyRef Name="ID_TIPO_TRABALHO" />
+          </Key>
+          <Property Name="ID_TIPO_TRABALHO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO_TIPO_TRABALHO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EQUIPES" Relationship="elektroModel.EQUIPES_FK01" FromRole="TIPOS_TRABALHOS" ToRole="EQUIPES" />
+        </EntityType>
+        <EntityType Name="ARQUIVOS">
+          <Key>
+            <PropertyRef Name="data_carga" />
+            <PropertyRef Name="codigo_camera" />
+            <PropertyRef Name="numero_veiculo" />
+            <PropertyRef Name="arquivo" />
+            <PropertyRef Name="sigla_equipe" />
+          </Key>
+          <Property Name="data_carga" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="codigo_camera" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numero_veiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="arquivo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="sigla_equipe" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OCORRENCIAS">
+          <Key>
+            <PropertyRef Name="data" />
+            <PropertyRef Name="sigla_equipe" />
+            <PropertyRef Name="codigo_camera" />
+            <PropertyRef Name="numero_veiculo" />
+            <PropertyRef Name="arquivo" />
+            <PropertyRef Name="data_inclusao" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="data" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sigla_equipe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_camera" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numero_veiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="arquivo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="data_inclusao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_nao_conformidade" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_GERENCIA_REGIAO">
+          <End Type="elektroModel.REGIAO" Role="REGIAO" Multiplicity="0..1" />
+          <End Type="elektroModel.GERENCIA" Role="GERENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGIAO">
+              <PropertyRef Name="CODIGO_REGIAO" />
+            </Principal>
+            <Dependent Role="GERENCIA">
+              <PropertyRef Name="CODIGO_REGIAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUPERVISAO_GERENCIA">
+          <End Type="elektroModel.GERENCIA" Role="GERENCIA" Multiplicity="0..1" />
+          <End Type="elektroModel.SUPERVISAO" Role="SUPERVISAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GERENCIA">
+              <PropertyRef Name="CODIGO_GERENCIA" />
+            </Principal>
+            <Dependent Role="SUPERVISAO">
+              <PropertyRef Name="CODIGO_GERENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCALIDADE_SUPERVISAO">
+          <End Type="elektroModel.SUPERVISAO" Role="SUPERVISAO" Multiplicity="0..1" />
+          <End Type="elektroModel.LOCALIDADE" Role="LOCALIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPERVISAO">
+              <PropertyRef Name="CODIGO_SUPERVISAO" />
+            </Principal>
+            <Dependent Role="LOCALIDADE">
+              <PropertyRef Name="CODIGO_SUPERVISAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TIPOS_USUARIOS">
+          <Key>
+            <PropertyRef Name="id_tipo_usuario" />
+          </Key>
+          <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao_tipo_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="USUARIOS" Relationship="elektroModel.FK_USUARIOS_TIPOS_USUARIOS" FromRole="TIPOS_USUARIOS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="prontuario_usuario" />
+          </Key>
+          <Property Name="prontuario_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nome_usuario" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="senha_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email_usuario" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" />
+          <Property Name="ativo" Type="Int32" Nullable="false" />
+          <Property Name="PRONTUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FUNCIONARIOS" Relationship="elektroModel.FK_USUARIOS_FUNCIONARIOS" FromRole="USUARIOS" ToRole="FUNCIONARIOS" />
+          <NavigationProperty Name="TIPOS_USUARIOS" Relationship="elektroModel.FK_USUARIOS_TIPOS_USUARIOS" FromRole="USUARIOS" ToRole="TIPOS_USUARIOS" />
+        </EntityType>
+        <Association Name="FK_USUARIOS_FUNCIONARIOS">
+          <End Type="elektroModel.FUNCIONARIOS" Role="FUNCIONARIOS" Multiplicity="0..1" />
+          <End Type="elektroModel.USUARIOS" Role="USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUNCIONARIOS">
+              <PropertyRef Name="prontuario" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="PRONTUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_TIPOS_USUARIOS">
+          <End Type="elektroModel.TIPOS_USUARIOS" Role="TIPOS_USUARIOS" Multiplicity="1" />
+          <End Type="elektroModel.USUARIOS" Role="USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_USUARIOS">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EMPRESAS">
+          <Key>
+            <PropertyRef Name="CODIGO_EMPRESA" />
+          </Key>
+          <Property Name="CODIGO_EMPRESA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CAMERAS" Relationship="elektroModel.FK_CAMERAS_EMPRESAS" FromRole="EMPRESAS" ToRole="CAMERAS" />
+        </EntityType>
+        <EntityType Name="HISTORICO_VEICULO">
+          <Key>
+            <PropertyRef Name="NUMERO_HISTORICO" />
+          </Key>
+          <Property Name="NUMERO_HISTORICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLACA_VEICULO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SIGLA_EQUIPE" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OBSERVACAO_VINCULAR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OBSERVACAO_DESVINCULAR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="USUARIO_VINCULAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USUARIO_DESVINCULAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_VINCULAR" Type="DateTime" Precision="3" />
+          <Property Name="DATA_DESVINCULAR" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_HISTORICO_VEICULO_EQUIPES" FromRole="HISTORICO_VEICULO" ToRole="EQUIPES" />
+        </EntityType>
+        <EntityType Name="TIPOS_VEICULOS">
+          <Key>
+            <PropertyRef Name="COD_TIPO_VEICULO" />
+          </Key>
+          <Property Name="COD_TIPO_VEICULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VEICULOS" Relationship="elektroModel.FK_VEICULOS_TIPOS_VEICULOS" FromRole="TIPOS_VEICULOS" ToRole="VEICULOS" />
+        </EntityType>
+        <EntityType Name="VEICULOS">
+          <Key>
+            <PropertyRef Name="PLACA" />
+          </Key>
+          <Property Name="PLACA" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="COD_TIPO" Type="Int32" Nullable="false" />
+          <Property Name="ativo" Type="Int32" Nullable="false" />
+          <Property Name="SIGLA_EQUIPE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TIPOS_VEICULOS" Relationship="elektroModel.FK_VEICULOS_TIPOS_VEICULOS" FromRole="VEICULOS" ToRole="TIPOS_VEICULOS" />
+        </EntityType>
+        <Association Name="FK_VEICULOS_TIPOS_VEICULOS">
+          <End Type="elektroModel.TIPOS_VEICULOS" Role="TIPOS_VEICULOS" Multiplicity="1" />
+          <End Type="elektroModel.VEICULOS" Role="VEICULOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_VEICULOS">
+              <PropertyRef Name="COD_TIPO_VEICULO" />
+            </Principal>
+            <Dependent Role="VEICULOS">
+              <PropertyRef Name="COD_TIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ESCALA_COD">
+          <Key>
+            <PropertyRef Name="PRONTUARIO" />
+            <PropertyRef Name="DATA_INICIO" />
+            <PropertyRef Name="DATA_FIM" />
+          </Key>
+          <Property Name="SIGLA_EQUIPE" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PRONTUARIO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_INICIO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DATA_FIM" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_REGISTRO" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MOVIMENTACAO_HD">
+          <Key>
+            <PropertyRef Name="NUMERO_MOVIMENTACAO" />
+          </Key>
+          <Property Name="NUMERO_MOVIMENTACAO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMERO_HD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_CHEGADA" Type="DateTime" Precision="3" />
+          <Property Name="RESPONSAVEL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LOCAL_REGISTRO" Type="Int32" />
+          <Property Name="LOCAL_DESTINO" Type="Int32" />
+          <Property Name="OBSERVACAO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERO_PROTOCOLO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MONITORIA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USUARIO_REGISTRO_RECEBIMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_ENVIO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_PROVAVEL_RECEBIMENTO" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HD" Relationship="elektroModel.FK_MOVIMENTACAO_HD_HD" FromRole="MOVIMENTACAO_HD" ToRole="HD" />
+          <NavigationProperty Name="LOCALIDADE" Relationship="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO" FromRole="MOVIMENTACAO_HD" ToRole="LOCALIDADE" />
+          <NavigationProperty Name="LOCALIDADE1" Relationship="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM" FromRole="MOVIMENTACAO_HD" ToRole="LOCALIDADE" />
+        </EntityType>
+        <Association Name="FK_MOVIMENTACAO_HD_HD">
+          <End Type="elektroModel.HD" Role="HD" Multiplicity="1" />
+          <End Type="elektroModel.MOVIMENTACAO_HD" Role="MOVIMENTACAO_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HD">
+              <PropertyRef Name="NUMERO_HD" />
+            </Principal>
+            <Dependent Role="MOVIMENTACAO_HD">
+              <PropertyRef Name="NUMERO_HD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO">
+          <End Type="elektroModel.LOCALIDADE" Role="LOCALIDADE" Multiplicity="0..1" />
+          <End Type="elektroModel.MOVIMENTACAO_HD" Role="MOVIMENTACAO_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCALIDADE">
+              <PropertyRef Name="CODIGO_LOCALIDADE" />
+            </Principal>
+            <Dependent Role="MOVIMENTACAO_HD">
+              <PropertyRef Name="LOCAL_DESTINO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM">
+          <End Type="elektroModel.LOCALIDADE" Role="LOCALIDADE" Multiplicity="0..1" />
+          <End Type="elektroModel.MOVIMENTACAO_HD" Role="MOVIMENTACAO_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCALIDADE">
+              <PropertyRef Name="CODIGO_LOCALIDADE" />
+            </Principal>
+            <Dependent Role="MOVIMENTACAO_HD">
+              <PropertyRef Name="LOCAL_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FALHAS_EVENTOS_PROCESSOS">
+          <Key>
+            <PropertyRef Name="COD_FALHA_EVENTO" />
+          </Key>
+          <Property Name="COD_FALHA_EVENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="REGISTRO_OCORRENCIAS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS" FromRole="FALHAS_EVENTOS_PROCESSOS" ToRole="REGISTRO_OCORRENCIAS" />
+        </EntityType>
+        <EntityType Name="EQUIPES">
+          <Key>
+            <PropertyRef Name="SIGLA_EQUIPE" />
+          </Key>
+          <Property Name="SIGLA_EQUIPE" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NOME_EQUIPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LOCALIDADE" Type="Int32" />
+          <Property Name="SUPERVISAO" Type="Int32" />
+          <Property Name="GERENCIA" Type="Int32" />
+          <Property Name="REGIAO" Type="Int32" />
+          <Property Name="ID_TIPO_TRABALHO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_CAMERA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PLACA_VEICULO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TIPOS_TRABALHOS" Relationship="elektroModel.EQUIPES_FK01" FromRole="EQUIPES" ToRole="TIPOS_TRABALHOS" />
+          <NavigationProperty Name="GERENCIA1" Relationship="elektroModel.FK_EQUIPES_GERENCIA" FromRole="EQUIPES" ToRole="GERENCIA" />
+          <NavigationProperty Name="LOCALIDADE1" Relationship="elektroModel.FK_EQUIPES_LOCALIDADE" FromRole="EQUIPES" ToRole="LOCALIDADE" />
+          <NavigationProperty Name="REGIAO1" Relationship="elektroModel.FK_EQUIPES_REGIAO" FromRole="EQUIPES" ToRole="REGIAO" />
+          <NavigationProperty Name="SUPERVISAO1" Relationship="elektroModel.FK_EQUIPES_SUPERVISAO" FromRole="EQUIPES" ToRole="SUPERVISAO" />
+          <NavigationProperty Name="HISTORICO_VEICULO" Relationship="elektroModel.FK_HISTORICO_VEICULO_EQUIPES" FromRole="EQUIPES" ToRole="HISTORICO_VEICULO" />
+          <NavigationProperty Name="MOVIMENTACAO_CAMERA" Relationship="elektroModel.FK_MOVIMENTACAO_CAMERA_CAMERAS" FromRole="EQUIPES" ToRole="MOVIMENTACAO_CAMERA" />
+          <NavigationProperty Name="REGISTRO_OCORRENCIAS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_EQUIPES" FromRole="EQUIPES" ToRole="REGISTRO_OCORRENCIAS" />
+          <NavigationProperty Name="HISTORICOS_CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES" FromRole="EQUIPES" ToRole="HISTORICOS_CAMERAS" />
+        </EntityType>
+        <Association Name="EQUIPES_FK01">
+          <End Type="elektroModel.TIPOS_TRABALHOS" Role="TIPOS_TRABALHOS" Multiplicity="1" />
+          <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_TRABALHOS">
+              <PropertyRef Name="ID_TIPO_TRABALHO" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="ID_TIPO_TRABALHO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPES_GERENCIA">
+          <End Type="elektroModel.GERENCIA" Role="GERENCIA" Multiplicity="0..1" />
+          <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GERENCIA">
+              <PropertyRef Name="CODIGO_GERENCIA" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="GERENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPES_LOCALIDADE">
+          <End Type="elektroModel.LOCALIDADE" Role="LOCALIDADE" Multiplicity="0..1" />
+          <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCALIDADE">
+              <PropertyRef Name="CODIGO_LOCALIDADE" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="LOCALIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPES_REGIAO">
+          <End Type="elektroModel.REGIAO" Role="REGIAO" Multiplicity="0..1" />
+          <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGIAO">
+              <PropertyRef Name="CODIGO_REGIAO" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="REGIAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPES_SUPERVISAO">
+          <End Type="elektroModel.SUPERVISAO" Role="SUPERVISAO" Multiplicity="0..1" />
+          <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPERVISAO">
+              <PropertyRef Name="CODIGO_SUPERVISAO" />
+            </Principal>
+            <Dependent Role="EQUIPES">
+              <PropertyRef Name="SUPERVISAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORICO_VEICULO_EQUIPES">
+          <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="1" />
+          <End Type="elektroModel.HISTORICO_VEICULO" Role="HISTORICO_VEICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Principal>
+            <Dependent Role="HISTORICO_VEICULO">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMENTACAO_CAMERA_CAMERAS">
+          <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="0..1" />
+          <End Type="elektroModel.MOVIMENTACAO_CAMERA" Role="MOVIMENTACAO_CAMERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Principal>
+            <Dependent Role="MOVIMENTACAO_CAMERA">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SORTEIOS">
+          <Key>
+            <PropertyRef Name="COD_SORTEIO" />
+          </Key>
+          <Property Name="COD_SORTEIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATA_REGISTRO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="USUARIO_REGISTRO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SORTEADOS" Relationship="elektroModel.FK_SORTEADOS_SORTEIOS" FromRole="SORTEIOS" ToRole="SORTEADOS" />
+        </EntityType>
+        <EntityType Name="VIDEOS">
+          <Key>
+            <PropertyRef Name="ID_VIDEO" />
+          </Key>
+          <Property Name="ID_VIDEO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VIDEO" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="CODIGO_LISTA_VIDEOS" Type="Int32" />
+          <NavigationProperty Name="LISTA_VIDEOS" Relationship="elektroModel.FK_VIDEOS_LISTA_VIDEOS" FromRole="VIDEOS" ToRole="LISTA_VIDEOS" />
+        </EntityType>
+        <EntityType Name="REGISTRO_OCORRENCIAS">
+          <Key>
+            <PropertyRef Name="CODIGO_REGISTRO_OCORRENCIA" />
+          </Key>
+          <Property Name="CODIGO_REGISTRO_OCORRENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO_TIPO_OCORRENCIA" Type="Int32" />
+          <Property Name="CODIGO_ATIVIDADE" Type="Int32" />
+          <Property Name="OBSERVACAO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CODIGO_VALIDACAO" Type="Int32" />
+          <Property Name="USUARIO_VALIDACAO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_VALIDACAO" Type="DateTime" Precision="3" />
+          <Property Name="OBSERVACAO_VALIDACAO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CODIGO_SEVERIDADE" Type="Int32" />
+          <Property Name="NUMERO_HD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COD_SORTEADOS" Type="Int32" />
+          <Property Name="COD_LISTA_VIDEOS" Type="Int32" />
+          <Property Name="SIGLA_EQUIPE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ATIVIDADES" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_ATIVIDADES" FromRole="REGISTRO_OCORRENCIAS" ToRole="ATIVIDADES" />
+          <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_EQUIPES" FromRole="REGISTRO_OCORRENCIAS" ToRole="EQUIPES" />
+          <NavigationProperty Name="SORTEADOS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_SORTEADOS" FromRole="REGISTRO_OCORRENCIAS" ToRole="SORTEADOS" />
+          <NavigationProperty Name="TIPOS_OCORRENCIAS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_TIPOS_OCORRENCIAS" FromRole="REGISTRO_OCORRENCIAS" ToRole="TIPOS_OCORRENCIAS" />
+          <NavigationProperty Name="LISTA_VIDEOS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_LISTA_VIDEOS" FromRole="REGISTRO_OCORRENCIAS" ToRole="LISTA_VIDEOS" />
+          <Property Name="DATA_INICIAL" Type="DateTime" Precision="3" />
+          <Property Name="DATA_FINAL" Type="DateTime" Precision="3" />
+          <Property Name="tipo_ocorrencia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="COD_FALHA_EVENTO" Type="Int32" />
+          <NavigationProperty Name="FALHAS_EVENTOS_PROCESSOS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS" FromRole="REGISTRO_OCORRENCIAS" ToRole="FALHAS_EVENTOS_PROCESSOS" />
+        </EntityType>
+        <EntityType Name="SORTEADOS">
+          <Key>
+            <PropertyRef Name="COD_SORTEADOS" />
+          </Key>
+          <Property Name="COD_SORTEADOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIGLA_EQUIPE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="VISUALIZADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO_HD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USUARIO_VISUALIZACAO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COD_SORTEIO" Type="Int32" />
+          <NavigationProperty Name="REGISTRO_OCORRENCIAS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_SORTEADOS" FromRole="SORTEADOS" ToRole="REGISTRO_OCORRENCIAS" />
+          <NavigationProperty Name="SORTEIOS" Relationship="elektroModel.FK_SORTEADOS_SORTEIOS" FromRole="SORTEADOS" ToRole="SORTEIOS" />
+        </EntityType>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_ATIVIDADES">
+          <End Type="elektroModel.ATIVIDADES" Role="ATIVIDADES" Multiplicity="0..1" />
+          <End Type="elektroModel.REGISTRO_OCORRENCIAS" Role="REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATIVIDADES">
+              <PropertyRef Name="CODIGO_ATIVIDADE" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="CODIGO_ATIVIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_EQUIPES">
+          <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="0..1" />
+          <End Type="elektroModel.REGISTRO_OCORRENCIAS" Role="REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_SORTEADOS">
+          <End Type="elektroModel.SORTEADOS" Role="SORTEADOS" Multiplicity="0..1" />
+          <End Type="elektroModel.REGISTRO_OCORRENCIAS" Role="REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SORTEADOS">
+              <PropertyRef Name="COD_SORTEADOS" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="COD_SORTEADOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_TIPOS_OCORRENCIAS">
+          <End Type="elektroModel.TIPOS_OCORRENCIAS" Role="TIPOS_OCORRENCIAS" Multiplicity="0..1" />
+          <End Type="elektroModel.REGISTRO_OCORRENCIAS" Role="REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_OCORRENCIAS">
+              <PropertyRef Name="ID_TIPO" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="CODIGO_TIPO_OCORRENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SORTEADOS_SORTEIOS">
+          <End Type="elektroModel.SORTEIOS" Role="SORTEIOS" Multiplicity="0..1" />
+          <End Type="elektroModel.SORTEADOS" Role="SORTEADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SORTEIOS">
+              <PropertyRef Name="COD_SORTEIO" />
+            </Principal>
+            <Dependent Role="SORTEADOS">
+              <PropertyRef Name="COD_SORTEIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LISTA_VIDEOS">
+          <Key>
+            <PropertyRef Name="CODIGO_LISTA_VIDEOS" />
+          </Key>
+          <Property Name="CODIGO_LISTA_VIDEOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEMPO_TOTAL_VIDEOS" Type="Double" />
+          <NavigationProperty Name="REGISTRO_OCORRENCIAS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_LISTA_VIDEOS" FromRole="LISTA_VIDEOS" ToRole="REGISTRO_OCORRENCIAS" />
+          <NavigationProperty Name="VIDEOS" Relationship="elektroModel.FK_VIDEOS_LISTA_VIDEOS" FromRole="LISTA_VIDEOS" ToRole="VIDEOS" />
+        </EntityType>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_LISTA_VIDEOS">
+          <End Type="elektroModel.LISTA_VIDEOS" Role="LISTA_VIDEOS" Multiplicity="0..1" />
+          <End Type="elektroModel.REGISTRO_OCORRENCIAS" Role="REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LISTA_VIDEOS">
+              <PropertyRef Name="CODIGO_LISTA_VIDEOS" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="COD_LISTA_VIDEOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VIDEOS_LISTA_VIDEOS">
+          <End Type="elektroModel.LISTA_VIDEOS" Role="LISTA_VIDEOS" Multiplicity="0..1" />
+          <End Type="elektroModel.VIDEOS" Role="VIDEOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LISTA_VIDEOS">
+              <PropertyRef Name="CODIGO_LISTA_VIDEOS" />
+            </Principal>
+            <Dependent Role="VIDEOS">
+              <PropertyRef Name="CODIGO_LISTA_VIDEOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTRO_OCORRENCIAS_FALHAS_PROCESSOS">
+          <End Type="elektroModel.FALHAS_EVENTOS_PROCESSOS" Role="FALHAS_EVENTOS_PROCESSOS" Multiplicity="0..1" />
+          <End Type="elektroModel.REGISTRO_OCORRENCIAS" Role="REGISTRO_OCORRENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FALHAS_EVENTOS_PROCESSOS">
+              <PropertyRef Name="COD_FALHA_EVENTO" />
+            </Principal>
+            <Dependent Role="REGISTRO_OCORRENCIAS">
+              <PropertyRef Name="COD_FALHA_EVENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CAMERAS">
+          <Key>
+            <PropertyRef Name="codigo_camera" />
+          </Key>
+          <Property Name="codigo_camera" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bpm_camera" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_barra_camera" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ativo" Type="Int32" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_BAIXA" Type="DateTime" Precision="3" />
+          <Property Name="MOTIVO_BAIXA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_BAIXA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_AQUISICAO" Type="DateTime" Precision="3" />
+          <Property Name="CODIGO_EMPRESA" Type="Int32" />
+          <Property Name="PRONTUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EMPRESAS" Relationship="elektroModel.FK_CAMERAS_EMPRESAS" FromRole="CAMERAS" ToRole="EMPRESAS" />
+          <NavigationProperty Name="HISTORICOS_CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS" FromRole="CAMERAS" ToRole="HISTORICOS_CAMERAS" />
+        </EntityType>
+        <Association Name="FK_CAMERAS_EMPRESAS">
+          <End Type="elektroModel.EMPRESAS" Role="EMPRESAS" Multiplicity="0..1" />
+          <End Type="elektroModel.CAMERAS" Role="CAMERAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESAS">
+              <PropertyRef Name="CODIGO_EMPRESA" />
+            </Principal>
+            <Dependent Role="CAMERAS">
+              <PropertyRef Name="CODIGO_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HISTORICOS_CAMERAS">
+          <Key>
+            <PropertyRef Name="COD_HISTORICO" />
+          </Key>
+          <Property Name="COD_HISTORICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIGLA_EQUIPE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CODIGO_CAMERA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TIPO" Type="Int32" Nullable="false" />
+          <Property Name="EMPRESA_MANUTENCAO" Type="Int32" />
+          <Property Name="OBSERVACAO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_ALOCACAO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_DESALOCAO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_ENVIO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_RECEBIMENTO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_BAIXA" Type="DateTime" Precision="3" />
+          <Property Name="NUMERO_RASTREIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRONTUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS" FromRole="HISTORICOS_CAMERAS" ToRole="CAMERAS" />
+          <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES" FromRole="HISTORICOS_CAMERAS" ToRole="EQUIPES" />
+        </EntityType>
+        <Association Name="FK_HISTORICOS_CAMERAS_CAMERAS">
+          <End Type="elektroModel.CAMERAS" Role="CAMERAS" Multiplicity="1" />
+          <End Type="elektroModel.HISTORICOS_CAMERAS" Role="HISTORICOS_CAMERAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMERAS">
+              <PropertyRef Name="codigo_camera" />
+            </Principal>
+            <Dependent Role="HISTORICOS_CAMERAS">
+              <PropertyRef Name="CODIGO_CAMERA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORICOS_CAMERAS_EQUIPES">
+          <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="0..1" />
+          <End Type="elektroModel.HISTORICOS_CAMERAS" Role="HISTORICOS_CAMERAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPES">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Principal>
+            <Dependent Role="HISTORICOS_CAMERAS">
+              <PropertyRef Name="SIGLA_EQUIPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="elektroModelStoreContainer" CdmEntityContainer="elektroEntities">
+          <EntitySetMapping Name="ATIVIDADES">
+            <EntityTypeMapping TypeName="elektroModel.ATIVIDADES">
+              <MappingFragment StoreEntitySet="ATIVIDADES">
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="CODIGO_ATIVIDADE" ColumnName="CODIGO_ATIVIDADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DESCARGAS">
+            <EntityTypeMapping TypeName="elektroModel.DESCARGAS">
+              <MappingFragment StoreEntitySet="DESCARGAS">
+                <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="DATA_DESCARGA" ColumnName="DATA_DESCARGA" />
+                <ScalarProperty Name="CODIGO_DESCARGA" ColumnName="CODIGO_DESCARGA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FUNCIONARIOS">
+            <EntityTypeMapping TypeName="elektroModel.FUNCIONARIOS">
+              <MappingFragment StoreEntitySet="FUNCIONARIOS">
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="nome_gestor" ColumnName="nome_gestor" />
+                <ScalarProperty Name="prontuario_gestor" ColumnName="prontuario_gestor" />
+                <ScalarProperty Name="regiao" ColumnName="regiao" />
+                <ScalarProperty Name="gerencia" ColumnName="gerencia" />
+                <ScalarProperty Name="supervisao" ColumnName="supervisao" />
+                <ScalarProperty Name="localidade" ColumnName="localidade" />
+                <ScalarProperty Name="funcao" ColumnName="funcao" />
+                <ScalarProperty Name="nome_funcionario" ColumnName="nome_funcionario" />
+                <ScalarProperty Name="prontuario" ColumnName="prontuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GERENCIA">
+            <EntityTypeMapping TypeName="elektroModel.GERENCIA">
+              <MappingFragment StoreEntitySet="GERENCIA">
+                <ScalarProperty Name="CODIGO_REGIAO" ColumnName="CODIGO_REGIAO" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="CODIGO_GERENCIA" ColumnName="CODIGO_GERENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HD">
+            <EntityTypeMapping TypeName="elektroModel.HD">
+              <MappingFragment StoreEntitySet="HD">
+                <ScalarProperty Name="LOCAL" ColumnName="LOCAL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="NUMERO_SERIE" ColumnName="NUMERO_SERIE" />
+                <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCALIDADE">
+            <EntityTypeMapping TypeName="elektroModel.LOCALIDADE">
+              <MappingFragment StoreEntitySet="LOCALIDADE">
+                <ScalarProperty Name="CODIGO_SUPERVISAO" ColumnName="CODIGO_SUPERVISAO" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="CODIGO_LOCALIDADE" ColumnName="CODIGO_LOCALIDADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOVIMENTACAO_CAMERA">
+            <EntityTypeMapping TypeName="elektroModel.MOVIMENTACAO_CAMERA">
+              <MappingFragment StoreEntitySet="MOVIMENTACAO_CAMERA">
+                <ScalarProperty Name="OBSERVACAO_DESVINCULAR" ColumnName="OBSERVACAO_DESVINCULAR" />
+                <ScalarProperty Name="NUMERO_RASTREIO" ColumnName="NUMERO_RASTREIO" />
+                <ScalarProperty Name="DATA_FIM" ColumnName="DATA_FIM" />
+                <ScalarProperty Name="DATA_INICIO" ColumnName="DATA_INICIO" />
+                <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
+                <ScalarProperty Name="EMPRESA_MANUTENCAO" ColumnName="EMPRESA_MANUTENCAO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="CODIGO_CAMERA" ColumnName="CODIGO_CAMERA" />
+                <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+                <ScalarProperty Name="NUMERO_MOVIMENTACAO" ColumnName="NUMERO_MOVIMENTACAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NAO_CONFORMIDADES">
+            <EntityTypeMapping TypeName="elektroModel.NAO_CONFORMIDADES">
+              <MappingFragment StoreEntitySet="NAO_CONFORMIDADES">
+                <ScalarProperty Name="severidade" ColumnName="severidade" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="atividade" ColumnName="atividade" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id_nao_conformidade" ColumnName="id_nao_conformidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERMISSOES_USUARIO">
+            <EntityTypeMapping TypeName="elektroModel.PERMISSOES_USUARIO">
+              <MappingFragment StoreEntitySet="PERMISSOES_USUARIO">
+                <ScalarProperty Name="ID_SUBMENU" ColumnName="ID_SUBMENU" />
+                <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
+                <ScalarProperty Name="ID_TIPO_USUARIO" ColumnName="ID_TIPO_USUARIO" />
+                <ScalarProperty Name="ID_PERMISSAO" ColumnName="ID_PERMISSAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECONHECIMENTOS_POSITIVOS">
+            <EntityTypeMapping TypeName="elektroModel.RECONHECIMENTOS_POSITIVOS">
+              <MappingFragment StoreEntitySet="RECONHECIMENTOS_POSITIVOS">
+                <ScalarProperty Name="descricao_rec_positivo" ColumnName="descricao_rec_positivo" />
+                <ScalarProperty Name="atividade" ColumnName="atividade" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id_rec_positivo" ColumnName="id_rec_positivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGIAO">
+            <EntityTypeMapping TypeName="elektroModel.REGIAO">
+              <MappingFragment StoreEntitySet="REGIAO">
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="CODIGO_REGIAO" ColumnName="CODIGO_REGIAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUPERVISAO">
+            <EntityTypeMapping TypeName="elektroModel.SUPERVISAO">
+              <MappingFragment StoreEntitySet="SUPERVISAO">
+                <ScalarProperty Name="CODIGO_GERENCIA" ColumnName="CODIGO_GERENCIA" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="CODIGO_SUPERVISAO" ColumnName="CODIGO_SUPERVISAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_OCORRENCIAS">
+            <EntityTypeMapping TypeName="elektroModel.TIPOS_OCORRENCIAS">
+              <MappingFragment StoreEntitySet="TIPOS_OCORRENCIAS">
+                <ScalarProperty Name="GRAVIDADE" ColumnName="GRAVIDADE" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="ID_TIPO" ColumnName="ID_TIPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_TRABALHOS">
+            <EntityTypeMapping TypeName="elektroModel.TIPOS_TRABALHOS">
+              <MappingFragment StoreEntitySet="TIPOS_TRABALHOS">
+                <ScalarProperty Name="DESCRICAO_TIPO_TRABALHO" ColumnName="DESCRICAO_TIPO_TRABALHO" />
+                <ScalarProperty Name="ID_TIPO_TRABALHO" ColumnName="ID_TIPO_TRABALHO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARQUIVOS">
+            <EntityTypeMapping TypeName="elektroModel.ARQUIVOS">
+              <MappingFragment StoreEntitySet="ARQUIVOS">
+                <ScalarProperty Name="sigla_equipe" ColumnName="sigla_equipe" />
+                <ScalarProperty Name="arquivo" ColumnName="arquivo" />
+                <ScalarProperty Name="numero_veiculo" ColumnName="numero_veiculo" />
+                <ScalarProperty Name="codigo_camera" ColumnName="codigo_camera" />
+                <ScalarProperty Name="data_carga" ColumnName="data_carga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OCORRENCIAS">
+            <EntityTypeMapping TypeName="elektroModel.OCORRENCIAS">
+              <MappingFragment StoreEntitySet="OCORRENCIAS">
+                <ScalarProperty Name="id_nao_conformidade" ColumnName="id_nao_conformidade" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="data_inclusao" ColumnName="data_inclusao" />
+                <ScalarProperty Name="arquivo" ColumnName="arquivo" />
+                <ScalarProperty Name="numero_veiculo" ColumnName="numero_veiculo" />
+                <ScalarProperty Name="codigo_camera" ColumnName="codigo_camera" />
+                <ScalarProperty Name="sigla_equipe" ColumnName="sigla_equipe" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_USUARIOS">
+            <EntityTypeMapping TypeName="elektroModel.TIPOS_USUARIOS">
+              <MappingFragment StoreEntitySet="TIPOS_USUARIOS">
+                <ScalarProperty Name="descricao_tipo_usuario" ColumnName="descricao_tipo_usuario" />
+                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="elektroModel.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="PRONTUARIO" ColumnName="PRONTUARIO" />
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+                <ScalarProperty Name="email_usuario" ColumnName="email_usuario" />
+                <ScalarProperty Name="senha_usuario" ColumnName="senha_usuario" />
+                <ScalarProperty Name="nome_usuario" ColumnName="nome_usuario" />
+                <ScalarProperty Name="prontuario_usuario" ColumnName="prontuario_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPRESAS">
+            <EntityTypeMapping TypeName="elektroModel.EMPRESAS">
+              <MappingFragment StoreEntitySet="EMPRESAS">
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="CODIGO_EMPRESA" ColumnName="CODIGO_EMPRESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HISTORICO_VEICULO">
+            <EntityTypeMapping TypeName="elektroModel.HISTORICO_VEICULO">
+              <MappingFragment StoreEntitySet="HISTORICO_VEICULO">
+                <ScalarProperty Name="DATA_DESVINCULAR" ColumnName="DATA_DESVINCULAR" />
+                <ScalarProperty Name="DATA_VINCULAR" ColumnName="DATA_VINCULAR" />
+                <ScalarProperty Name="USUARIO_DESVINCULAR" ColumnName="USUARIO_DESVINCULAR" />
+                <ScalarProperty Name="USUARIO_VINCULAR" ColumnName="USUARIO_VINCULAR" />
+                <ScalarProperty Name="OBSERVACAO_DESVINCULAR" ColumnName="OBSERVACAO_DESVINCULAR" />
+                <ScalarProperty Name="OBSERVACAO_VINCULAR" ColumnName="OBSERVACAO_VINCULAR" />
+                <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+                <ScalarProperty Name="PLACA_VEICULO" ColumnName="PLACA_VEICULO" />
+                <ScalarProperty Name="NUMERO_HISTORICO" ColumnName="NUMERO_HISTORICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_VEICULOS">
+            <EntityTypeMapping TypeName="elektroModel.TIPOS_VEICULOS">
+              <MappingFragment StoreEntitySet="TIPOS_VEICULOS">
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="COD_TIPO_VEICULO" ColumnName="COD_TIPO_VEICULO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEICULOS">
+            <EntityTypeMapping TypeName="elektroModel.VEICULOS">
+              <MappingFragment StoreEntitySet="VEICULOS">
+                <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="COD_TIPO" ColumnName="COD_TIPO" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="PLACA" ColumnName="PLACA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESCALA_COD">
+            <EntityTypeMapping TypeName="elektroModel.ESCALA_COD">
+              <MappingFragment StoreEntitySet="ESCALA_COD">
+                <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="DATA_FIM" ColumnName="DATA_FIM" />
+                <ScalarProperty Name="DATA_INICIO" ColumnName="DATA_INICIO" />
+                <ScalarProperty Name="PRONTUARIO" ColumnName="PRONTUARIO" />
+                <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOVIMENTACAO_HD">
+            <EntityTypeMapping TypeName="elektroModel.MOVIMENTACAO_HD">
+              <MappingFragment StoreEntitySet="MOVIMENTACAO_HD">
+                <ScalarProperty Name="DATA_PROVAVEL_RECEBIMENTO" ColumnName="DATA_PROVAVEL_RECEBIMENTO" />
+                <ScalarProperty Name="DATA_ENVIO" ColumnName="DATA_ENVIO" />
+                <ScalarProperty Name="USUARIO_REGISTRO_RECEBIMENTO" ColumnName="USUARIO_REGISTRO_RECEBIMENTO" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="MONITORIA" ColumnName="MONITORIA" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+                <ScalarProperty Name="NUMERO_PROTOCOLO" ColumnName="NUMERO_PROTOCOLO" />
+                <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
+                <ScalarProperty Name="LOCAL_DESTINO" ColumnName="LOCAL_DESTINO" />
+                <ScalarProperty Name="LOCAL_REGISTRO" ColumnName="LOCAL_REGISTRO" />
+                <ScalarProperty Name="RESPONSAVEL" ColumnName="RESPONSAVEL" />
+                <ScalarProperty Name="DATA_CHEGADA" ColumnName="DATA_CHEGADA" />
+                <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+                <ScalarProperty Name="NUMERO_MOVIMENTACAO" ColumnName="NUMERO_MOVIMENTACAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FALHAS_EVENTOS_PROCESSOS">
+            <EntityTypeMapping TypeName="elektroModel.FALHAS_EVENTOS_PROCESSOS">
+              <MappingFragment StoreEntitySet="FALHAS_EVENTOS_PROCESSOS">
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="COD_FALHA_EVENTO" ColumnName="COD_FALHA_EVENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQUIPES">
+            <EntityTypeMapping TypeName="elektroModel.EQUIPES">
+              <MappingFragment StoreEntitySet="EQUIPES">
+                <ScalarProperty Name="PLACA_VEICULO" ColumnName="PLACA_VEICULO" />
+                <ScalarProperty Name="CODIGO_CAMERA" ColumnName="CODIGO_CAMERA" />
+                <ScalarProperty Name="ID_TIPO_TRABALHO" ColumnName="ID_TIPO_TRABALHO" />
+                <ScalarProperty Name="REGIAO" ColumnName="REGIAO" />
+                <ScalarProperty Name="GERENCIA" ColumnName="GERENCIA" />
+                <ScalarProperty Name="SUPERVISAO" ColumnName="SUPERVISAO" />
+                <ScalarProperty Name="LOCALIDADE" ColumnName="LOCALIDADE" />
+                <ScalarProperty Name="NOME_EQUIPE" ColumnName="NOME_EQUIPE" />
+                <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SORTEIOS">
+            <EntityTypeMapping TypeName="elektroModel.SORTEIOS">
+              <MappingFragment StoreEntitySet="SORTEIOS">
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+                <ScalarProperty Name="COD_SORTEIO" ColumnName="COD_SORTEIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIDEOS">
+            <EntityTypeMapping TypeName="elektroModel.VIDEOS">
+              <MappingFragment StoreEntitySet="VIDEOS">
+                <ScalarProperty Name="CODIGO_LISTA_VIDEOS" ColumnName="CODIGO_LISTA_VIDEOS" />
+                <ScalarProperty Name="VIDEO" ColumnName="VIDEO" />
+                <ScalarProperty Name="ID_VIDEO" ColumnName="ID_VIDEO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGISTRO_OCORRENCIAS">
+            <EntityTypeMapping TypeName="elektroModel.REGISTRO_OCORRENCIAS">
+              <MappingFragment StoreEntitySet="REGISTRO_OCORRENCIAS">
+                <ScalarProperty Name="COD_FALHA_EVENTO" ColumnName="COD_FALHA_EVENTO" />
+                <ScalarProperty Name="tipo_ocorrencia" ColumnName="tipo_ocorrencia" />
+                <ScalarProperty Name="DATA_FINAL" ColumnName="DATA_FINAL" />
+                <ScalarProperty Name="DATA_INICIAL" ColumnName="DATA_INICIAL" />
+                <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+                <ScalarProperty Name="COD_LISTA_VIDEOS" ColumnName="COD_LISTA_VIDEOS" />
+                <ScalarProperty Name="COD_SORTEADOS" ColumnName="COD_SORTEADOS" />
+                <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+                <ScalarProperty Name="CODIGO_SEVERIDADE" ColumnName="CODIGO_SEVERIDADE" />
+                <ScalarProperty Name="OBSERVACAO_VALIDACAO" ColumnName="OBSERVACAO_VALIDACAO" />
+                <ScalarProperty Name="DATA_VALIDACAO" ColumnName="DATA_VALIDACAO" />
+                <ScalarProperty Name="USUARIO_VALIDACAO" ColumnName="USUARIO_VALIDACAO" />
+                <ScalarProperty Name="CODIGO_VALIDACAO" ColumnName="CODIGO_VALIDACAO" />
+                <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
+                <ScalarProperty Name="CODIGO_ATIVIDADE" ColumnName="CODIGO_ATIVIDADE" />
+                <ScalarProperty Name="CODIGO_TIPO_OCORRENCIA" ColumnName="CODIGO_TIPO_OCORRENCIA" />
+                <ScalarProperty Name="CODIGO_REGISTRO_OCORRENCIA" ColumnName="CODIGO_REGISTRO_OCORRENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SORTEADOS">
+            <EntityTypeMapping TypeName="elektroModel.SORTEADOS">
+              <MappingFragment StoreEntitySet="SORTEADOS">
+                <ScalarProperty Name="COD_SORTEIO" ColumnName="COD_SORTEIO" />
+                <ScalarProperty Name="USUARIO_VISUALIZACAO" ColumnName="USUARIO_VISUALIZACAO" />
+                <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+                <ScalarProperty Name="VISUALIZADO" ColumnName="VISUALIZADO" />
+                <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+                <ScalarProperty Name="COD_SORTEADOS" ColumnName="COD_SORTEADOS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LISTA_VIDEOS">
+            <EntityTypeMapping TypeName="elektroModel.LISTA_VIDEOS">
+              <MappingFragment StoreEntitySet="LISTA_VIDEOS">
+                <ScalarProperty Name="TEMPO_TOTAL_VIDEOS" ColumnName="TEMPO_TOTAL_VIDEOS" />
+                <ScalarProperty Name="CODIGO_LISTA_VIDEOS" ColumnName="CODIGO_LISTA_VIDEOS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAMERAS">
+            <EntityTypeMapping TypeName="elektroModel.CAMERAS">
+              <MappingFragment StoreEntitySet="CAMERAS">
+                <ScalarProperty Name="PRONTUARIO" ColumnName="PRONTUARIO" />
+                <ScalarProperty Name="CODIGO_EMPRESA" ColumnName="CODIGO_EMPRESA" />
+                <ScalarProperty Name="DATA_AQUISICAO" ColumnName="DATA_AQUISICAO" />
+                <ScalarProperty Name="USUARIO_BAIXA" ColumnName="USUARIO_BAIXA" />
+                <ScalarProperty Name="MOTIVO_BAIXA" ColumnName="MOTIVO_BAIXA" />
+                <ScalarProperty Name="DATA_BAIXA" ColumnName="DATA_BAIXA" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="codigo_barra_camera" ColumnName="codigo_barra_camera" />
+                <ScalarProperty Name="bpm_camera" ColumnName="bpm_camera" />
+                <ScalarProperty Name="codigo_camera" ColumnName="codigo_camera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HISTORICOS_CAMERAS">
+            <EntityTypeMapping TypeName="elektroModel.HISTORICOS_CAMERAS">
+              <MappingFragment StoreEntitySet="HISTORICOS_CAMERAS">
+                <ScalarProperty Name="PRONTUARIO" ColumnName="PRONTUARIO" />
+                <ScalarProperty Name="NUMERO_RASTREIO" ColumnName="NUMERO_RASTREIO" />
+                <ScalarProperty Name="DATA_BAIXA" ColumnName="DATA_BAIXA" />
+                <ScalarProperty Name="DATA_RECEBIMENTO" ColumnName="DATA_RECEBIMENTO" />
+                <ScalarProperty Name="DATA_ENVIO" ColumnName="DATA_ENVIO" />
+                <ScalarProperty Name="DATA_DESALOCAO" ColumnName="DATA_DESALOCAO" />
+                <ScalarProperty Name="DATA_ALOCACAO" ColumnName="DATA_ALOCACAO" />
+                <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
+                <ScalarProperty Name="EMPRESA_MANUTENCAO" ColumnName="EMPRESA_MANUTENCAO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="CODIGO_CAMERA" ColumnName="CODIGO_CAMERA" />
+                <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+                <ScalarProperty Name="COD_HISTORICO" ColumnName="COD_HISTORICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

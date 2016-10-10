@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="elektroModelStoreContainer" CdmEntityContainer="elektroEntities">
+    <EntitySetMapping Name="ATIVIDADES">
+      <EntityTypeMapping TypeName="elektroModel.ATIVIDADES">
+        <MappingFragment StoreEntitySet="ATIVIDADES">
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="CODIGO_ATIVIDADE" ColumnName="CODIGO_ATIVIDADE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DESCARGAS">
+      <EntityTypeMapping TypeName="elektroModel.DESCARGAS">
+        <MappingFragment StoreEntitySet="DESCARGAS">
+          <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="DATA_DESCARGA" ColumnName="DATA_DESCARGA" />
+          <ScalarProperty Name="CODIGO_DESCARGA" ColumnName="CODIGO_DESCARGA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FUNCIONARIOS">
+      <EntityTypeMapping TypeName="elektroModel.FUNCIONARIOS">
+        <MappingFragment StoreEntitySet="FUNCIONARIOS">
+          <ScalarProperty Name="periodo" ColumnName="periodo" />
+          <ScalarProperty Name="nome_gestor" ColumnName="nome_gestor" />
+          <ScalarProperty Name="prontuario_gestor" ColumnName="prontuario_gestor" />
+          <ScalarProperty Name="regiao" ColumnName="regiao" />
+          <ScalarProperty Name="gerencia" ColumnName="gerencia" />
+          <ScalarProperty Name="supervisao" ColumnName="supervisao" />
+          <ScalarProperty Name="localidade" ColumnName="localidade" />
+          <ScalarProperty Name="funcao" ColumnName="funcao" />
+          <ScalarProperty Name="nome_funcionario" ColumnName="nome_funcionario" />
+          <ScalarProperty Name="prontuario" ColumnName="prontuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GERENCIA">
+      <EntityTypeMapping TypeName="elektroModel.GERENCIA">
+        <MappingFragment StoreEntitySet="GERENCIA">
+          <ScalarProperty Name="CODIGO_REGIAO" ColumnName="CODIGO_REGIAO" />
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="CODIGO_GERENCIA" ColumnName="CODIGO_GERENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HD">
+      <EntityTypeMapping TypeName="elektroModel.HD">
+        <MappingFragment StoreEntitySet="HD">
+          <ScalarProperty Name="LOCAL" ColumnName="LOCAL" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="NUMERO_SERIE" ColumnName="NUMERO_SERIE" />
+          <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOCALIDADE">
+      <EntityTypeMapping TypeName="elektroModel.LOCALIDADE">
+        <MappingFragment StoreEntitySet="LOCALIDADE">
+          <ScalarProperty Name="CODIGO_SUPERVISAO" ColumnName="CODIGO_SUPERVISAO" />
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="CODIGO_LOCALIDADE" ColumnName="CODIGO_LOCALIDADE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MOVIMENTACAO_CAMERA">
+      <EntityTypeMapping TypeName="elektroModel.MOVIMENTACAO_CAMERA">
+        <MappingFragment StoreEntitySet="MOVIMENTACAO_CAMERA">
+          <ScalarProperty Name="OBSERVACAO_DESVINCULAR" ColumnName="OBSERVACAO_DESVINCULAR" />
+          <ScalarProperty Name="NUMERO_RASTREIO" ColumnName="NUMERO_RASTREIO" />
+          <ScalarProperty Name="DATA_FIM" ColumnName="DATA_FIM" />
+          <ScalarProperty Name="DATA_INICIO" ColumnName="DATA_INICIO" />
+          <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
+          <ScalarProperty Name="EMPRESA_MANUTENCAO" ColumnName="EMPRESA_MANUTENCAO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="CODIGO_CAMERA" ColumnName="CODIGO_CAMERA" />
+          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+          <ScalarProperty Name="NUMERO_MOVIMENTACAO" ColumnName="NUMERO_MOVIMENTACAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NAO_CONFORMIDADES">
+      <EntityTypeMapping TypeName="elektroModel.NAO_CONFORMIDADES">
+        <MappingFragment StoreEntitySet="NAO_CONFORMIDADES">
+          <ScalarProperty Name="severidade" ColumnName="severidade" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="atividade" ColumnName="atividade" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="id_nao_conformidade" ColumnName="id_nao_conformidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERMISSOES_USUARIO">
+      <EntityTypeMapping TypeName="elektroModel.PERMISSOES_USUARIO">
+        <MappingFragment StoreEntitySet="PERMISSOES_USUARIO">
+          <ScalarProperty Name="ID_SUBMENU" ColumnName="ID_SUBMENU" />
+          <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
+          <ScalarProperty Name="ID_TIPO_USUARIO" ColumnName="ID_TIPO_USUARIO" />
+          <ScalarProperty Name="ID_PERMISSAO" ColumnName="ID_PERMISSAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECONHECIMENTOS_POSITIVOS">
+      <EntityTypeMapping TypeName="elektroModel.RECONHECIMENTOS_POSITIVOS">
+        <MappingFragment StoreEntitySet="RECONHECIMENTOS_POSITIVOS">
+          <ScalarProperty Name="descricao_rec_positivo" ColumnName="descricao_rec_positivo" />
+          <ScalarProperty Name="atividade" ColumnName="atividade" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="id_rec_positivo" ColumnName="id_rec_positivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REGIAO">
+      <EntityTypeMapping TypeName="elektroModel.REGIAO">
+        <MappingFragment StoreEntitySet="REGIAO">
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="CODIGO_REGIAO" ColumnName="CODIGO_REGIAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUPERVISAO">
+      <EntityTypeMapping TypeName="elektroModel.SUPERVISAO">
+        <MappingFragment StoreEntitySet="SUPERVISAO">
+          <ScalarProperty Name="CODIGO_GERENCIA" ColumnName="CODIGO_GERENCIA" />
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="CODIGO_SUPERVISAO" ColumnName="CODIGO_SUPERVISAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOS_OCORRENCIAS">
+      <EntityTypeMapping TypeName="elektroModel.TIPOS_OCORRENCIAS">
+        <MappingFragment StoreEntitySet="TIPOS_OCORRENCIAS">
+          <ScalarProperty Name="GRAVIDADE" ColumnName="GRAVIDADE" />
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="ID_TIPO" ColumnName="ID_TIPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOS_TRABALHOS">
+      <EntityTypeMapping TypeName="elektroModel.TIPOS_TRABALHOS">
+        <MappingFragment StoreEntitySet="TIPOS_TRABALHOS">
+          <ScalarProperty Name="DESCRICAO_TIPO_TRABALHO" ColumnName="DESCRICAO_TIPO_TRABALHO" />
+          <ScalarProperty Name="ID_TIPO_TRABALHO" ColumnName="ID_TIPO_TRABALHO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARQUIVOS">
+      <EntityTypeMapping TypeName="elektroModel.ARQUIVOS">
+        <MappingFragment StoreEntitySet="ARQUIVOS">
+          <ScalarProperty Name="sigla_equipe" ColumnName="sigla_equipe" />
+          <ScalarProperty Name="arquivo" ColumnName="arquivo" />
+          <ScalarProperty Name="numero_veiculo" ColumnName="numero_veiculo" />
+          <ScalarProperty Name="codigo_camera" ColumnName="codigo_camera" />
+          <ScalarProperty Name="data_carga" ColumnName="data_carga" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OCORRENCIAS">
+      <EntityTypeMapping TypeName="elektroModel.OCORRENCIAS">
+        <MappingFragment StoreEntitySet="OCORRENCIAS">
+          <ScalarProperty Name="id_nao_conformidade" ColumnName="id_nao_conformidade" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="data_inclusao" ColumnName="data_inclusao" />
+          <ScalarProperty Name="arquivo" ColumnName="arquivo" />
+          <ScalarProperty Name="numero_veiculo" ColumnName="numero_veiculo" />
+          <ScalarProperty Name="codigo_camera" ColumnName="codigo_camera" />
+          <ScalarProperty Name="sigla_equipe" ColumnName="sigla_equipe" />
+          <ScalarProperty Name="data" ColumnName="data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOS_USUARIOS">
+      <EntityTypeMapping TypeName="elektroModel.TIPOS_USUARIOS">
+        <MappingFragment StoreEntitySet="TIPOS_USUARIOS">
+          <ScalarProperty Name="descricao_tipo_usuario" ColumnName="descricao_tipo_usuario" />
+          <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="elektroModel.USUARIOS">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="PRONTUARIO" ColumnName="PRONTUARIO" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+          <ScalarProperty Name="email_usuario" ColumnName="email_usuario" />
+          <ScalarProperty Name="senha_usuario" ColumnName="senha_usuario" />
+          <ScalarProperty Name="nome_usuario" ColumnName="nome_usuario" />
+          <ScalarProperty Name="prontuario_usuario" ColumnName="prontuario_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPRESAS">
+      <EntityTypeMapping TypeName="elektroModel.EMPRESAS">
+        <MappingFragment StoreEntitySet="EMPRESAS">
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="CODIGO_EMPRESA" ColumnName="CODIGO_EMPRESA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAMERAS">
+      <EntityTypeMapping TypeName="elektroModel.CAMERAS">
+        <MappingFragment StoreEntitySet="CAMERAS">
+          <ScalarProperty Name="CODIGO_EMPRESA" ColumnName="CODIGO_EMPRESA" />
+          <ScalarProperty Name="DATA_AQUISICAO" ColumnName="DATA_AQUISICAO" />
+          <ScalarProperty Name="USUARIO_BAIXA" ColumnName="USUARIO_BAIXA" />
+          <ScalarProperty Name="MOTIVO_BAIXA" ColumnName="MOTIVO_BAIXA" />
+          <ScalarProperty Name="DATA_BAIXA" ColumnName="DATA_BAIXA" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="codigo_barra_camera" ColumnName="codigo_barra_camera" />
+          <ScalarProperty Name="bpm_camera" ColumnName="bpm_camera" />
+          <ScalarProperty Name="codigo_camera" ColumnName="codigo_camera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HISTORICOS_CAMERAS">
+      <EntityTypeMapping TypeName="elektroModel.HISTORICOS_CAMERAS">
+        <MappingFragment StoreEntitySet="HISTORICOS_CAMERAS">
+          <ScalarProperty Name="NUMERO_RASTREIO" ColumnName="NUMERO_RASTREIO" />
+          <ScalarProperty Name="DATA_BAIXA" ColumnName="DATA_BAIXA" />
+          <ScalarProperty Name="DATA_RECEBIMENTO" ColumnName="DATA_RECEBIMENTO" />
+          <ScalarProperty Name="DATA_ENVIO" ColumnName="DATA_ENVIO" />
+          <ScalarProperty Name="DATA_DESALOCAO" ColumnName="DATA_DESALOCAO" />
+          <ScalarProperty Name="DATA_ALOCACAO" ColumnName="DATA_ALOCACAO" />
+          <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
+          <ScalarProperty Name="EMPRESA_MANUTENCAO" ColumnName="EMPRESA_MANUTENCAO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="CODIGO_CAMERA" ColumnName="CODIGO_CAMERA" />
+          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+          <ScalarProperty Name="COD_HISTORICO" ColumnName="COD_HISTORICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HISTORICO_VEICULO">
+      <EntityTypeMapping TypeName="elektroModel.HISTORICO_VEICULO">
+        <MappingFragment StoreEntitySet="HISTORICO_VEICULO">
+          <ScalarProperty Name="DATA_DESVINCULAR" ColumnName="DATA_DESVINCULAR" />
+          <ScalarProperty Name="DATA_VINCULAR" ColumnName="DATA_VINCULAR" />
+          <ScalarProperty Name="USUARIO_DESVINCULAR" ColumnName="USUARIO_DESVINCULAR" />
+          <ScalarProperty Name="USUARIO_VINCULAR" ColumnName="USUARIO_VINCULAR" />
+          <ScalarProperty Name="OBSERVACAO_DESVINCULAR" ColumnName="OBSERVACAO_DESVINCULAR" />
+          <ScalarProperty Name="OBSERVACAO_VINCULAR" ColumnName="OBSERVACAO_VINCULAR" />
+          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+          <ScalarProperty Name="PLACA_VEICULO" ColumnName="PLACA_VEICULO" />
+          <ScalarProperty Name="NUMERO_HISTORICO" ColumnName="NUMERO_HISTORICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOS_VEICULOS">
+      <EntityTypeMapping TypeName="elektroModel.TIPOS_VEICULOS">
+        <MappingFragment StoreEntitySet="TIPOS_VEICULOS">
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="COD_TIPO_VEICULO" ColumnName="COD_TIPO_VEICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEICULOS">
+      <EntityTypeMapping TypeName="elektroModel.VEICULOS">
+        <MappingFragment StoreEntitySet="VEICULOS">
+          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="COD_TIPO" ColumnName="COD_TIPO" />
+          <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+          <ScalarProperty Name="PLACA" ColumnName="PLACA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESCALA_COD">
+      <EntityTypeMapping TypeName="elektroModel.ESCALA_COD">
+        <MappingFragment StoreEntitySet="ESCALA_COD">
+          <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="DATA_FIM" ColumnName="DATA_FIM" />
+          <ScalarProperty Name="DATA_INICIO" ColumnName="DATA_INICIO" />
+          <ScalarProperty Name="PRONTUARIO" ColumnName="PRONTUARIO" />
+          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MOVIMENTACAO_HD">
+      <EntityTypeMapping TypeName="elektroModel.MOVIMENTACAO_HD">
+        <MappingFragment StoreEntitySet="MOVIMENTACAO_HD">
+          <ScalarProperty Name="DATA_PROVAVEL_RECEBIMENTO" ColumnName="DATA_PROVAVEL_RECEBIMENTO" />
+          <ScalarProperty Name="DATA_ENVIO" ColumnName="DATA_ENVIO" />
+          <ScalarProperty Name="USUARIO_REGISTRO_RECEBIMENTO" ColumnName="USUARIO_REGISTRO_RECEBIMENTO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="MONITORIA" ColumnName="MONITORIA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+          <ScalarProperty Name="NUMERO_PROTOCOLO" ColumnName="NUMERO_PROTOCOLO" />
+          <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
+          <ScalarProperty Name="LOCAL_DESTINO" ColumnName="LOCAL_DESTINO" />
+          <ScalarProperty Name="LOCAL_REGISTRO" ColumnName="LOCAL_REGISTRO" />
+          <ScalarProperty Name="RESPONSAVEL" ColumnName="RESPONSAVEL" />
+          <ScalarProperty Name="DATA_CHEGADA" ColumnName="DATA_CHEGADA" />
+          <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+          <ScalarProperty Name="NUMERO_MOVIMENTACAO" ColumnName="NUMERO_MOVIMENTACAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FALHAS_EVENTOS_PROCESSOS">
+      <EntityTypeMapping TypeName="elektroModel.FALHAS_EVENTOS_PROCESSOS">
+        <MappingFragment StoreEntitySet="FALHAS_EVENTOS_PROCESSOS">
+          <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="COD_FALHA_EVENTO" ColumnName="COD_FALHA_EVENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQUIPES">
+      <EntityTypeMapping TypeName="elektroModel.EQUIPES">
+        <MappingFragment StoreEntitySet="EQUIPES">
+          <ScalarProperty Name="PLACA_VEICULO" ColumnName="PLACA_VEICULO" />
+          <ScalarProperty Name="CODIGO_CAMERA" ColumnName="CODIGO_CAMERA" />
+          <ScalarProperty Name="ID_TIPO_TRABALHO" ColumnName="ID_TIPO_TRABALHO" />
+          <ScalarProperty Name="REGIAO" ColumnName="REGIAO" />
+          <ScalarProperty Name="GERENCIA" ColumnName="GERENCIA" />
+          <ScalarProperty Name="SUPERVISAO" ColumnName="SUPERVISAO" />
+          <ScalarProperty Name="LOCALIDADE" ColumnName="LOCALIDADE" />
+          <ScalarProperty Name="NOME_EQUIPE" ColumnName="NOME_EQUIPE" />
+          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SORTEIOS">
+      <EntityTypeMapping TypeName="elektroModel.SORTEIOS">
+        <MappingFragment StoreEntitySet="SORTEIOS">
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="DATA_REGISTRO" ColumnName="DATA_REGISTRO" />
+          <ScalarProperty Name="COD_SORTEIO" ColumnName="COD_SORTEIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIDEOS">
+      <EntityTypeMapping TypeName="elektroModel.VIDEOS">
+        <MappingFragment StoreEntitySet="VIDEOS">
+          <ScalarProperty Name="CODIGO_LISTA_VIDEOS" ColumnName="CODIGO_LISTA_VIDEOS" />
+          <ScalarProperty Name="VIDEO" ColumnName="VIDEO" />
+          <ScalarProperty Name="ID_VIDEO" ColumnName="ID_VIDEO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REGISTRO_OCORRENCIAS">
+      <EntityTypeMapping TypeName="elektroModel.REGISTRO_OCORRENCIAS">
+        <MappingFragment StoreEntitySet="REGISTRO_OCORRENCIAS">
+          <ScalarProperty Name="COD_FALHA_EVENTO" ColumnName="COD_FALHA_EVENTO" />
+          <ScalarProperty Name="tipo_ocorrencia" ColumnName="tipo_ocorrencia" />
+          <ScalarProperty Name="DATA_FINAL" ColumnName="DATA_FINAL" />
+          <ScalarProperty Name="DATA_INICIAL" ColumnName="DATA_INICIAL" />
+          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+          <ScalarProperty Name="COD_LISTA_VIDEOS" ColumnName="COD_LISTA_VIDEOS" />
+          <ScalarProperty Name="COD_SORTEADOS" ColumnName="COD_SORTEADOS" />
+          <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+          <ScalarProperty Name="CODIGO_SEVERIDADE" ColumnName="CODIGO_SEVERIDADE" />
+          <ScalarProperty Name="OBSERVACAO_VALIDACAO" ColumnName="OBSERVACAO_VALIDACAO" />
+          <ScalarProperty Name="DATA_VALIDACAO" ColumnName="DATA_VALIDACAO" />
+          <ScalarProperty Name="USUARIO_VALIDACAO" ColumnName="USUARIO_VALIDACAO" />
+          <ScalarProperty Name="CODIGO_VALIDACAO" ColumnName="CODIGO_VALIDACAO" />
+          <ScalarProperty Name="OBSERVACAO" ColumnName="OBSERVACAO" />
+          <ScalarProperty Name="CODIGO_ATIVIDADE" ColumnName="CODIGO_ATIVIDADE" />
+          <ScalarProperty Name="CODIGO_TIPO_OCORRENCIA" ColumnName="CODIGO_TIPO_OCORRENCIA" />
+          <ScalarProperty Name="CODIGO_REGISTRO_OCORRENCIA" ColumnName="CODIGO_REGISTRO_OCORRENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SORTEADOS">
+      <EntityTypeMapping TypeName="elektroModel.SORTEADOS">
+        <MappingFragment StoreEntitySet="SORTEADOS">
+          <ScalarProperty Name="COD_SORTEIO" ColumnName="COD_SORTEIO" />
+          <ScalarProperty Name="USUARIO_VISUALIZACAO" ColumnName="USUARIO_VISUALIZACAO" />
+          <ScalarProperty Name="NUMERO_HD" ColumnName="NUMERO_HD" />
+          <ScalarProperty Name="VISUALIZADO" ColumnName="VISUALIZADO" />
+          <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
+          <ScalarProperty Name="COD_SORTEADOS" ColumnName="COD_SORTEADOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LISTA_VIDEOS">
+      <EntityTypeMapping TypeName="elektroModel.LISTA_VIDEOS">
+        <MappingFragment StoreEntitySet="LISTA_VIDEOS">
+          <ScalarProperty Name="TEMPO_TOTAL_VIDEOS" ColumnName="TEMPO_TOTAL_VIDEOS" />
+          <ScalarProperty Name="CODIGO_LISTA_VIDEOS" ColumnName="CODIGO_LISTA_VIDEOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
