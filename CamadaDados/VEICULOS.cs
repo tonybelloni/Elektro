@@ -19,6 +19,7 @@ namespace CamadaDados
         public int COD_TIPO { get; set; }
         public int ativo { get; set; }
         public string SIGLA_EQUIPE { get; set; }
+        public string observacao { get; set; }
     
         public virtual TIPOS_VEICULOS TIPOS_VEICULOS { get; set; }
     }

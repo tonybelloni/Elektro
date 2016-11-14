@@ -40,6 +40,34 @@ namespace CamadaDados
             }
         }
 
+        public List<ESCALA_COD> GetEscalas(string equipe, string datainicial, string datafinal, int processo)
+        {
+            try
+            {
+                DateTime dtinicio = Convert.ToDateTime(datainicial);
+                DateTime dtfim = Convert.ToDateTime(datafinal);
+                return db.ESCALA_COD.Where(l => l.SIGLA_EQUIPE.Contains(equipe) && l.DATA_INICIO >= dtinicio && l.DATA_FIM <= dtfim).AsQueryable().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("DALEscalaCOD - 002 - Erro ao recuperar escalas - " + ex.Message);
+            }
+        }
+
+        public List<ESCALA_COD> GetEscalas(string equipe, string datainicial, string datafinal)
+        {
+            try
+            {
+                DateTime dtinicio = Convert.ToDateTime(datainicial);
+                DateTime dtfim = Convert.ToDateTime(datafinal);
+                return db.ESCALA_COD.Where(l => l.SIGLA_EQUIPE.Contains(equipe) && l.DATA_INICIO <= dtinicio && l.DATA_FIM >= dtfim).AsQueryable().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("DALEscalaCOD - 002 - Erro ao recuperar escalas - " + ex.Message);
+            }
+        }
+
         public void InsertEscala(ESCALA_COD escala)
         {
             try

@@ -34,15 +34,15 @@
             this.txtDataAlocacao = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbEquipe = new System.Windows.Forms.ComboBox();
-            this.cmbNumeroCamera = new System.Windows.Forms.ComboBox();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.cmbNumeroCamera = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -92,14 +92,6 @@
             this.cmbEquipe.Size = new System.Drawing.Size(327, 24);
             this.cmbEquipe.TabIndex = 4;
             // 
-            // cmbNumeroCamera
-            // 
-            this.cmbNumeroCamera.FormattingEnabled = true;
-            this.cmbNumeroCamera.Location = new System.Drawing.Point(137, 26);
-            this.cmbNumeroCamera.Name = "cmbNumeroCamera";
-            this.cmbNumeroCamera.Size = new System.Drawing.Size(327, 24);
-            this.cmbNumeroCamera.TabIndex = 3;
-            // 
             // txtObservacao
             // 
             this.txtObservacao.Location = new System.Drawing.Point(137, 115);
@@ -146,15 +138,6 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = global::Elektro.Properties.Resources.salvar_blue;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(58, 22);
-            this.toolStripButton1.Text = "Salvar";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -163,6 +146,23 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::Elektro.Properties.Resources.salvar_blue;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(57, 22);
+            this.toolStripButton1.Text = "Salvar";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // cmbNumeroCamera
+            // 
+            this.cmbNumeroCamera.FormattingEnabled = true;
+            this.cmbNumeroCamera.Location = new System.Drawing.Point(137, 26);
+            this.cmbNumeroCamera.Name = "cmbNumeroCamera";
+            this.cmbNumeroCamera.Size = new System.Drawing.Size(327, 24);
+            this.cmbNumeroCamera.TabIndex = 3;
             // 
             // frmCadastroAlocacaoCamera
             // 
@@ -192,7 +192,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cmbNumeroCamera;
         private System.Windows.Forms.TextBox txtObservacao;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
@@ -204,5 +203,6 @@
         private System.Windows.Forms.ComboBox cmbEquipe;
         private System.Windows.Forms.DateTimePicker txtDataAlocacao;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbNumeroCamera;
     }
 }

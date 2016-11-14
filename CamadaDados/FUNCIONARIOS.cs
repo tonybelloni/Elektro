@@ -18,20 +18,31 @@ namespace CamadaDados
         public FUNCIONARIOS()
         {
             this.USUARIOS = new HashSet<USUARIOS>();
+            this.ESCALA_COD = new HashSet<ESCALA_COD>();
+            this.FUNCIONARIOS1 = new HashSet<FUNCIONARIOS>();
         }
     
         public string prontuario { get; set; }
         public string nome_funcionario { get; set; }
         public string funcao { get; set; }
-        public Nullable<int> localidade { get; set; }
-        public Nullable<int> supervisao { get; set; }
-        public Nullable<int> gerencia { get; set; }
-        public Nullable<int> regiao { get; set; }
+        public int localidade { get; set; }
+        public int supervisao { get; set; }
+        public int gerencia { get; set; }
+        public int regiao { get; set; }
         public string prontuario_gestor { get; set; }
         public string nome_gestor { get; set; }
         public string periodo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIOS> USUARIOS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ESCALA_COD> ESCALA_COD { get; set; }
+        public virtual LOCALIDADE LOCALIDADE1 { get; set; }
+        public virtual SUPERVISAO SUPERVISAO1 { get; set; }
+        public virtual GERENCIA GERENCIA1 { get; set; }
+        public virtual REGIAO REGIAO1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FUNCIONARIOS> FUNCIONARIOS1 { get; set; }
+        public virtual FUNCIONARIOS FUNCIONARIOS2 { get; set; }
     }
 }

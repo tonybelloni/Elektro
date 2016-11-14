@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EquipeSorteio.cs" />
     <Compile Include="Ocorrencia.cs" />
     <Compile Include="Arquivo.cs" />
     <Compile Include="NaoConformidade.cs" />

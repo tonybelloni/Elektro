@@ -34,15 +34,23 @@ namespace Elektro.Formularios
                 CamadaDados.USUARIOS usuario = new CamadaDados.USUARIOS();
 
                 usuario = usuarios.GetUsuario(txtProntuario.Text);
-
-                if (ValidarCampos())
+                if (usuario != null)
                 {
-                    progressBar1.Value = 75;
-                    if (ValidarUsuario(usuario))
+                    if (ValidarCampos())
                     {
-                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                        parent.Usuario = usuario;
-                        this.Close();
+                        progressBar1.Value = 75;
+                        if (ValidarUsuario(usuario))
+                        {
+                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                            parent.Usuario = usuario;
+                            this.Close();
+                        }
+                        else
+                        {
+                            btnEntrar.Enabled = true;
+                            progressBar1.Value = 0;
+                            label3.Visible = false;
+                        }
                     }
                     else
                     {
@@ -53,9 +61,13 @@ namespace Elektro.Formularios
                 }
                 else
                 {
+                    MessageBox.Show("Usuário inválido !", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnEntrar.Enabled = true;
                     progressBar1.Value = 0;
                     label3.Visible = false;
+                    txtProntuario.Text = "";
+                    txtSenha.Text = "";
+                    txtProntuario.Focus();
                 }
             }
             catch (Exception ex)

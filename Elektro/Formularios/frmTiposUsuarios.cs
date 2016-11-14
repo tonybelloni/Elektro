@@ -71,14 +71,22 @@ namespace Elektro.Formularios
         {
             if (e.Button == MouseButtons.Right)
             {
-                ContextMenu m = new ContextMenu();
-                m.MenuItems.Add(new MenuItem("Editar"));
-                m.MenuItems.Add(new MenuItem("Permissões de Menu"));
-                m.MenuItems[0].Click += new EventHandler(EditarTiposUsuarios);
-                m.MenuItems[1].Click += new EventHandler(EditarPermissoes);
                 currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
 
-                m.Show(dataGridView1, new Point(e.X, e.Y));
+                if (dataGridView1.Rows[currentMouseOverRow].Cells[1].Value.ToString() == "Administrador")
+                {
+                    MessageBox.Show("O perfil de administrador do sistema não pode ser alterado !", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem("Editar"));
+                    m.MenuItems.Add(new MenuItem("Permissões de Menu"));
+                    m.MenuItems[0].Click += new EventHandler(EditarTiposUsuarios);
+                    m.MenuItems[1].Click += new EventHandler(EditarPermissoes);
+              
+                    m.Show(dataGridView1, new Point(e.X, e.Y));
+                }
             }
         } 
 

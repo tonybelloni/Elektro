@@ -29,7 +29,10 @@ namespace Elektro.Formularios
 
         private void frmCadastroFuncionarios_Load(object sender, EventArgs e)
         {
-            try
+            txtArquivo.Text = "";
+            txtArquivo.Enabled = false;
+
+            /*try
             {
                 button1.Enabled = false;
 
@@ -118,6 +121,41 @@ namespace Elektro.Formularios
                 listBox1.Items.Add("ERRO : " + ex.Message);
                 listBox1.Items.Add("FIM DA CARGA");
                 button1.Enabled = true;
+            }*/
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Multiselect = false;
+            openFileDialog1.Title = "Selecionar vídeos";
+            openFileDialog1.Filter = "Todos os arquivos |*.*";
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+
+            DialogResult dialog = openFileDialog1.ShowDialog();
+
+            if (dialog == System.Windows.Forms.DialogResult.OK)
+            {
+                txtArquivo.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (txtArquivo.Text == "")
+            {
+                MessageBox.Show("Selecione o arquivo de escalas para importação !", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                frmProcessaFuncionarios frm = new frmProcessaFuncionarios();
+                frm.Arquivo = txtArquivo.Text;
+                frm.ShowDialog();
             }
         }
     }

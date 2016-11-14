@@ -228,9 +228,11 @@ namespace Elektro.Formularios
 
         private void btiEquipe_Click(object sender, EventArgs e)
         {
-            //frmVerEscalaCOD frm = new frmVerEscalaCOD();
-            //frm.ShowDialog();
-            MessageBox.Show("Nenhuma escala encontrada para essa equipe no horário da ocorrência", "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            frmVerEscalaCOD frm = new frmVerEscalaCOD();
+            frm.Equipe = txtEquipe.Text;
+            frm.DataInicial = txtDataInicial.Text;
+            frm.DataFinal = txtDataFinal.Text;
+            frm.ShowDialog();
         }
     }
 }

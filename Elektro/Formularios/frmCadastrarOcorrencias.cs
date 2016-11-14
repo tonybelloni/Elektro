@@ -395,7 +395,7 @@ namespace Elektro.Formularios
             if (e.Index != -1)
             {
                 TIPOS_OCORRENCIAS tipo = (TIPOS_OCORRENCIAS)cmbNaoConformidade.Items[e.Index];
-                if (tipo.ID_TIPO == 1)
+                if (tipo.GRAVIDADE == 1)
                 {
                     cor = Color.Yellow;
                     e.DrawBackground();
@@ -404,7 +404,7 @@ namespace Elektro.Formularios
                     e.Graphics.DrawString(" " + tipo.DESCRICAO, fonte, System.Drawing.Brushes.Black, new RectangleF(e.Bounds.X + rectangle.Width, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height));
                     e.DrawFocusRectangle();
                 }
-                else if (tipo.ID_TIPO == 2)
+                else if (tipo.GRAVIDADE == 2)
                 {
                     cor = Color.Orange;
                     e.DrawBackground();
@@ -413,7 +413,7 @@ namespace Elektro.Formularios
                     e.Graphics.DrawString(" " + tipo.DESCRICAO, fonte, System.Drawing.Brushes.Black, new RectangleF(e.Bounds.X + rectangle.Width, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height));
                     e.DrawFocusRectangle();
                 }
-                else if (tipo.ID_TIPO == 3)
+                else if (tipo.GRAVIDADE == 3)
                 {
                     cor = Color.OrangeRed;
                     e.DrawBackground();
@@ -422,18 +422,9 @@ namespace Elektro.Formularios
                     e.Graphics.DrawString(" " + tipo.DESCRICAO, fonte, System.Drawing.Brushes.Black, new RectangleF(e.Bounds.X + rectangle.Width, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height));
                     e.DrawFocusRectangle();
                 }
-                else if (tipo.ID_TIPO == 4)
+                else if (tipo.GRAVIDADE == 4)
                 {
                     cor = Color.Green;
-                    e.DrawBackground();
-                    Rectangle rectangle = new Rectangle(2, e.Bounds.Top + 2, e.Bounds.Height, e.Bounds.Height - 4);
-                    e.Graphics.FillRectangle(new SolidBrush(cor), rectangle);
-                    e.Graphics.DrawString(" " + tipo.DESCRICAO, fonte, System.Drawing.Brushes.Black, new RectangleF(e.Bounds.X + rectangle.Width, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height));
-                    e.DrawFocusRectangle();
-                }
-                else if (e.Index == 5)
-                {
-                    cor = Color.LightGray;
                     e.DrawBackground();
                     Rectangle rectangle = new Rectangle(2, e.Bounds.Top + 2, e.Bounds.Height, e.Bounds.Height - 4);
                     e.Graphics.FillRectangle(new SolidBrush(cor), rectangle);

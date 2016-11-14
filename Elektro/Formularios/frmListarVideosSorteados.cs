@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CamadaControle;
 using CamadaDados;
+using Modelo;
 
 namespace Elektro.Formularios
 {
@@ -50,19 +51,36 @@ namespace Elektro.Formularios
                 BLLSorteados bllSorteado = new BLLSorteados();
                 List<SORTEADOS> lista = bllSorteado.GetSorteados("").Where(l => l.COD_SORTEIO == codigoSorteio).AsQueryable().ToList();
 
-                var sorteados = lista.Select(l => new
-                {
-                    l.SIGLA_EQUIPE,
-                    VISUALIZADO = l.VISUALIZADO == "N" ? "Não" : "Sim",
-                    QUANTIDADE_REGISTRO_OCORRENCIAS = l.REGISTRO_OCORRENCIAS.Count()
-                }).AsQueryable().ToList();
+                List<EquipeSorteio> equipes = new List<EquipeSorteio>();
 
-                if (sorteados.Count > 0)
+                foreach(SORTEADOS sorteio in lista)
                 {
-                    dataGridView1.DataSource = sorteados;
+                    EquipeSorteio es = new EquipeSorteio();
+                    es.SiglaEquipe = sorteio.SIGLA_EQUIPE;
+                    es.Visualizado = sorteio.VISUALIZADO == "N" ? "Não" : "Sim";
+                    es.QuantidadeRegistro = sorteio.REGISTRO_OCORRENCIAS.Count();
+
+                    BLLEquipes bllEquipes = new BLLEquipes();
+                    EQUIPES eq = bllEquipes.GetEquipeBySigla(sorteio.SIGLA_EQUIPE);
+
+                    es.DescricaoLocalidade = eq.LOCALIDADE1.DESCRICAO;
+                    es.DescricaoGerencia = eq.GERENCIA1.DESCRICAO;
+                    es.DescricaoRegiao = eq.REGIAO1.DESCRICAO;
+                    es.DescricaoSupervisao = eq.SUPERVISAO1.DESCRICAO;
+
+                    equipes.Add(es);
+                }
+
+                if (equipes.Count > 0)
+                {
+                    dataGridView1.DataSource = equipes;
                     dataGridView1.Columns[0].HeaderText = "Equipe";
-                    dataGridView1.Columns[1].HeaderText = "Visualizado";
-                    dataGridView1.Columns[2].HeaderText = "Registros de Ocorrência";
+                    dataGridView1.Columns[1].HeaderText = "Localidade";
+                    dataGridView1.Columns[2].HeaderText = "Supervisão";
+                    dataGridView1.Columns[3].HeaderText = "Gerência";
+                    dataGridView1.Columns[4].HeaderText = "Região";
+                    dataGridView1.Columns[5].HeaderText = "Visualizado";
+                    dataGridView1.Columns[6].HeaderText = "Registros de Ocorrência";
                 }
                 else
                 {
@@ -131,17 +149,24 @@ namespace Elektro.Formularios
                 {
                     XcelApp.Application.Workbooks.Add(Type.Missing);
 
-                    for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                    int row = 1;
+                    int column = 1;
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
-                        XcelApp.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                        XcelApp.Cells[row, column] = dataGridView1.Columns[i].HeaderText;
+                        column++;
                     }
 
-                    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                    row = 2;
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
+                        column = 1;
                         for (int j = 0; j < dataGridView1.Columns.Count; j++)
                         {
-                            XcelApp.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            XcelApp.Cells[row, column] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            column++;
                         }
+                        row++;
                     }
 
                     XcelApp.Columns.AutoFit();

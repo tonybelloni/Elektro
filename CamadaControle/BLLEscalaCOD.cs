@@ -36,6 +36,30 @@ namespace CamadaControle
             }
         }
 
+        public List<ESCALA_COD> GetEscalas(string equipe, string datainicial, string datafinal)
+        {
+            try
+            {
+                return dalEscala.GetEscalas(equipe, datainicial, datafinal);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<ESCALA_COD> GetEscalas(string equipe, string datainicial, string datafinal, int processo)
+        {
+            try
+            {
+                return dalEscala.GetEscalas(equipe, datainicial, datafinal, processo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public void InsertEscala(ESCALA_COD escala)
         {
             try

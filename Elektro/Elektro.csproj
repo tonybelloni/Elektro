@@ -83,6 +83,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>elektroDSReport.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmAlocacaoCameraFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAlocacaoCameraFuncionario.Designer.cs">
+      <DependentUpon>frmAlocacaoCameraFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBuscaEscala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscaEscala.Designer.cs">
+      <DependentUpon>frmBuscaEscala.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmBuscarCamerasFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +281,18 @@
     <Compile Include="Formularios\frmConfirmarSorteio.Designer.cs">
       <DependentUpon>frmConfirmarSorteio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmEnviarCameraFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEnviarCameraFuncionario.Designer.cs">
+      <DependentUpon>frmEnviarCameraFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEnviarParaManutencaoFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEnviarParaManutencaoFuncionario.Designer.cs">
+      <DependentUpon>frmEnviarParaManutencaoFuncionario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmFalhasEventosProcessos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +316,18 @@
     </Compile>
     <Compile Include="Formularios\frmMovimentacoesHD.Designer.cs">
       <DependentUpon>frmMovimentacoesHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmProcessaEscalaCOD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProcessaEscalaCOD.Designer.cs">
+      <DependentUpon>frmProcessaEscalaCOD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmProcessaFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProcessaFuncionarios.Designer.cs">
+      <DependentUpon>frmProcessaFuncionarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmTiposVeiculos.cs">
       <SubType>Form</SubType>
@@ -595,6 +631,12 @@
     <EmbeddedResource Include="Dialogs\dlgHelpFuncionarios.resx">
       <DependentUpon>dlgHelpFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAlocacaoCameraFuncionario.resx">
+      <DependentUpon>frmAlocacaoCameraFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscaEscala.resx">
+      <DependentUpon>frmBuscaEscala.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmBuscarCamerasFuncionario.resx">
       <DependentUpon>frmBuscarCamerasFuncionario.cs</DependentUpon>
     </EmbeddedResource>
@@ -688,6 +730,12 @@
     <EmbeddedResource Include="Formularios\frmConfirmarSorteio.resx">
       <DependentUpon>frmConfirmarSorteio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEnviarCameraFuncionario.resx">
+      <DependentUpon>frmEnviarCameraFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEnviarParaManutencaoFuncionario.resx">
+      <DependentUpon>frmEnviarParaManutencaoFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmFalhasEventosProcessos.resx">
       <DependentUpon>frmFalhasEventosProcessos.cs</DependentUpon>
     </EmbeddedResource>
@@ -699,6 +747,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmMovimentacoesHD.resx">
       <DependentUpon>frmMovimentacoesHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProcessaEscalaCOD.resx">
+      <DependentUpon>frmProcessaEscalaCOD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProcessaFuncionarios.resx">
+      <DependentUpon>frmProcessaFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmTiposVeiculos.resx">
       <DependentUpon>frmTiposVeiculos.cs</DependentUpon>

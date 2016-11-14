@@ -45,6 +45,7 @@ namespace Elektro.Formularios
                     dataGridView1.DataSource = lista;
                     dataGridView1.Columns[0].HeaderText = "Código";
                     dataGridView1.Columns[1].HeaderText = "Descrição";
+                    dataGridView1.Columns[2].Visible = false;
                 }
                 else
                 {

@@ -142,6 +142,34 @@
       <End Role="EQUIPES" EntitySet="EQUIPES" />
       <End Role="HISTORICOS_CAMERAS" EntitySet="HISTORICOS_CAMERAS" />
     </AssociationSet>
+    <AssociationSet Name="escala_cod_fk01" Association="elektroModel.escala_cod_fk01">
+      <End Role="EQUIPES" EntitySet="EQUIPES" />
+      <End Role="ESCALA_COD" EntitySet="ESCALA_COD" />
+    </AssociationSet>
+    <AssociationSet Name="escala_cod_fk02" Association="elektroModel.escala_cod_fk02">
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+      <End Role="ESCALA_COD" EntitySet="ESCALA_COD" />
+    </AssociationSet>
+    <AssociationSet Name="funcionarios_fk01" Association="elektroModel.funcionarios_fk01">
+      <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="funcionarios_fk02" Association="elektroModel.funcionarios_fk02">
+      <End Role="SUPERVISAO" EntitySet="SUPERVISAO" />
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="funcionarios_fk03" Association="elektroModel.funcionarios_fk03">
+      <End Role="GERENCIA" EntitySet="GERENCIA" />
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="funcionarios_fk04" Association="elektroModel.funcionarios_fk04">
+      <End Role="REGIAO" EntitySet="REGIAO" />
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="funcionarios_fk05" Association="elektroModel.funcionarios_fk05">
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+      <End Role="FUNCIONARIOS1" EntitySet="FUNCIONARIOS" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ATIVIDADES">
     <Key>
@@ -167,14 +195,21 @@
     <Property Name="prontuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="nome_funcionario" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="funcao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="localidade" Type="Int32" />
-    <Property Name="supervisao" Type="Int32" />
-    <Property Name="gerencia" Type="Int32" />
-    <Property Name="regiao" Type="Int32" />
+    <Property Name="localidade" Type="Int32" Nullable="false" />
+    <Property Name="supervisao" Type="Int32" Nullable="false" />
+    <Property Name="gerencia" Type="Int32" Nullable="false" />
+    <Property Name="regiao" Type="Int32" Nullable="false" />
     <Property Name="prontuario_gestor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="nome_gestor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="periodo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="periodo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="USUARIOS" Relationship="elektroModel.FK_USUARIOS_FUNCIONARIOS" FromRole="FUNCIONARIOS" ToRole="USUARIOS" />
+    <NavigationProperty Name="ESCALA_COD" Relationship="elektroModel.escala_cod_fk02" FromRole="FUNCIONARIOS" ToRole="ESCALA_COD" />
+    <NavigationProperty Name="LOCALIDADE1" Relationship="elektroModel.funcionarios_fk01" FromRole="FUNCIONARIOS" ToRole="LOCALIDADE" />
+    <NavigationProperty Name="SUPERVISAO1" Relationship="elektroModel.funcionarios_fk02" FromRole="FUNCIONARIOS" ToRole="SUPERVISAO" />
+    <NavigationProperty Name="GERENCIA1" Relationship="elektroModel.funcionarios_fk03" FromRole="FUNCIONARIOS" ToRole="GERENCIA" />
+    <NavigationProperty Name="REGIAO1" Relationship="elektroModel.funcionarios_fk04" FromRole="FUNCIONARIOS" ToRole="REGIAO" />
+    <NavigationProperty Name="FUNCIONARIOS1" Relationship="elektroModel.funcionarios_fk05" FromRole="FUNCIONARIOS" ToRole="FUNCIONARIOS1" />
+    <NavigationProperty Name="FUNCIONARIOS2" Relationship="elektroModel.funcionarios_fk05" FromRole="FUNCIONARIOS1" ToRole="FUNCIONARIOS" />
   </EntityType>
   <EntityType Name="GERENCIA">
     <Key>
@@ -186,6 +221,7 @@
     <NavigationProperty Name="REGIAO" Relationship="elektroModel.FK_GERENCIA_REGIAO" FromRole="GERENCIA" ToRole="REGIAO" />
     <NavigationProperty Name="SUPERVISAO" Relationship="elektroModel.FK_SUPERVISAO_GERENCIA" FromRole="GERENCIA" ToRole="SUPERVISAO" />
     <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_EQUIPES_GERENCIA" FromRole="GERENCIA" ToRole="EQUIPES" />
+    <NavigationProperty Name="FUNCIONARIOS" Relationship="elektroModel.funcionarios_fk03" FromRole="GERENCIA" ToRole="FUNCIONARIOS" />
   </EntityType>
   <EntityType Name="HD">
     <Key>
@@ -208,6 +244,7 @@
     <NavigationProperty Name="MOVIMENTACAO_HD" Relationship="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_DESTINO" FromRole="LOCALIDADE" ToRole="MOVIMENTACAO_HD" />
     <NavigationProperty Name="MOVIMENTACAO_HD1" Relationship="elektroModel.FK_MOVIMENTACAO_HD_LOCALIDADE_ORIGEM" FromRole="LOCALIDADE" ToRole="MOVIMENTACAO_HD" />
     <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_EQUIPES_LOCALIDADE" FromRole="LOCALIDADE" ToRole="EQUIPES" />
+    <NavigationProperty Name="FUNCIONARIOS" Relationship="elektroModel.funcionarios_fk01" FromRole="LOCALIDADE" ToRole="FUNCIONARIOS" />
   </EntityType>
   <EntityType Name="MOVIMENTACAO_CAMERA">
     <Key>
@@ -264,6 +301,7 @@
     <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="GERENCIA" Relationship="elektroModel.FK_GERENCIA_REGIAO" FromRole="REGIAO" ToRole="GERENCIA" />
     <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_EQUIPES_REGIAO" FromRole="REGIAO" ToRole="EQUIPES" />
+    <NavigationProperty Name="FUNCIONARIOS" Relationship="elektroModel.funcionarios_fk04" FromRole="REGIAO" ToRole="FUNCIONARIOS" />
   </EntityType>
   <EntityType Name="SUPERVISAO">
     <Key>
@@ -275,6 +313,7 @@
     <NavigationProperty Name="GERENCIA" Relationship="elektroModel.FK_SUPERVISAO_GERENCIA" FromRole="SUPERVISAO" ToRole="GERENCIA" />
     <NavigationProperty Name="LOCALIDADE" Relationship="elektroModel.FK_LOCALIDADE_SUPERVISAO" FromRole="SUPERVISAO" ToRole="LOCALIDADE" />
     <NavigationProperty Name="EQUIPES" Relationship="elektroModel.FK_EQUIPES_SUPERVISAO" FromRole="SUPERVISAO" ToRole="EQUIPES" />
+    <NavigationProperty Name="FUNCIONARIOS" Relationship="elektroModel.funcionarios_fk02" FromRole="SUPERVISAO" ToRole="FUNCIONARIOS" />
   </EntityType>
   <EntityType Name="TIPOS_OCORRENCIAS">
     <Key>
@@ -444,11 +483,12 @@
       <PropertyRef Name="PLACA" />
     </Key>
     <Property Name="PLACA" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="NUMERO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="NUMERO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="COD_TIPO" Type="Int32" Nullable="false" />
     <Property Name="ativo" Type="Int32" Nullable="false" />
     <Property Name="SIGLA_EQUIPE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="TIPOS_VEICULOS" Relationship="elektroModel.FK_VEICULOS_TIPOS_VEICULOS" FromRole="VEICULOS" ToRole="TIPOS_VEICULOS" />
+    <Property Name="observacao" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_VEICULOS_TIPOS_VEICULOS">
     <End Type="elektroModel.TIPOS_VEICULOS" Role="TIPOS_VEICULOS" Multiplicity="1" />
@@ -474,6 +514,8 @@
     <Property Name="DATA_FIM" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DATA_REGISTRO" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EQUIPES" Relationship="elektroModel.escala_cod_fk01" FromRole="ESCALA_COD" ToRole="EQUIPES" />
+    <NavigationProperty Name="FUNCIONARIOS" Relationship="elektroModel.escala_cod_fk02" FromRole="ESCALA_COD" ToRole="FUNCIONARIOS" />
   </EntityType>
   <EntityType Name="MOVIMENTACAO_HD">
     <Key>
@@ -564,6 +606,7 @@
     <NavigationProperty Name="MOVIMENTACAO_CAMERA" Relationship="elektroModel.FK_MOVIMENTACAO_CAMERA_CAMERAS" FromRole="EQUIPES" ToRole="MOVIMENTACAO_CAMERA" />
     <NavigationProperty Name="REGISTRO_OCORRENCIAS" Relationship="elektroModel.FK_REGISTRO_OCORRENCIAS_EQUIPES" FromRole="EQUIPES" ToRole="REGISTRO_OCORRENCIAS" />
     <NavigationProperty Name="HISTORICOS_CAMERAS" Relationship="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES" FromRole="EQUIPES" ToRole="HISTORICOS_CAMERAS" />
+    <NavigationProperty Name="ESCALA_COD" Relationship="elektroModel.escala_cod_fk01" FromRole="EQUIPES" ToRole="ESCALA_COD" />
   </EntityType>
   <Association Name="EQUIPES_FK01">
     <End Type="elektroModel.TIPOS_TRABALHOS" Role="TIPOS_TRABALHOS" Multiplicity="1" />
@@ -886,6 +929,90 @@
       </Principal>
       <Dependent Role="HISTORICOS_CAMERAS">
         <PropertyRef Name="SIGLA_EQUIPE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="escala_cod_fk01">
+    <End Type="elektroModel.EQUIPES" Role="EQUIPES" Multiplicity="1" />
+    <End Type="elektroModel.ESCALA_COD" Role="ESCALA_COD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPES">
+        <PropertyRef Name="SIGLA_EQUIPE" />
+      </Principal>
+      <Dependent Role="ESCALA_COD">
+        <PropertyRef Name="SIGLA_EQUIPE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="escala_cod_fk02">
+    <End Type="elektroModel.FUNCIONARIOS" Role="FUNCIONARIOS" Multiplicity="1" />
+    <End Type="elektroModel.ESCALA_COD" Role="ESCALA_COD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FUNCIONARIOS">
+        <PropertyRef Name="prontuario" />
+      </Principal>
+      <Dependent Role="ESCALA_COD">
+        <PropertyRef Name="PRONTUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="funcionarios_fk01">
+    <End Type="elektroModel.LOCALIDADE" Role="LOCALIDADE" Multiplicity="1" />
+    <End Type="elektroModel.FUNCIONARIOS" Role="FUNCIONARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCALIDADE">
+        <PropertyRef Name="CODIGO_LOCALIDADE" />
+      </Principal>
+      <Dependent Role="FUNCIONARIOS">
+        <PropertyRef Name="localidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="funcionarios_fk02">
+    <End Type="elektroModel.SUPERVISAO" Role="SUPERVISAO" Multiplicity="1" />
+    <End Type="elektroModel.FUNCIONARIOS" Role="FUNCIONARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUPERVISAO">
+        <PropertyRef Name="CODIGO_SUPERVISAO" />
+      </Principal>
+      <Dependent Role="FUNCIONARIOS">
+        <PropertyRef Name="supervisao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="funcionarios_fk03">
+    <End Type="elektroModel.GERENCIA" Role="GERENCIA" Multiplicity="1" />
+    <End Type="elektroModel.FUNCIONARIOS" Role="FUNCIONARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GERENCIA">
+        <PropertyRef Name="CODIGO_GERENCIA" />
+      </Principal>
+      <Dependent Role="FUNCIONARIOS">
+        <PropertyRef Name="gerencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="funcionarios_fk04">
+    <End Type="elektroModel.REGIAO" Role="REGIAO" Multiplicity="1" />
+    <End Type="elektroModel.FUNCIONARIOS" Role="FUNCIONARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REGIAO">
+        <PropertyRef Name="CODIGO_REGIAO" />
+      </Principal>
+      <Dependent Role="FUNCIONARIOS">
+        <PropertyRef Name="regiao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="funcionarios_fk05">
+    <End Type="elektroModel.FUNCIONARIOS" Role="FUNCIONARIOS" Multiplicity="0..1" />
+    <End Type="elektroModel.FUNCIONARIOS" Role="FUNCIONARIOS1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FUNCIONARIOS">
+        <PropertyRef Name="prontuario" />
+      </Principal>
+      <Dependent Role="FUNCIONARIOS1">
+        <PropertyRef Name="prontuario_gestor" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

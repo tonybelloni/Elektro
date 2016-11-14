@@ -35,7 +35,7 @@ namespace Elektro.Formularios
             if (_usuario.PRONTUARIO != null)
             {
                 cmbLocalidade.SelectedValue = _usuario.FUNCIONARIOS.localidade;
-                CarregarGraficoCamerasEquipes(_usuario.FUNCIONARIOS.localidade.Value);
+                CarregarGraficoCamerasEquipes(_usuario.FUNCIONARIOS.localidade);
             }
             CarregarGraficoOcorrencias();
             CarregarAtuacao();

@@ -30,7 +30,6 @@ namespace Elektro.Formularios
 
         private void frmGestaoVeiculo_Load(object sender, EventArgs e)
         {
-            Pesquisar();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -47,7 +46,7 @@ namespace Elektro.Formularios
                 BLLEquipes bllEquipe = new BLLEquipes();
                 List<EQUIPES> lista = bllEquipe.GetEquipes("").OrderBy(l => l.SIGLA_EQUIPE).ToList();
 
-                if (Usuario.FUNCIONARIOS != null)
+                if ( (Usuario.FUNCIONARIOS != null) && (!Usuario.TIPOS_USUARIOS.descricao_tipo_usuario.Trim().Contains("administrador")))
                 {
                     if (Usuario.FUNCIONARIOS.funcao.Trim().Contains("gerente"))
                         lista = lista.Where(l => l.GERENCIA == Usuario.FUNCIONARIOS.gerencia).AsQueryable().ToList();
@@ -87,7 +86,7 @@ namespace Elektro.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("Não foi encontrado equipes", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Não foram encontradas equipes !", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

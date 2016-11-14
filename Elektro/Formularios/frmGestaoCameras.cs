@@ -16,6 +16,7 @@ namespace Elektro.Formularios
     {
         private int currentMouseOverRow;
         private USUARIOS _usuario;
+        private bool isAdmin;
 
         public USUARIOS Usuario
         {
@@ -45,39 +46,75 @@ namespace Elektro.Formularios
                     {
                         if (camera.STATUS == "DISPONÍVEL")
                         {
-                            //ContextMenu m = new ContextMenu();
                             m.MenuItems.Add(new MenuItem("Alocar"));
                             m.MenuItems[0].Click += new EventHandler(AlocarCamera);
-                            m.MenuItems.Add(new MenuItem("Enviar para Manutenção"));
-                            m.MenuItems[1].Click += new EventHandler(EnviarManutencaoCamera);
-                            m.MenuItems.Add(new MenuItem("Realizar Baixa"));
-                            m.MenuItems[2].Click += new EventHandler(RealizarBaixaCamera);
-                            m.MenuItems.Add(new MenuItem("Ver Histórico"));
-                            m.MenuItems[3].Click += new EventHandler(VerHistoricoCamera);
+
+                            if (isAdmin)
+                            {
+                                m.MenuItems.Add(new MenuItem("Alterar Responsável"));
+                                m.MenuItems[1].Click += new EventHandler(EnviarFuncionario);
+                                m.MenuItems.Add(new MenuItem("Enviar para Manutenção"));
+                                m.MenuItems[2].Click += new EventHandler(EnviarManutencaoCamera);
+                                m.MenuItems.Add(new MenuItem("Realizar Baixa"));
+                                m.MenuItems[3].Click += new EventHandler(RealizarBaixaCamera);
+                                m.MenuItems.Add(new MenuItem("Ver Histórico"));
+                                m.MenuItems[4].Click += new EventHandler(VerHistoricoCamera);
+                            }
+                            else
+                            {
+                                m.MenuItems.Add(new MenuItem("Enviar para Manutenção"));
+                                m.MenuItems[1].Click += new EventHandler(EnviarManutencaoCamera);
+                                m.MenuItems.Add(new MenuItem("Ver Histórico"));
+                                m.MenuItems[2].Click += new EventHandler(VerHistoricoCamera);
+                            }
+
                             currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
                         else if (camera.STATUS == "ALOCADA")
                         {
-                            //ContextMenu m = new ContextMenu();
                             m.MenuItems.Add(new MenuItem("Desalocar"));
                             m.MenuItems[0].Click += new EventHandler(DesalocarCamera);
-                            m.MenuItems.Add(new MenuItem("Ver Histórico"));
-                            m.MenuItems[1].Click += new EventHandler(VerHistoricoCamera);
+
+                            if (isAdmin)
+                            {
+                                m.MenuItems.Add(new MenuItem("Alterar Responsável"));
+                                m.MenuItems[1].Click += new EventHandler(EnviarFuncionario);
+                                m.MenuItems.Add(new MenuItem("Ver Histórico"));
+                                m.MenuItems[2].Click += new EventHandler(VerHistoricoCamera);
+                            }
+                            else
+                            {
+                                m.MenuItems.Add(new MenuItem("Ver Histórico"));
+                                m.MenuItems[1].Click += new EventHandler(VerHistoricoCamera);
+                            }
+                       
                             currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
-                        else if (camera.STATUS == "MANUTENÇÃO")
+                        else if (camera.STATUS == "MANUTENÇÃO" || camera.STATUS == "MANUTENÇÃO LOCAL")
                         {
-                            //ContextMenu m = new ContextMenu();
-                            m.MenuItems.Add(new MenuItem("Receber da Manutenção"));
-                            m.MenuItems[0].Click += new EventHandler(ReceberManutencaoCamera);
-                            m.MenuItems.Add(new MenuItem("Realizar Baixa"));
-                            m.MenuItems[1].Click += new EventHandler(RealizarBaixaCamera);
-                            m.MenuItems.Add(new MenuItem("Ver Histórico"));
-                            m.MenuItems[2].Click += new EventHandler(VerHistoricoCamera);
+                            if (isAdmin)
+                            {
+                                m.MenuItems.Add(new MenuItem("Alterar Responsável"));
+                                m.MenuItems[0].Click += new EventHandler(EnviarFuncionario);
+                                m.MenuItems.Add(new MenuItem("Receber da Manutenção"));
+                                m.MenuItems[1].Click += new EventHandler(ReceberManutencaoCamera);
+                                m.MenuItems.Add(new MenuItem("Realizar Baixa"));
+                                m.MenuItems[2].Click += new EventHandler(RealizarBaixaCamera);
+                                m.MenuItems.Add(new MenuItem("Ver Histórico"));
+                                m.MenuItems[3].Click += new EventHandler(VerHistoricoCamera);
+                            }
+                            else
+                            {
+                                m.MenuItems.Add(new MenuItem("Receber da Manutenção"));
+                                m.MenuItems[0].Click += new EventHandler(ReceberManutencaoCamera);
+                                m.MenuItems.Add(new MenuItem("Ver Histórico"));
+                                m.MenuItems[1].Click += new EventHandler(VerHistoricoCamera);
+                            }
+
                             currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
@@ -97,6 +134,17 @@ namespace Elektro.Formularios
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void EnviarFuncionario(object sender, EventArgs e)
+        {
+            BLLCameras bllCameras = new BLLCameras();
+            CAMERAS camera = bllCameras.GetCamera(dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString());
+
+            frmEnviarCameraFuncionario frm = new frmEnviarCameraFuncionario(camera);
+            frm.Usuario = _usuario;
+            frm.ShowDialog();
+            Pesquisar();
         }
 
         private void AlocarCamera(object sender, EventArgs e)
@@ -126,22 +174,45 @@ namespace Elektro.Formularios
             BLLCameras bllCameras = new BLLCameras();
             CAMERAS camera = bllCameras.GetCamera(dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString());
 
-            frmCadastroManutencaoCamera frm = new frmCadastroManutencaoCamera(camera);
+            frmEnviarParaManutencaoFuncionario frm = new frmEnviarParaManutencaoFuncionario(camera);
             frm.Usuario = _usuario;
-            frm.Tipo = 1;
             frm.ShowDialog();
             Pesquisar();
         }
 
         private void ReceberManutencaoCamera(object sender, EventArgs e)
         {
-            BLLCameras bllCameras = new BLLCameras();
-            CAMERAS camera = bllCameras.GetCamera(dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString());
+            try
+            {
+                BLLCameras bllCameras = new BLLCameras();
+                CAMERAS camera = bllCameras.GetCamera(dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString());
 
-            frmCadastroManutencaoCamera frm = new frmCadastroManutencaoCamera(camera);
-            frm.Usuario = _usuario;
-            frm.ShowDialog();
-            Pesquisar();
+                BLLHistoricosCameras bllHistorico = new BLLHistoricosCameras();
+                HISTORICOS_CAMERAS historico = new HISTORICOS_CAMERAS();
+
+                DateTime dataEnvio = bllHistorico.GetHistoricosCameras(camera.codigo_camera).Where(l => l.TIPO == 3).LastOrDefault().DATA_ENVIO.Value;
+
+                historico.TIPO = 4;
+                historico.CODIGO_CAMERA = camera.codigo_camera;
+                historico.OBSERVACAO = "Recebimento de camera em manutencao pelo funcionario : " + _usuario.PRONTUARIO;
+                historico.DATA_REGISTRO = DateTime.Now;
+                historico.DATA_ENVIO = dataEnvio;
+                historico.DATA_RECEBIMENTO = DateTime.Now;
+                historico.USUARIO_REGISTRO = _usuario.prontuario_usuario;
+                historico.PRONTUARIO = camera.PRONTUARIO;
+
+                bllHistorico.InserirHistoricoCamera(historico);
+
+                BLLCameras bllCamera = new BLLCameras();
+                bllCamera.UpdateStatusCamera(camera.codigo_camera, "DISPONÍVEL", camera.PRONTUARIO);
+
+                MessageBox.Show("Recebimento de câmera em manutenção realizado com sucesso", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Pesquisar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao receber câmera em manutenção", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void RealizarBaixaCamera(object sender, EventArgs e)
@@ -172,7 +243,19 @@ namespace Elektro.Formularios
                 BLLCameras cameras = new BLLCameras();
                 List<CAMERAS> lista = new List<CAMERAS>();
 
-                lista = cameras.GetCameras("");
+                if (_usuario.TIPOS_USUARIOS.descricao_tipo_usuario == "Administrador")
+                {
+                    lista = cameras.GetCameras("");
+                    isAdmin = true;
+                }
+                else
+                {
+                    if (_usuario.FUNCIONARIOS != null)
+                    {
+                       lista = cameras.GetCamerasPorFuncionario(_usuario.FUNCIONARIOS.prontuario);
+                    }
+                    isAdmin = false;
+                }
 
                 if (lista.Count > 0)
                 {
@@ -186,7 +269,8 @@ namespace Elektro.Formularios
                         DATA_AQUISICAO = l.DATA_AQUISICAO.HasValue ? l.DATA_AQUISICAO.Value.ToShortDateString() : "",
                         FORNECEDORA = l.CODIGO_EMPRESA.HasValue ? l.EMPRESAS.DESCRICAO : "",
                         DATA_INUTILIZACAO = l.DATA_BAIXA.HasValue ? l.DATA_BAIXA.Value.ToShortDateString() : "",
-                        l.MOTIVO_BAIXA
+                        l.MOTIVO_BAIXA,
+                        l.PRONTUARIO
                     }).AsQueryable().ToList();
                     dataGridView1.Columns[0].HeaderText = "Código da Câmera";
                     dataGridView1.Columns[1].HeaderText = "BPM da Câmera";
@@ -197,10 +281,12 @@ namespace Elektro.Formularios
                     dataGridView1.Columns[6].HeaderText = "Fornecedora";
                     dataGridView1.Columns[7].HeaderText = "Data Inutilização";
                     dataGridView1.Columns[8].HeaderText = "Motivo";
+                    dataGridView1.Columns[9].HeaderText = "Funcionário";
                 }
                 else
                 {
                     dataGridView1.DataSource = null;
+                    MessageBox.Show("Nenhuma câmera encontrda", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

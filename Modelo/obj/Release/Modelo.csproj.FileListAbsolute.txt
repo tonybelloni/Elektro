@@ -19,3 +19,11 @@ D:\Rioservice\ElektroV2\Modelo\bin\Release\Microsoft.ReportViewer.ProcessingObje
 D:\Rioservice\ElektroV2\Modelo\bin\Release\Microsoft.ReportViewer.WebForms.DLL
 D:\Rioservice\ElektroV2\Modelo\obj\Release\Modelo.dll
 D:\Rioservice\ElektroV2\Modelo\obj\Release\Modelo.pdb
+E:\Projetos\Elektro\Modelo\bin\Release\Modelo.dll
+E:\Projetos\Elektro\Modelo\bin\Release\Modelo.pdb
+E:\Projetos\Elektro\Modelo\bin\Release\Microsoft.ReportViewer.Common.dll
+E:\Projetos\Elektro\Modelo\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+E:\Projetos\Elektro\Modelo\bin\Release\Microsoft.ReportViewer.WebForms.DLL
+E:\Projetos\Elektro\Modelo\obj\Release\Modelo.csprojResolveAssemblyReference.cache
+E:\Projetos\Elektro\Modelo\obj\Release\Modelo.dll
+E:\Projetos\Elektro\Modelo\obj\Release\Modelo.pdb

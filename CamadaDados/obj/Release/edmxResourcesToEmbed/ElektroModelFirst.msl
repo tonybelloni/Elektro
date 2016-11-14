@@ -227,6 +227,7 @@
     <EntitySetMapping Name="VEICULOS">
       <EntityTypeMapping TypeName="elektroModel.VEICULOS">
         <MappingFragment StoreEntitySet="VEICULOS">
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
           <ScalarProperty Name="SIGLA_EQUIPE" ColumnName="SIGLA_EQUIPE" />
           <ScalarProperty Name="ativo" ColumnName="ativo" />
           <ScalarProperty Name="COD_TIPO" ColumnName="COD_TIPO" />

@@ -67,7 +67,7 @@ namespace Elektro.Formularios
 
                 BLLVeiculos bllVeiculo = new BLLVeiculos();
 
-                if (Usuario.FUNCIONARIOS != null)
+                if ((Usuario.FUNCIONARIOS != null) && (!Usuario.TIPOS_USUARIOS.descricao_tipo_usuario.Trim().ToLower().Contains("administrador")))
                 {
                     if (Usuario.FUNCIONARIOS.funcao.Trim().Contains("gerente"))
                         lista = lista.Where(l => l.GERENCIA == Usuario.FUNCIONARIOS.gerencia).AsQueryable().ToList();
@@ -105,7 +105,7 @@ namespace Elektro.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("Não foi encontrado equipes", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Não foram encontradas equipes !", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

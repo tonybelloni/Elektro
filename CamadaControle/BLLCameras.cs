@@ -32,6 +32,20 @@ namespace CamadaControle
             }
         }
 
+        public List<CAMERAS> GetCamerasPorFuncionario(string prontuario)
+        {
+            try
+            {
+                DALCameras dalCamera = new DALCameras();
+                
+                return dalCamera.GetCamerasPorFuncionario(prontuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public CAMERAS GetCamera(string numeroCamera)
         {
             try
@@ -181,6 +195,19 @@ namespace CamadaControle
             {
                 DALCameras dalCamera = new DALCameras();
                 dalCamera.AlocarCameraFuncionario(camera, usuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void AlocarCameraFuncionario(CAMERAS camera, string prontuario)
+        {
+            try
+            {
+                DALCameras dalCamera = new DALCameras();
+                dalCamera.AlocarCameraFuncionario(camera, prontuario);
             }
             catch (Exception ex)
             {

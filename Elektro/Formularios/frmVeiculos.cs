@@ -42,14 +42,14 @@ namespace Elektro.Formularios
                     {
                         l.PLACA,
                         l.TIPOS_VEICULOS.DESCRICAO,
-                        l.NUMERO,
                         ATIVO = l.ativo == 0 ? "Não" : "Sim",
+                        l.observacao,
                         l.COD_TIPO
                     }).ToList();
                     dataGridView1.Columns[0].HeaderText = "Placa";
                     dataGridView1.Columns[1].HeaderText = "Tipo";
-                    dataGridView1.Columns[2].HeaderText = "Numeral";
-                    dataGridView1.Columns[3].HeaderText = "Ativo";
+                    dataGridView1.Columns[2].HeaderText = "Ativo";
+                    dataGridView1.Columns[3].HeaderText = "Observações";
                     dataGridView1.Columns[4].HeaderText = "CodTipo";
                     dataGridView1.Columns[4].Visible = false;
                 }
@@ -91,8 +91,13 @@ namespace Elektro.Formularios
             VEICULOS veiculo = new VEICULOS();
             veiculo.PLACA = dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString();
             veiculo.COD_TIPO = Convert.ToInt32(dataGridView1.Rows[currentMouseOverRow].Cells[4].Value.ToString());
-            veiculo.NUMERO = dataGridView1.Rows[currentMouseOverRow].Cells[2].Value.ToString();
-            veiculo.ativo = dataGridView1.Rows[currentMouseOverRow].Cells[3].Value.ToString() == "Sim" ? 1 : 0;
+
+            if (dataGridView1.Rows[currentMouseOverRow].Cells[3].Value != null)
+                veiculo.observacao = dataGridView1.Rows[currentMouseOverRow].Cells[3].Value.ToString();
+            else
+                veiculo.observacao = "";
+
+            veiculo.ativo = dataGridView1.Rows[currentMouseOverRow].Cells[2].Value.ToString() == "Sim" ? 1 : 0;
 
             frmCadastroVeiculos frm = new frmCadastroVeiculos(veiculo);
             frm.Processo = 1;

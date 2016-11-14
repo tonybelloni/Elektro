@@ -134,9 +134,11 @@ namespace Elektro.Formularios
 
         private void VerEquipe(object sender, EventArgs e)
         {
-            //frmVerEscalaCOD frm = new frmVerEscalaCOD();
-            //frm.ShowDialog();
-            MessageBox.Show("Nenhuma escala encontrada para essa equipe no horário da ocorrência", "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            frmVerEscalaCOD frm = new frmVerEscalaCOD();
+            frm.Equipe = dataGridView1.Rows[currentMouseOverRow].Cells[3].Value.ToString();
+            frm.DataInicial = dataGridView1.Rows[currentMouseOverRow].Cells[5].Value.ToString();
+            frm.DataFinal = dataGridView1.Rows[currentMouseOverRow].Cells[6].Value.ToString();
+            frm.ShowDialog();
         }
 
         private void Validar(object sender, EventArgs e)

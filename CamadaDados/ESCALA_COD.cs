@@ -20,5 +20,8 @@ namespace CamadaDados
         public System.DateTime DATA_FIM { get; set; }
         public string USUARIO_REGISTRO { get; set; }
         public Nullable<System.DateTime> DATA_REGISTRO { get; set; }
+    
+        public virtual EQUIPES EQUIPES { get; set; }
+        public virtual FUNCIONARIOS FUNCIONARIOS { get; set; }
     }
 }

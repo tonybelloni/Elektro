@@ -44,14 +44,14 @@ namespace Elektro.Formularios
                 dataGridView1.DataSource = historico.Select(l => new
                 {
                     l.CODIGO_CAMERA,
-                    l.SIGLA_EQUIPE,
-                    TIPO = l.TIPO == 1 ? "Alocada" : l.TIPO == 2 ? "Desvinculada" : l.TIPO == 3 ? "Envio Manutenção" : l.TIPO == 4 ? "Recebimento Manutenção" : "Inutilizada",
-                    DATA_INICIO = l.TIPO == 1 || l.TIPO == 2 ? l.DATA_ALOCACAO.Value.ToShortDateString() : l.TIPO == 3 || l.TIPO == 4 ? l.DATA_ENVIO.Value.ToShortDateString() : l.DATA_BAIXA.Value.ToShortDateString(),
+                    SIGLA_EQUIPE = l.SIGLA_EQUIPE != null ? l.SIGLA_EQUIPE : "",
+                    TIPO = l.TIPO == 1 ? "Alocada" : l.TIPO == 2 ? "Desvinculada" : l.TIPO == 3 ? "Envio Manutenção" : l.TIPO == 4 ? "Recebimento Manutenção" : l.TIPO == 5 ? "Envio Para Estoque" : l.TIPO == 6 ? "Retirada de Estoque" : "Inutilizada",
+                    DATA_INICIO = l.TIPO == 1 || l.TIPO == 2 || l.TIPO == 5 || l.TIPO == 6 ? l.DATA_ALOCACAO.Value.ToShortDateString() : l.TIPO == 3 || l.TIPO == 4 ? l.DATA_ENVIO.Value.ToShortDateString() : l.DATA_BAIXA.HasValue ? l.DATA_BAIXA.Value.ToShortDateString() : "",
                     DATA_FIM = l.TIPO == 2 ? l.DATA_DESALOCAO.Value.ToShortDateString() : l.TIPO == 4 ? l.DATA_RECEBIMENTO.Value.ToShortDateString() : "",
                     DATA_BAIXA = l.DATA_BAIXA.HasValue ? l.DATA_BAIXA.Value.ToShortDateString() : "",
-                    l.OBSERVACAO,
-                    l.NUMERO_RASTREIO,
-                    l.PRONTUARIO
+                    OBSERVACAO = l.OBSERVACAO != null ? l.OBSERVACAO : "",
+                    NUMERO_RASTREIO = l.NUMERO_RASTREIO != null ? l.NUMERO_RASTREIO : "",
+                    PRONTUARIO = l.PRONTUARIO != null ? l.PRONTUARIO : "",
                 }).ToList();
                 dataGridView1.Columns[0].HeaderText = "Código da Câmera";
                 dataGridView1.Columns[1].HeaderText = "Equipe";

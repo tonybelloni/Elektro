@@ -98,7 +98,7 @@
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
             "Todas",
-            "Disponíveis",
+            "Alocadas para Equipes",
             "Disponíveis no meu estoque",
             "Em manutenção no meu estoque"});
             this.cmbStatus.Location = new System.Drawing.Point(154, 52);

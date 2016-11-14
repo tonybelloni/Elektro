@@ -47,7 +47,7 @@ namespace Elektro.Formularios
                 BLLCameras cameras = new BLLCameras();
                 List<CAMERAS> lista = new List<CAMERAS>();
 
-                lista = cameras.GetCameras("").Where(c => (c.STATUS == "DISPONÍVEL") || (c.STATUS == "MANUTENÇÃO LOCAL" && c.PRONTUARIO == _usuario.PRONTUARIO) || (c.STATUS == "EM ESTOQUE" && c.PRONTUARIO == _usuario.PRONTUARIO)).AsQueryable().ToList();
+                lista = cameras.GetCameras("").Where(c => (c.PRONTUARIO == _usuario.PRONTUARIO)).AsQueryable().ToList();
 
                 if (txtNumeroCamera.Text.Trim() != "")
                     lista = lista.Where(l => l.codigo_camera == txtNumeroCamera.Text).AsQueryable().ToList();
@@ -55,7 +55,7 @@ namespace Elektro.Formularios
                 if (cmbStatus.SelectedIndex != 0)
                 {
                     if (cmbStatus.SelectedIndex == 1)
-                        lista = lista.Where(l => l.STATUS == "DISPONÍVEL").AsQueryable().ToList();
+                        lista = lista.Where(l => l.STATUS == "ALOCADAS").AsQueryable().ToList();
                     else if (cmbStatus.SelectedIndex == 2)
                         lista = lista.Where(l => l.STATUS == "EM ESTOQUE").AsQueryable().ToList();
                     else if (cmbStatus.SelectedIndex == 3)

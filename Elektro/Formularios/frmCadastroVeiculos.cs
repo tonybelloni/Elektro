@@ -43,13 +43,13 @@ namespace Elektro.Formularios
                 if (_processo == 0)
                 {
                     txtPlaca.Text = "";
-                    txtNumeral.Text = "";
+                    txtObservacoes.Text = "";
                     cmbAtivo.SelectedIndex = -1;
                 }
                 else
                 {
                     txtPlaca.Text = _veiculo.PLACA;
-                    txtNumeral.Text = _veiculo.NUMERO;
+                    txtObservacoes.Text = _veiculo.observacao;
                     cmbTipo.SelectedValue = _veiculo.COD_TIPO;
                     cmbAtivo.SelectedIndex = _veiculo.ativo;
                     txtPlaca.Enabled = false;
@@ -65,7 +65,7 @@ namespace Elektro.Formularios
         private void LimparCampos()
         {
             txtPlaca.Text = "";
-            txtNumeral.Text = "";
+            txtObservacoes.Text = "";
             cmbAtivo.SelectedIndex = -1;
             cmbTipo.SelectedIndex = -1;
             txtPlaca.Focus();
@@ -78,7 +78,7 @@ namespace Elektro.Formularios
 
         private bool ValidaCampos()
         {
-            if ((txtPlaca.Text == "   -") || (txtNumeral.Text == "") || (cmbAtivo.SelectedIndex == -1) || (cmbTipo.SelectedIndex == -1))
+            if ((txtPlaca.Text == "   -") ||  (cmbAtivo.SelectedIndex == -1) || (cmbTipo.SelectedIndex == -1))
             {
                 return false;
             }
@@ -115,7 +115,7 @@ namespace Elektro.Formularios
                 VEICULOS veiculo = new VEICULOS();
 
                 veiculo.PLACA = txtPlaca.Text;
-                veiculo.NUMERO = txtNumeral.Text;
+                veiculo.observacao = txtObservacoes.Text;
                 veiculo.COD_TIPO = Convert.ToInt32(cmbTipo.SelectedValue);
 
                 if (cmbAtivo.SelectedText == "Sim")
@@ -146,7 +146,7 @@ namespace Elektro.Formularios
                 VEICULOS veiculo = new VEICULOS();
 
                 veiculo.PLACA = txtPlaca.Text;
-                veiculo.NUMERO = txtNumeral.Text;
+                veiculo.observacao = txtObservacoes.Text;
                 veiculo.COD_TIPO = Convert.ToInt32(cmbTipo.SelectedValue);
 
                 if (cmbAtivo.SelectedIndex == 1)

@@ -32,7 +32,7 @@ namespace Elektro.Formularios
         {
             openFileDialog1.Multiselect = false;
             openFileDialog1.Title = "Selecionar vídeos";
-            openFileDialog1.Filter = "Text files |*.txt;";
+            openFileDialog1.Filter = "Todos os arquivos |*.*";
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.CheckPathExists = true;
 
@@ -40,63 +40,35 @@ namespace Elektro.Formularios
 
             if (dialog == System.Windows.Forms.DialogResult.OK)
             {
-                try
-                {
-                    string line = "";
-                    string path = openFileDialog1.FileName;
-                    System.IO.StreamReader file = new System.IO.StreamReader(path);
-
-                    while ((line = file.ReadLine()) != null)
-                    {
-                        ESCALA_COD escala = new ESCALA_COD();
-                        escala.SIGLA_EQUIPE = line.Split(';')[0];
-                        escala.PRONTUARIO = line.Split(';')[1];
-                        escala.DATA_INICIO = Convert.ToDateTime(line.Split(';')[2]);
-                        escala.DATA_FIM = Convert.ToDateTime(line.Split(';')[3]);
-                        escala.USUARIO_REGISTRO = _usuario.PRONTUARIO;
-                        escala.DATA_REGISTRO = DateTime.Now;
-
-                        escalas.Add(escala);
-
-                        listBox1.Items.Add(line);
-                    }
-
-                    file.Close();
-                    button1.Enabled = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                txtArquivo.Text = openFileDialog1.FileName;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            if (txtArquivo.Text == "")
             {
-                if (escalas != null)
-                {
-                    BLLEscalaCOD bllEscala = new BLLEscalaCOD();
+                MessageBox.Show("Selecione o arquivo de escalas para importação !", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                frmProcessaEscalaCOD frm = new frmProcessaEscalaCOD();
+                frm.Arquivo = txtArquivo.Text;
+                frm.Usuario = Usuario;
+                frm.ShowDialog();
+            }
 
-                    foreach (ESCALA_COD escala in escalas)
-                    {
-                        bllEscala.InsertEscala(escala);
-                    }
-                }
-                MessageBox.Show("Escala importada com sucesso", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                listBox1.Items.Clear();
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void frmImportarEscalaCOD_Load(object sender, EventArgs e)
         {
-            button1.Enabled = false;
+            txtArquivo.Text = "";
+            txtArquivo.Enabled = false;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

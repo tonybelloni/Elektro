@@ -83,11 +83,13 @@ namespace CamadaDados
             {
                 FUNCIONARIOS funcionarioU = db.FUNCIONARIOS.Where(f => f.prontuario == funcionario.prontuario).AsQueryable().FirstOrDefault();
                 funcionarioU.nome_funcionario = funcionario.nome_funcionario;
+                funcionarioU.funcao = funcionario.funcao;
                 funcionarioU.regiao = funcionario.regiao;
                 funcionarioU.gerencia = funcionario.gerencia;
                 funcionarioU.supervisao = funcionario.supervisao;
                 funcionarioU.localidade = funcionario.localidade;
                 funcionarioU.prontuario_gestor = funcionario.prontuario_gestor;
+                funcionarioU.nome_gestor = funcionario.nome_gestor;
                 funcionarioU.periodo = funcionario.periodo;
                 db.SaveChanges();
             }

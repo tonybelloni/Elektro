@@ -43,6 +43,18 @@ namespace CamadaDados
             }
         }
 
+        public List<CAMERAS> GetCamerasPorFuncionario(string prontuario)
+        {
+            try
+            {
+                return db.CAMERAS.Where(c => c.PRONTUARIO.Contains(prontuario)).AsQueryable().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("DALCameras - 002 - Erro ao recuperar câmeras - " + ex.Message);
+            }
+        }
+
         public void InsertCamera(CAMERAS camera)
         {
             try
@@ -99,21 +111,18 @@ namespace CamadaDados
                 else if (status == "MANUTENÇÃO LOCAL")
                 {
                     camera.ativo = 0;
-                    camera.PRONTUARIO = prontuario;
                 }
                 else if (status == "INUTILIZADA")
                     camera.ativo = 0;
                 else if (status == "EM ESTOQUE")
                 {
                     camera.ativo = 1;
-                    camera.PRONTUARIO = prontuario;
-                }
-                else if (status == "ALOCADA" && camera.PRONTUARIO != null)
-                {
-                    camera.PRONTUARIO = null;
                 }
                 else
                     camera.ativo = 1;
+
+                if (!String.IsNullOrEmpty(prontuario))
+                    camera.PRONTUARIO = prontuario;
 
                 db.SaveChanges();
             }
@@ -219,8 +228,22 @@ namespace CamadaDados
             {
                 CAMERAS cameraU = db.CAMERAS.Where(c => c.codigo_camera == camera.codigo_camera).AsQueryable().FirstOrDefault();
                 cameraU.PRONTUARIO = usuario.PRONTUARIO;
-                cameraU.STATUS = "EM ESTOQUE";
+                
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("DALCameras - 012 - Erro ao enviar câmera para funcionário - " + ex.Message);
+            }
+        }
 
+        public void AlocarCameraFuncionario(CAMERAS camera, string prontuario)
+        {
+            try
+            {
+                CAMERAS cameraU = db.CAMERAS.Where(c => c.codigo_camera == camera.codigo_camera).AsQueryable().FirstOrDefault();
+                cameraU.PRONTUARIO = prontuario;
+                
                 db.SaveChanges();
             }
             catch (Exception ex)

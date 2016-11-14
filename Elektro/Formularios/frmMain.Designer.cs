@@ -53,6 +53,7 @@
             this.operacionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.descarregamentoHDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarOcorrênciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manutençãoDeCâmerasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analisarOcorrênciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestãoDeEquipamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +72,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.manutençãoDeCâmerasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
@@ -301,6 +301,16 @@
             this.registrarOcorrênciasToolStripMenuItem.Text = "Registrar Ocorrências";
             this.registrarOcorrênciasToolStripMenuItem.Click += new System.EventHandler(this.registrarOcorrênciasToolStripMenuItem_Click);
             // 
+            // manutençãoDeCâmerasToolStripMenuItem
+            // 
+            this.manutençãoDeCâmerasToolStripMenuItem.Enabled = false;
+            this.manutençãoDeCâmerasToolStripMenuItem.Image = global::Elektro.Properties.Resources.operation;
+            this.manutençãoDeCâmerasToolStripMenuItem.Name = "manutençãoDeCâmerasToolStripMenuItem";
+            this.manutençãoDeCâmerasToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.manutençãoDeCâmerasToolStripMenuItem.Text = "Manutenção de Câmeras";
+            this.manutençãoDeCâmerasToolStripMenuItem.Visible = false;
+            this.manutençãoDeCâmerasToolStripMenuItem.Click += new System.EventHandler(this.manutençãoDeCâmerasToolStripMenuItem_Click);
+            // 
             // gestãoToolStripMenuItem
             // 
             this.gestãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -454,14 +464,6 @@
             | System.IO.NotifyFilters.CreationTime)));
             this.fileSystemWatcher1.SynchronizingObject = this;
             this.fileSystemWatcher1.Created += new System.IO.FileSystemEventHandler(this.fileSystemWatcher1_Created);
-            // 
-            // manutençãoDeCâmerasToolStripMenuItem
-            // 
-            this.manutençãoDeCâmerasToolStripMenuItem.Image = global::Elektro.Properties.Resources.operation;
-            this.manutençãoDeCâmerasToolStripMenuItem.Name = "manutençãoDeCâmerasToolStripMenuItem";
-            this.manutençãoDeCâmerasToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.manutençãoDeCâmerasToolStripMenuItem.Text = "Manutenção de Câmeras";
-            this.manutençãoDeCâmerasToolStripMenuItem.Click += new System.EventHandler(this.manutençãoDeCâmerasToolStripMenuItem_Click);
             // 
             // frmMain
             // 

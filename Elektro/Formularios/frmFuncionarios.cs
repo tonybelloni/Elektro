@@ -48,13 +48,12 @@ namespace Elektro.Formularios
                         l.prontuario,
                         l.nome_funcionario,
                         l.funcao,
-                        LOCALIDADE = bllLocalidade.GetLocalidade(l.localidade.Value).DESCRICAO,
-                        SUPERVISAO = bllSupervisao.GetSupervisao(l.supervisao.Value).DESCRICAO,
-                        GERENCIA = bllGerencia.GetGerencia(l.gerencia.Value).DESCRICAO,
-                        REGIAO = bllRegiao.GetRegiao(l.regiao.Value).DESCRICAO,
+                        LOCALIDADE = bllLocalidade.GetLocalidade(l.localidade).DESCRICAO,
+                        SUPERVISAO = bllSupervisao.GetSupervisao(l.supervisao).DESCRICAO,
+                        GERENCIA = bllGerencia.GetGerencia(l.gerencia).DESCRICAO,
+                        REGIAO = bllRegiao.GetRegiao(l.regiao).DESCRICAO,
                         l.prontuario_gestor,
-                        l.nome_gestor,
-                        l.periodo
+                        l.nome_gestor
                     }).AsQueryable().ToList();
                     dataGridView1.Columns[0].HeaderText = "Prontuário";
                     dataGridView1.Columns[1].HeaderText = "Nome";
@@ -65,7 +64,6 @@ namespace Elektro.Formularios
                     dataGridView1.Columns[6].HeaderText = "Região";
                     dataGridView1.Columns[7].HeaderText = "Prontuário Gestor";
                     dataGridView1.Columns[8].HeaderText = "Nome do Gestor";
-                    dataGridView1.Columns[9].HeaderText = "Período";
                 }
                 else
                 {
@@ -80,20 +78,9 @@ namespace Elektro.Formularios
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.CheckFileExists = true;
-            openFileDialog1.CheckPathExists = true;
-            openFileDialog1.Filter = "Arquivos CSV (*.csv)|*.csv";
-            openFileDialog1.Multiselect = false;
-            openFileDialog1.RestoreDirectory = true;
-            openFileDialog1.FileName = "";
-            
-            if ( openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK )
-            {
-                frmCadastroFuncionarios frm = new frmCadastroFuncionarios();
-                frm.FileName = openFileDialog1.FileName;
-                frm.ShowDialog();
-            }
+        {            
+             frmCadastroFuncionarios frm = new frmCadastroFuncionarios();
+             frm.ShowDialog();         
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -133,7 +120,6 @@ namespace Elektro.Formularios
             funcionario.regiao = bllRegiao.GetRegiao(dataGridView1.Rows[currentMouseOverRow].Cells[6].Value.ToString()).CODIGO_REGIAO;
             funcionario.prontuario_gestor = dataGridView1.Rows[currentMouseOverRow].Cells[7].Value != null ? dataGridView1.Rows[currentMouseOverRow].Cells[7].Value.ToString() : null;
             funcionario.nome_gestor = dataGridView1.Rows[currentMouseOverRow].Cells[8].Value != null ? dataGridView1.Rows[currentMouseOverRow].Cells[8].Value.ToString() : null;
-            funcionario.periodo = dataGridView1.Rows[currentMouseOverRow].Cells[9].Value.ToString();
 
             frmCadastroManualFuncionario frm = new frmCadastroManualFuncionario(funcionario);
             frm.Processo = 1;

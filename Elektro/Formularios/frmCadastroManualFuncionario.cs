@@ -49,15 +49,14 @@ namespace Elektro.Formularios
                 txtNome.Text = _funcionario.nome_funcionario;
                 txtFuncao.Text = _funcionario.funcao;
                 cmbRegiao.SelectedValue = _funcionario.regiao;
-                CarregaGerencias(_funcionario.regiao.Value);
+                CarregaGerencias(_funcionario.regiao);
                 cmbGerencia.SelectedValue = _funcionario.gerencia;
-                CarregaSupervisoes(_funcionario.gerencia.Value);
+                CarregaSupervisoes(_funcionario.gerencia);
                 cmbSupervisao.SelectedValue = _funcionario.supervisao;
-                CarregaLocalidades(_funcionario.supervisao.Value);
-                cmbLocalidade.SelectedValue = _funcionario.localidade.Value;
+                CarregaLocalidades(_funcionario.supervisao);
+                cmbLocalidade.SelectedValue = _funcionario.localidade;
                 cmbGestor.SelectedValue = _funcionario.prontuario_gestor != null ? _funcionario.prontuario_gestor : "";
                 txtGestor.Text = _funcionario.prontuario_gestor != null ? bllFuncionario.GetFuncionario(_funcionario.prontuario_gestor).nome_funcionario : "";
-                txtPeriodo.Text = _funcionario.periodo;
                 toolStripButton2.Enabled = false;
             }
         }
@@ -76,7 +75,6 @@ namespace Elektro.Formularios
             cmbLocalidade.Enabled = false;
             cmbGestor.SelectedIndex = -1;
             txtGestor.Text = "";
-            txtPeriodo.Text = "";
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -86,7 +84,7 @@ namespace Elektro.Formularios
 
         private bool ValidaCampos()
         {
-            if ((txtProntuario.Text == "") || (txtNome.Text == "") || (txtFuncao.Text == "") || (cmbRegiao.SelectedIndex == -1) || (cmbGerencia.SelectedIndex == -1) || (cmbSupervisao.SelectedIndex == -1) || (cmbLocalidade.SelectedIndex == -1) || (txtPeriodo.Text == ""))
+            if ((txtProntuario.Text == "") || (txtNome.Text == "") || (txtFuncao.Text == "") || (cmbRegiao.SelectedIndex == -1) || (cmbGerencia.SelectedIndex == -1) || (cmbSupervisao.SelectedIndex == -1) || (cmbLocalidade.SelectedIndex == -1))
             {
                 return false;
             }
@@ -228,8 +226,7 @@ namespace Elektro.Formularios
                     funcionario.prontuario_gestor = cmbGestor.SelectedValue.ToString();
                     funcionario.nome_gestor = txtGestor.Text;
                 }
-                funcionario.periodo = txtPeriodo.Text;
-
+           
                 bllFuncionario.InsertFuncionario(funcionario);
 
                 MessageBox.Show("Funcionário " + txtNome.Text + " incluído com sucesso", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -256,10 +253,13 @@ namespace Elektro.Formularios
                 funcionario.supervisao = Convert.ToInt32(cmbSupervisao.SelectedValue);
                 funcionario.gerencia = Convert.ToInt32(cmbGerencia.SelectedValue);
                 funcionario.regiao = Convert.ToInt32(cmbRegiao.SelectedValue);
-                funcionario.prontuario_gestor = cmbLocalidade.SelectedValue.ToString();
-                funcionario.nome_gestor = txtGestor.Text;
-                funcionario.periodo = txtPeriodo.Text;
 
+                if (cmbGestor.SelectedIndex > -1)
+                {
+                    funcionario.prontuario_gestor = cmbGestor.SelectedValue.ToString();
+                    funcionario.nome_gestor = txtGestor.Text;
+                }
+           
                 bllFuncionario.UpdateFuncionario(funcionario);
 
                 MessageBox.Show("Funcionário " + txtNome.Text + " alterado com sucesso", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);

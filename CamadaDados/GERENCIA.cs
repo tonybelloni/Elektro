@@ -19,6 +19,7 @@ namespace CamadaDados
         {
             this.SUPERVISAO = new HashSet<SUPERVISAO>();
             this.EQUIPES = new HashSet<EQUIPES>();
+            this.FUNCIONARIOS = new HashSet<FUNCIONARIOS>();
         }
     
         public int CODIGO_GERENCIA { get; set; }
@@ -30,5 +31,7 @@ namespace CamadaDados
         public virtual ICollection<SUPERVISAO> SUPERVISAO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EQUIPES> EQUIPES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FUNCIONARIOS> FUNCIONARIOS { get; set; }
     }
 }

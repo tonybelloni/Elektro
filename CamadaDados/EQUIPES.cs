@@ -21,6 +21,7 @@ namespace CamadaDados
             this.MOVIMENTACAO_CAMERA = new HashSet<MOVIMENTACAO_CAMERA>();
             this.REGISTRO_OCORRENCIAS = new HashSet<REGISTRO_OCORRENCIAS>();
             this.HISTORICOS_CAMERAS = new HashSet<HISTORICOS_CAMERAS>();
+            this.ESCALA_COD = new HashSet<ESCALA_COD>();
         }
     
         public string SIGLA_EQUIPE { get; set; }
@@ -46,5 +47,7 @@ namespace CamadaDados
         public virtual ICollection<REGISTRO_OCORRENCIAS> REGISTRO_OCORRENCIAS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HISTORICOS_CAMERAS> HISTORICOS_CAMERAS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ESCALA_COD> ESCALA_COD { get; set; }
     }
 }

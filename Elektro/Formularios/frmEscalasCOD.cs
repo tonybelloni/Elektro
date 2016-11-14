@@ -44,13 +44,24 @@ namespace Elektro.Formularios
         {
             try
             {
+
+                frmBuscaEscala frmBusca = new frmBuscaEscala();
+                frmBusca.ShowDialog();
+
                 BLLEscalaCOD bllEscala = new BLLEscalaCOD();
                 List<ESCALA_COD> lista = new List<ESCALA_COD>();
 
                 BLLEquipes bllEquipe = new BLLEquipes();
                 BLLFuncionarios bllFuncionario = new BLLFuncionarios();
 
-                lista = bllEscala.GetEscalas(txtPesquisa.Text);
+                if (String.IsNullOrEmpty(frmBusca.Equipe) && String.IsNullOrEmpty(frmBusca.DataInicial) && String.IsNullOrEmpty(frmBusca.DataFinal))
+                {
+                    lista = bllEscala.GetEscalas("");
+                }
+                else
+                {
+                    lista = bllEscala.GetEscalas(frmBusca.Equipe.Trim(), frmBusca.DataInicial.Trim(), frmBusca.DataFinal.Trim(), 0);
+                }
 
                 if (lista.Count > 0)
                 {

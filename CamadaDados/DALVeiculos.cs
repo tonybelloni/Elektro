@@ -59,6 +59,7 @@ namespace CamadaDados
             {
                 VEICULOS veiculoU = db.VEICULOS.Where(l => l.PLACA == veiculo.PLACA).AsQueryable().FirstOrDefault();
                 veiculoU.NUMERO = veiculo.NUMERO;
+                veiculoU.observacao = veiculo.observacao;
                 veiculoU.COD_TIPO = veiculo.COD_TIPO;
                 veiculoU.ativo = veiculo.ativo;
                 db.SaveChanges();

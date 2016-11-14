@@ -34,8 +34,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPeriodo = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.cmbGestor = new System.Windows.Forms.ComboBox();
             this.txtGestor = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -75,7 +73,7 @@
             this.toolStripButton1.Image = global::Elektro.Properties.Resources.salvar_blue;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(58, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(57, 22);
             this.toolStripButton1.Text = "Salvar";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -89,14 +87,12 @@
             this.toolStripButton2.Image = global::Elektro.Properties.Resources.limpar_32x32;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(111, 22);
+            this.toolStripButton2.Size = new System.Drawing.Size(99, 22);
             this.toolStripButton2.Text = "Limpar Campos";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtPeriodo);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.cmbGestor);
             this.groupBox1.Controls.Add(this.txtGestor);
             this.groupBox1.Controls.Add(this.label9);
@@ -117,26 +113,10 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(426, 321);
+            this.groupBox1.Size = new System.Drawing.Size(426, 300);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do Funcionário";
-            // 
-            // txtPeriodo
-            // 
-            this.txtPeriodo.Location = new System.Drawing.Point(118, 292);
-            this.txtPeriodo.Name = "txtPeriodo";
-            this.txtPeriodo.Size = new System.Drawing.Size(281, 23);
-            this.txtPeriodo.TabIndex = 19;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 295);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 16);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Período";
             // 
             // cmbGestor
             // 
@@ -295,7 +275,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 361);
+            this.ClientSize = new System.Drawing.Size(453, 342);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -339,8 +319,6 @@
         private System.Windows.Forms.TextBox txtFuncao;
         private System.Windows.Forms.TextBox txtGestor;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtPeriodo;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbGestor;
     }
 }

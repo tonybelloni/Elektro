@@ -44,7 +44,7 @@ namespace Elektro.Formularios
 
                 if (_usuario.PRONTUARIO != null)
                 {
-                    int localidade = _usuario.PRONTUARIO != null ? _usuario.FUNCIONARIOS.localidade.Value : 0;
+                    int localidade = _usuario.PRONTUARIO != null ? _usuario.FUNCIONARIOS.localidade : 0;
 
                     lista = bllHD.GetHDs("").Where(l => (l.LOCAL == null || l.LOCAL.Value == localidade) || (l.MOVIMENTACAO_HD.Where(o => !o.DATA_CHEGADA.HasValue && o.LOCAL_DESTINO == localidade).Count() > 0)).AsQueryable().ToList();
                 }

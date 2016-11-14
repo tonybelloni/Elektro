@@ -133,6 +133,7 @@ namespace Elektro.Formularios
                     CarregarFuncionarios();
                 }
             }
+            cmbFuncionario.Enabled = false;
         }
 
         public void CarregarCameras(int tipo)
@@ -224,10 +225,10 @@ namespace Elektro.Formularios
                     bllHistorico.InserirHistoricoCamera(historico);
 
                     BLLCameras bllCamera = new BLLCameras();
-                    if (cmbFuncionario.SelectedIndex == -1)
+                    //if (cmbFuncionario.SelectedIndex == -1)
                         bllCamera.UpdateStatusCamera(numeroCamera, "MANUTENÇÃO", "");
-                    else
-                        bllCamera.UpdateStatusCamera(numeroCamera, "MANUTENÇÃO LOCAL", cmbFuncionario.SelectedValue.ToString());
+                    //else
+                    //    bllCamera.UpdateStatusCamera(numeroCamera, "MANUTENÇÃO LOCAL", cmbFuncionario.SelectedValue.ToString());
 
                     MessageBox.Show("Envio de câmera para manutenção inserido com sucesso", "Aviso do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

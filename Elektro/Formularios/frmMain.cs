@@ -372,7 +372,7 @@ namespace Elektro.Formularios
                     operacionalToolStripMenuItem.Visible = true;
                     descarregamentoHDToolStripMenuItem.Visible = true;
                     registrarOcorrênciasToolStripMenuItem.Visible = true;
-                    manutençãoDeCâmerasToolStripMenuItem.Visible = true;
+                    manutençãoDeCâmerasToolStripMenuItem.Visible = false;
                 }
                 else if (permissoes.Where(l => l.ID_MENU == 2).Count() > 0)
                 {
@@ -385,7 +385,7 @@ namespace Elektro.Formularios
                         else if (p.ID_SUBMENU == 2)
                             registrarOcorrênciasToolStripMenuItem.Visible = true;
                         else if (p.ID_SUBMENU == 3)
-                            manutençãoDeCâmerasToolStripMenuItem.Visible = true;
+                            manutençãoDeCâmerasToolStripMenuItem.Visible = false;
                     }
                 }
                 else

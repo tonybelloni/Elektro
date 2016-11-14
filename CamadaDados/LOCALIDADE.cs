@@ -20,6 +20,7 @@ namespace CamadaDados
             this.MOVIMENTACAO_HD = new HashSet<MOVIMENTACAO_HD>();
             this.MOVIMENTACAO_HD1 = new HashSet<MOVIMENTACAO_HD>();
             this.EQUIPES = new HashSet<EQUIPES>();
+            this.FUNCIONARIOS = new HashSet<FUNCIONARIOS>();
         }
     
         public int CODIGO_LOCALIDADE { get; set; }
@@ -33,5 +34,7 @@ namespace CamadaDados
         public virtual ICollection<MOVIMENTACAO_HD> MOVIMENTACAO_HD1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EQUIPES> EQUIPES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FUNCIONARIOS> FUNCIONARIOS { get; set; }
     }
 }

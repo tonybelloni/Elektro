@@ -96,13 +96,13 @@ warning 6002: The table/view 'elektro.dbo.ARQUIVOS' does not have a primary key 
     <Property Name="prontuario" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="nome_funcionario" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="funcao" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="localidade" Type="int" />
-    <Property Name="supervisao" Type="int" />
-    <Property Name="gerencia" Type="int" />
-    <Property Name="regiao" Type="int" />
+    <Property Name="localidade" Type="int" Nullable="false" />
+    <Property Name="supervisao" Type="int" Nullable="false" />
+    <Property Name="gerencia" Type="int" Nullable="false" />
+    <Property Name="regiao" Type="int" Nullable="false" />
     <Property Name="prontuario_gestor" Type="nvarchar" MaxLength="50" />
     <Property Name="nome_gestor" Type="nvarchar" MaxLength="200" />
-    <Property Name="periodo" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="periodo" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="GERENCIA">
     <Key>
@@ -359,10 +359,11 @@ warning 6002: The table/view 'elektro.dbo.OCORRENCIAS' does not have a primary k
       <PropertyRef Name="PLACA" />
     </Key>
     <Property Name="PLACA" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="NUMERO" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="NUMERO" Type="nvarchar" MaxLength="10" />
     <Property Name="COD_TIPO" Type="int" Nullable="false" />
     <Property Name="ativo" Type="int" Nullable="false" />
     <Property Name="SIGLA_EQUIPE" Type="nchar" MaxLength="10" />
+    <Property Name="observacao" Type="nvarchar" MaxLength="300" />
   </EntityType>
   <EntityType Name="VIDEOS">
     <Key>
@@ -381,6 +382,30 @@ warning 6002: The table/view 'elektro.dbo.OCORRENCIAS' does not have a primary k
       </Principal>
       <Dependent Role="EQUIPES">
         <PropertyRef Name="ID_TIPO_TRABALHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="escala_cod_fk01">
+    <End Role="EQUIPES" Type="Self.EQUIPES" Multiplicity="1" />
+    <End Role="ESCALA_COD" Type="Self.ESCALA_COD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPES">
+        <PropertyRef Name="SIGLA_EQUIPE" />
+      </Principal>
+      <Dependent Role="ESCALA_COD">
+        <PropertyRef Name="SIGLA_EQUIPE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="escala_cod_fk02">
+    <End Role="FUNCIONARIOS" Type="Self.FUNCIONARIOS" Multiplicity="1" />
+    <End Role="ESCALA_COD" Type="Self.ESCALA_COD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FUNCIONARIOS">
+        <PropertyRef Name="prontuario" />
+      </Principal>
+      <Dependent Role="ESCALA_COD">
+        <PropertyRef Name="PRONTUARIO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -696,6 +721,54 @@ warning 6002: The table/view 'elektro.dbo.OCORRENCIAS' does not have a primary k
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="funcionarios_fk01">
+    <End Role="LOCALIDADE" Type="Self.LOCALIDADE" Multiplicity="1" />
+    <End Role="FUNCIONARIOS" Type="Self.FUNCIONARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCALIDADE">
+        <PropertyRef Name="CODIGO_LOCALIDADE" />
+      </Principal>
+      <Dependent Role="FUNCIONARIOS">
+        <PropertyRef Name="localidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="funcionarios_fk02">
+    <End Role="SUPERVISAO" Type="Self.SUPERVISAO" Multiplicity="1" />
+    <End Role="FUNCIONARIOS" Type="Self.FUNCIONARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUPERVISAO">
+        <PropertyRef Name="CODIGO_SUPERVISAO" />
+      </Principal>
+      <Dependent Role="FUNCIONARIOS">
+        <PropertyRef Name="supervisao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="funcionarios_fk03">
+    <End Role="GERENCIA" Type="Self.GERENCIA" Multiplicity="1" />
+    <End Role="FUNCIONARIOS" Type="Self.FUNCIONARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GERENCIA">
+        <PropertyRef Name="CODIGO_GERENCIA" />
+      </Principal>
+      <Dependent Role="FUNCIONARIOS">
+        <PropertyRef Name="gerencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="funcionarios_fk04">
+    <End Role="REGIAO" Type="Self.REGIAO" Multiplicity="1" />
+    <End Role="FUNCIONARIOS" Type="Self.FUNCIONARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REGIAO">
+        <PropertyRef Name="CODIGO_REGIAO" />
+      </Principal>
+      <Dependent Role="FUNCIONARIOS">
+        <PropertyRef Name="regiao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="elektroModelStoreContainer">
     <EntitySet Name="ATIVIDADES" EntityType="Self.ATIVIDADES" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAMERAS" EntityType="Self.CAMERAS" Schema="dbo" store:Type="Tables" />
@@ -752,6 +825,14 @@ warning 6002: The table/view 'elektro.dbo.OCORRENCIAS' does not have a primary k
     <AssociationSet Name="EQUIPES_FK01" Association="Self.EQUIPES_FK01">
       <End Role="TIPOS_TRABALHOS" EntitySet="TIPOS_TRABALHOS" />
       <End Role="EQUIPES" EntitySet="EQUIPES" />
+    </AssociationSet>
+    <AssociationSet Name="escala_cod_fk01" Association="Self.escala_cod_fk01">
+      <End Role="EQUIPES" EntitySet="EQUIPES" />
+      <End Role="ESCALA_COD" EntitySet="ESCALA_COD" />
+    </AssociationSet>
+    <AssociationSet Name="escala_cod_fk02" Association="Self.escala_cod_fk02">
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+      <End Role="ESCALA_COD" EntitySet="ESCALA_COD" />
     </AssociationSet>
     <AssociationSet Name="FK_CAMERAS_EMPRESAS" Association="Self.FK_CAMERAS_EMPRESAS">
       <End Role="EMPRESAS" EntitySet="EMPRESAS" />
@@ -856,6 +937,22 @@ warning 6002: The table/view 'elektro.dbo.OCORRENCIAS' does not have a primary k
     <AssociationSet Name="FK_VIDEOS_LISTA_VIDEOS" Association="Self.FK_VIDEOS_LISTA_VIDEOS">
       <End Role="LISTA_VIDEOS" EntitySet="LISTA_VIDEOS" />
       <End Role="VIDEOS" EntitySet="VIDEOS" />
+    </AssociationSet>
+    <AssociationSet Name="funcionarios_fk01" Association="Self.funcionarios_fk01">
+      <End Role="LOCALIDADE" EntitySet="LOCALIDADE" />
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="funcionarios_fk02" Association="Self.funcionarios_fk02">
+      <End Role="SUPERVISAO" EntitySet="SUPERVISAO" />
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="funcionarios_fk03" Association="Self.funcionarios_fk03">
+      <End Role="GERENCIA" EntitySet="GERENCIA" />
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="funcionarios_fk04" Association="Self.funcionarios_fk04">
+      <End Role="REGIAO" EntitySet="REGIAO" />
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

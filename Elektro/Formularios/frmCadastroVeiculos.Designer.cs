@@ -39,11 +39,11 @@
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbAtivo = new System.Windows.Forms.ComboBox();
-            this.txtNumeral = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -57,7 +57,7 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(266, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(453, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -66,7 +66,7 @@
             this.toolStripButton1.Image = global::Elektro.Properties.Resources.salvar_blue;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(58, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(57, 22);
             this.toolStripButton1.Text = "Salvar";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -80,30 +80,30 @@
             this.toolStripButton2.Image = global::Elektro.Properties.Resources.limpar_32x32;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(111, 22);
+            this.toolStripButton2.Size = new System.Drawing.Size(99, 22);
             this.toolStripButton2.Text = "Limpar Campos";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtObservacoes);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtPlaca);
             this.groupBox1.Controls.Add(this.cmbTipo);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.cmbAtivo);
-            this.groupBox1.Controls.Add(this.txtNumeral);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(240, 149);
+            this.groupBox1.Size = new System.Drawing.Size(429, 297);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do Veículo";
             // 
             // txtPlaca
             // 
-            this.txtPlaca.Location = new System.Drawing.Point(68, 26);
+            this.txtPlaca.Location = new System.Drawing.Point(100, 26);
             this.txtPlaca.Mask = "AAA-0000";
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(140, 23);
@@ -112,7 +112,7 @@
             // cmbTipo
             // 
             this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Location = new System.Drawing.Point(68, 55);
+            this.cmbTipo.Location = new System.Drawing.Point(100, 55);
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(140, 24);
             this.cmbTipo.TabIndex = 7;
@@ -120,7 +120,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 117);
+            this.label7.Location = new System.Drawing.Point(8, 88);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 16);
             this.label7.TabIndex = 4;
@@ -132,26 +132,10 @@
             this.cmbAtivo.Items.AddRange(new object[] {
             "Não",
             "Sim"});
-            this.cmbAtivo.Location = new System.Drawing.Point(68, 114);
+            this.cmbAtivo.Location = new System.Drawing.Point(100, 85);
             this.cmbAtivo.Name = "cmbAtivo";
             this.cmbAtivo.Size = new System.Drawing.Size(140, 24);
             this.cmbAtivo.TabIndex = 9;
-            // 
-            // txtNumeral
-            // 
-            this.txtNumeral.Location = new System.Drawing.Point(68, 85);
-            this.txtNumeral.Name = "txtNumeral";
-            this.txtNumeral.Size = new System.Drawing.Size(140, 23);
-            this.txtNumeral.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 88);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 16);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Numeral";
             // 
             // label3
             // 
@@ -175,11 +159,28 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 115);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 16);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Observações";
+            // 
+            // txtObservacoes
+            // 
+            this.txtObservacoes.Location = new System.Drawing.Point(100, 115);
+            this.txtObservacoes.Multiline = true;
+            this.txtObservacoes.Name = "txtObservacoes";
+            this.txtObservacoes.Size = new System.Drawing.Size(312, 168);
+            this.txtObservacoes.TabIndex = 11;
+            // 
             // frmCadastroVeiculos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 187);
+            this.ClientSize = new System.Drawing.Size(453, 337);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -211,11 +212,11 @@
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbAtivo;
-        private System.Windows.Forms.TextBox txtNumeral;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.MaskedTextBox txtPlaca;
+        private System.Windows.Forms.TextBox txtObservacoes;
+        private System.Windows.Forms.Label label2;
     }
 }

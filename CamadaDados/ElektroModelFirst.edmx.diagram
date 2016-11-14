@@ -65,6 +65,13 @@
         <EntityTypeShape EntityType="elektroModel.HISTORICOS_CAMERAS" Width="1.5" PointX="18.875" PointY="15" />
         <AssociationConnector Association="elektroModel.FK_HISTORICOS_CAMERAS_CAMERAS" />
         <AssociationConnector Association="elektroModel.FK_HISTORICOS_CAMERAS_EQUIPES" />
+        <AssociationConnector Association="elektroModel.escala_cod_fk01" />
+        <AssociationConnector Association="elektroModel.escala_cod_fk02" />
+        <AssociationConnector Association="elektroModel.funcionarios_fk01" />
+        <AssociationConnector Association="elektroModel.funcionarios_fk02" />
+        <AssociationConnector Association="elektroModel.funcionarios_fk03" />
+        <AssociationConnector Association="elektroModel.funcionarios_fk04" />
+        <AssociationConnector Association="elektroModel.funcionarios_fk05" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
